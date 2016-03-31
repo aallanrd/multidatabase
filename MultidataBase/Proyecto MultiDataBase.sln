@@ -5,11 +5,12 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositorio", "Repositorio\Repositorio.csproj", "{BE0E19FC-C0AC-47BA-BEBE-6E10E9B9A84D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicio", "Servicio\Servicio.csproj", "{2138D171-1755-4597-9CA7-21BB2859FDF2}"
-EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WebApi", "WebApplication1\WebApi.xproj", "{32DF4B0D-5C1F-41E9-8101-DF8C7765B574}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication2", "WebApplication2\WebApplication2.csproj", "{B56917C7-D802-42CE-BC9D-28E11909F6A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApplication2\WebApp.csproj", "{B56917C7-D802-42CE-BC9D-28E11909F6A6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D6F7EBA0-2AD1-420C-B0A9-EDA291827120} = {D6F7EBA0-2AD1-420C-B0A9-EDA291827120}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicioWEB", "ServicioWEB\ServicioWEB.csproj", "{D6F7EBA0-2AD1-420C-B0A9-EDA291827120}"
 EndProject
@@ -23,10 +24,6 @@ Global
 		{BE0E19FC-C0AC-47BA-BEBE-6E10E9B9A84D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE0E19FC-C0AC-47BA-BEBE-6E10E9B9A84D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE0E19FC-C0AC-47BA-BEBE-6E10E9B9A84D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2138D171-1755-4597-9CA7-21BB2859FDF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2138D171-1755-4597-9CA7-21BB2859FDF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2138D171-1755-4597-9CA7-21BB2859FDF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2138D171-1755-4597-9CA7-21BB2859FDF2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{32DF4B0D-5C1F-41E9-8101-DF8C7765B574}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{32DF4B0D-5C1F-41E9-8101-DF8C7765B574}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32DF4B0D-5C1F-41E9-8101-DF8C7765B574}.Release|Any CPU.ActiveCfg = Release|Any CPU
