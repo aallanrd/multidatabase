@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Repositorio.Proveedores
 {
-    class SQLConnect
+    class SQLConnect : Multidatabase
     {
+
     }
 }

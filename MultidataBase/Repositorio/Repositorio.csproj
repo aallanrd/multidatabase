@@ -50,8 +50,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Proveedores\InterfaceDB.cs" />
     <Compile Include="Proveedores\MariaDBConnect.cs" />
     <Compile Include="Proveedores\MongoConnect.cs" />
+    <Compile Include="Proveedores\Multidatabase.cs" />
     <Compile Include="Proveedores\SQLConnect.cs" />
   </ItemGroup>
   <ItemGroup>
