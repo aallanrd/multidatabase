@@ -20,7 +20,6 @@ namespace Repositorio.Proveedores
 
         void insertValuesTable();
         void updateValuesTable();
-
         void getConecctions();
 
     }
