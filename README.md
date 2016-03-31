@@ -34,41 +34,29 @@ Descargue el proyecto y abra el proyecto Multidatabase en Visual Studio 2015
 
 ##### /includeDB
 
-
 ##### /createDB
 
+##### /createTable
 
-##### filename
+##### /deleteTable
 
+##### /multipleQuery
 
-Available variables:
+##### /insertValuesTable
 
-- `url`: 
-- `size`: 
-- `width`:
-- `height`: 
-- `crop`: 
-- `date`: 
-- `time`: 
+##### /updateValuesTable
 
-##### selector
+##### /multipleQuery
 
-Type: `string`
+##### /getConecctions
 
-Capture a specific DOM element.
-
-##### hide
-
-Type: `array`
-
-Hide an array of DOM elements.
 
 
 ## Team
 
 [![Allan RD]()](https://aallanrd.com) | [![Carlos Arguello]()](https://github.com/carg62) | [![Gerardo Villalobos]()](https://github.com/Gerardo)
 ---|---|---
-[Allan RD](https://aallanrd.com) | [Kevin Mårtensson](https://github.com/carg62) | [Gerardo Villalobos](https://github.com/gera)
+[Allan RD](https://aallanrd.com) | [Carlos Arguello](https://github.com/carg62) | [Gerardo Villalobos](https://github.com/gera)
 
 
 ## License
