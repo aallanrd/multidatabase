@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "1.0.0-*",
   "compilationOptions": {
     "emitEntryPoint": true
@@ -22,7 +22,20 @@
   },
 
   "frameworks": {
-    "dnx451": { },
+    "dnx451": {
+      "frameworkAssemblies": {
+        "System.Data.Services": "4.0.0.0",
+        "System.DirectoryServices": "4.0.0.0",
+        "System.DirectoryServices.Protocols": "4.0.0.0",
+        "System.identitymodel.services": "4.0.0.0",
+        "System.ServiceModel.Discovery": "4.0.0.0",
+        "System.ServiceModel.Routing": "4.0.0.0",
+        "System.ServiceModel.Web": "4.0.0.0",
+        "System.ServiceProcess": "4.0.0.0",
+        "System.Web.ApplicationServices": "4.0.0.0",
+        "System.Web.Services": "4.0.0.0"
+      }
+    },
     "dnxcore50": { }
   },
 
