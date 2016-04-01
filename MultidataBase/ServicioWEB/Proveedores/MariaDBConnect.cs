@@ -31,7 +31,7 @@ namespace ServicioWEB
             this.password = pass;
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
-            database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
+            database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + "PORT="+ 3306 + ";";
 
             connection = new MySqlConnection(connectionString);
         }

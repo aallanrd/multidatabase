@@ -34,7 +34,7 @@ namespace ServicioWEB
         {
             MariaDBConnect mariaDB = new MariaDBConnect();
             dbModel model = new dbModel(type, user, pass, "localhost", "tcp/ip", port, alias);
-            mariaDB.Initialize(model.getUser(), model.getPass(), model.getServer(), "metadataDB");
+            mariaDB.Initialize(model.getUser(), model.getPass(), model.getServer(), "metadatadb");
             bool x = mariaDB.OpenConnection();
 
            // mariaDB.Insert(db);

@@ -79,10 +79,10 @@ namespace WebApp.ServiceReference1 {
     public interface IService1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/includeDB", ReplyAction="http://tempuri.org/IService1/includeDBResponse")]
-        bool includeDB();
+        bool includeDB(string type, string user, string pass, int port, string alias);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/includeDB", ReplyAction="http://tempuri.org/IService1/includeDBResponse")]
-        System.Threading.Tasks.Task<bool> includeDBAsync();
+        System.Threading.Tasks.Task<bool> includeDBAsync(string type, string user, string pass, int port, string alias);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMariaData", ReplyAction="http://tempuri.org/IService1/GetMariaDataResponse")]
         string GetMariaData(int value, string table, string db);
@@ -148,12 +148,12 @@ namespace WebApp.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public bool includeDB() {
-            return base.Channel.includeDB();
+        public bool includeDB(string type, string user, string pass, int port, string alias) {
+            return base.Channel.includeDB(type, user, pass, port, alias);
         }
         
-        public System.Threading.Tasks.Task<bool> includeDBAsync() {
-            return base.Channel.includeDBAsync();
+        public System.Threading.Tasks.Task<bool> includeDBAsync(string type, string user, string pass, int port, string alias) {
+            return base.Channel.includeDBAsync(type, user, pass, port, alias);
         }
         
         public string GetMariaData(int value, string table, string db) {

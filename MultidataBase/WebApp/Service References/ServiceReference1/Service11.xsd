@@ -3,7 +3,13 @@
   <xs:import schemaLocation="http://localhost:17057/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ServicioWEB" />
   <xs:element name="includeDB">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pass" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="port" type="xs:int" />
+        <xs:element minOccurs="0" name="alias" nillable="true" type="xs:string" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="includeDBResponse">

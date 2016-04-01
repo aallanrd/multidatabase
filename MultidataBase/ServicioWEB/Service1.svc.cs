@@ -15,10 +15,10 @@ namespace ServicioWEB
     public class Service1 : IService1
     {
         InterfaceDB db = new Multidatabase();
+
         public bool includeDB(string type, string user, string pass, int port, string alias)
         {
-            bool b = false;
-            db.includeDB(type, user, pass, port, alias);
+            bool b = db.includeDB(type, user, pass, port, alias);
             return b;
         }
 
