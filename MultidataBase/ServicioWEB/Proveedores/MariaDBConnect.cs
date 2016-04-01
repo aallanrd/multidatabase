@@ -91,9 +91,14 @@ namespace ServicioWEB
         }
 
         //Select statement
-        public List<string>[] Select()
+        public string Select()
         {
-            return null;
+            string stm = "SELECT VERSION()";
+            MySqlCommand cmd = new MySqlCommand(stm, connection);
+            string version = Convert.ToString(cmd.ExecuteScalar());
+            return("MySQL version : "   + version);
+
+
         }
 
         //Count statement
