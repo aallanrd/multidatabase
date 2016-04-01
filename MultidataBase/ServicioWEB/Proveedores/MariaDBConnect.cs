@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using Modelo.ServicioWEB;
 
 namespace ServicioWEB
 {
@@ -80,7 +81,7 @@ namespace ServicioWEB
         }
 
         //Insert statement
-        public void Insert(Modelo.dbModel db)
+        public void Insert(dbModel db)
         {
 
         }

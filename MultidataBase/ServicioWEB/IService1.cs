@@ -14,7 +14,7 @@ namespace ServicioWEB
     public interface IService1
     {
         [OperationContract]
-        bool includeDB();
+        bool includeDB(string type, string user, string pass, int port, string alias);
 
         [OperationContract]
         string GetMariaData(int value, string table, string db);

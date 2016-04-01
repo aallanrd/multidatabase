@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Modelo.ServicioWEB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Repositorio.Modelo;
+
 
 namespace ServicioWEB
 {
@@ -29,10 +30,11 @@ namespace ServicioWEB
             throw new NotImplementedException();
         }
 
-        public bool includeDB(Modelo.dbModel db)
+        public bool includeDB(string type, string user, string pass, int port,string alias)
         {
             MariaDBConnect mariaDB = new MariaDBConnect();
-            mariaDB.Initialize(db.getUser(), db.getPass(), "localhost", "metadataDB");
+            dbModel model = new dbModel(type, user, pass, "localhost", "tcp/ip", port, alias);
+            mariaDB.Initialize(model.getUser(), model.getPass(), model.getServer(), "metadataDB");
             bool x = mariaDB.OpenConnection();
 
            // mariaDB.Insert(db);
