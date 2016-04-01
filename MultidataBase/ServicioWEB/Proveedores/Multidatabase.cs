@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Repositorio.Modelo;
 
-namespace Repositorio.Proveedores
+namespace ServicioWEB
 {
     class Multidatabase : InterfaceDB
     {
