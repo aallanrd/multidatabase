@@ -14,42 +14,14 @@ namespace ServicioWEB
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
-        InterfaceDB db = new Multidatabase();
+        InterfaceDB dbx = new Multidatabase();
 
-        public string includeDB(string type, string user, string pass, int port, string alias)
+        public string includeDB(string type, string user, string pass, string server, int port, string db)
         {
-            string b = db.includeDB(type, user, pass, port, alias);
-            return b;
-        }
-
-
-        public string GetMariaData(int value, string table, string db)
-        {
-            return string.Format("You entered: {0}", value);
+            string include = dbx.includeDB(type, user, pass,server, port, db);
+            return include;
         }
 
-        public aMariaTipo GetMariaDataUsingDataContract(aMariaTipo composite)
-        {
-            return composite;
-        }
-        public string GetSQLData(int value, string table, string db)
-        {
-            return string.Format("You entered: {0}", value);
-        }
 
-        public aMariaTipo GetSQLDataUsingDataContract(aMariaTipo composite)
-        {
-            return composite;
-        }
-        public string GetMongoData(int value, string table, string db)
-        {
-            return string.Format("You entered: {0}", value);
-        }
-
-        public aMariaTipo GetMongoDataUsingDataContract(aMariaTipo composite)
-        {
-            
-            return composite;
-        }
     }
 }

@@ -9,116 +9,17 @@
 //------------------------------------------------------------------------------
 
 namespace WebApp.ServiceReference1 {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="aMariaTipo", Namespace="http://schemas.datacontract.org/2004/07/ServicioWEB")]
-    [System.SerializableAttribute()]
-    public partial class aMariaTipo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool BoolValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StringValueField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool BoolValue {
-            get {
-                return this.BoolValueField;
-            }
-            set {
-                if ((this.BoolValueField.Equals(value) != true)) {
-                    this.BoolValueField = value;
-                    this.RaisePropertyChanged("BoolValue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StringValue {
-            get {
-                return this.StringValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
-                    this.StringValueField = value;
-                    this.RaisePropertyChanged("StringValue");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/includeDB", ReplyAction="http://tempuri.org/IService1/includeDBResponse")]
-        string includeDB(string type, string user, string pass, int port, string alias);
+        string includeDB(string type, string user, string pass, string server, int port, string database);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/includeDB", ReplyAction="http://tempuri.org/IService1/includeDBResponse")]
-        System.Threading.Tasks.Task<string> includeDBAsync(string type, string user, string pass, int port, string alias);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMariaData", ReplyAction="http://tempuri.org/IService1/GetMariaDataResponse")]
-        string GetMariaData(int value, string table, string db);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMariaData", ReplyAction="http://tempuri.org/IService1/GetMariaDataResponse")]
-        System.Threading.Tasks.Task<string> GetMariaDataAsync(int value, string table, string db);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMariaDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetMariaDataUsingDataContractResponse")]
-        WebApp.ServiceReference1.aMariaTipo GetMariaDataUsingDataContract(WebApp.ServiceReference1.aMariaTipo tipo);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMariaDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetMariaDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<WebApp.ServiceReference1.aMariaTipo> GetMariaDataUsingDataContractAsync(WebApp.ServiceReference1.aMariaTipo tipo);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSQLData", ReplyAction="http://tempuri.org/IService1/GetSQLDataResponse")]
-        string GetSQLData(int value, string table, string db);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSQLData", ReplyAction="http://tempuri.org/IService1/GetSQLDataResponse")]
-        System.Threading.Tasks.Task<string> GetSQLDataAsync(int value, string table, string db);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSQLDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetSQLDataUsingDataContractResponse")]
-        WebApp.ServiceReference1.aMariaTipo GetSQLDataUsingDataContract(WebApp.ServiceReference1.aMariaTipo tipo);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSQLDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetSQLDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<WebApp.ServiceReference1.aMariaTipo> GetSQLDataUsingDataContractAsync(WebApp.ServiceReference1.aMariaTipo tipo);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMongoData", ReplyAction="http://tempuri.org/IService1/GetMongoDataResponse")]
-        string GetMongoData(int value, string table, string db);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMongoData", ReplyAction="http://tempuri.org/IService1/GetMongoDataResponse")]
-        System.Threading.Tasks.Task<string> GetMongoDataAsync(int value, string table, string db);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMongoDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetMongoDataUsingDataContractResponse")]
-        WebApp.ServiceReference1.aMariaTipo GetMongoDataUsingDataContract(WebApp.ServiceReference1.aMariaTipo tipo);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMongoDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetMongoDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<WebApp.ServiceReference1.aMariaTipo> GetMongoDataUsingDataContractAsync(WebApp.ServiceReference1.aMariaTipo tipo);
+        System.Threading.Tasks.Task<string> includeDBAsync(string type, string user, string pass, string server, int port, string database);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -148,60 +49,12 @@ namespace WebApp.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public string includeDB(string type, string user, string pass, int port, string alias) {
-            return base.Channel.includeDB(type, user, pass, port, alias);
+        public string includeDB(string type, string user, string pass, string server, int port, string database) {
+            return base.Channel.includeDB(type, user, pass, server, port, database);
         }
         
-        public System.Threading.Tasks.Task<string> includeDBAsync(string type, string user, string pass, int port, string alias) {
-            return base.Channel.includeDBAsync(type, user, pass, port, alias);
-        }
-        
-        public string GetMariaData(int value, string table, string db) {
-            return base.Channel.GetMariaData(value, table, db);
-        }
-        
-        public System.Threading.Tasks.Task<string> GetMariaDataAsync(int value, string table, string db) {
-            return base.Channel.GetMariaDataAsync(value, table, db);
-        }
-        
-        public WebApp.ServiceReference1.aMariaTipo GetMariaDataUsingDataContract(WebApp.ServiceReference1.aMariaTipo tipo) {
-            return base.Channel.GetMariaDataUsingDataContract(tipo);
-        }
-        
-        public System.Threading.Tasks.Task<WebApp.ServiceReference1.aMariaTipo> GetMariaDataUsingDataContractAsync(WebApp.ServiceReference1.aMariaTipo tipo) {
-            return base.Channel.GetMariaDataUsingDataContractAsync(tipo);
-        }
-        
-        public string GetSQLData(int value, string table, string db) {
-            return base.Channel.GetSQLData(value, table, db);
-        }
-        
-        public System.Threading.Tasks.Task<string> GetSQLDataAsync(int value, string table, string db) {
-            return base.Channel.GetSQLDataAsync(value, table, db);
-        }
-        
-        public WebApp.ServiceReference1.aMariaTipo GetSQLDataUsingDataContract(WebApp.ServiceReference1.aMariaTipo tipo) {
-            return base.Channel.GetSQLDataUsingDataContract(tipo);
-        }
-        
-        public System.Threading.Tasks.Task<WebApp.ServiceReference1.aMariaTipo> GetSQLDataUsingDataContractAsync(WebApp.ServiceReference1.aMariaTipo tipo) {
-            return base.Channel.GetSQLDataUsingDataContractAsync(tipo);
-        }
-        
-        public string GetMongoData(int value, string table, string db) {
-            return base.Channel.GetMongoData(value, table, db);
-        }
-        
-        public System.Threading.Tasks.Task<string> GetMongoDataAsync(int value, string table, string db) {
-            return base.Channel.GetMongoDataAsync(value, table, db);
-        }
-        
-        public WebApp.ServiceReference1.aMariaTipo GetMongoDataUsingDataContract(WebApp.ServiceReference1.aMariaTipo tipo) {
-            return base.Channel.GetMongoDataUsingDataContract(tipo);
-        }
-        
-        public System.Threading.Tasks.Task<WebApp.ServiceReference1.aMariaTipo> GetMongoDataUsingDataContractAsync(WebApp.ServiceReference1.aMariaTipo tipo) {
-            return base.Channel.GetMongoDataUsingDataContractAsync(tipo);
+        public System.Threading.Tasks.Task<string> includeDBAsync(string type, string user, string pass, string server, int port, string database) {
+            return base.Channel.includeDBAsync(type, user, pass, server, port, database);
         }
     }
 }

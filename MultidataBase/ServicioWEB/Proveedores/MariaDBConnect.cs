@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using MySql;
 using Modelo.ServicioWEB;
 
 namespace ServicioWEB
@@ -11,31 +12,19 @@ namespace ServicioWEB
     class MariaDBConnect 
     {
         private MySqlConnection connection;
-        private string server;
-        private string database;
-        private string uid;
-        private string password;
+      
 
         //Constructor
-        public MariaDBConnect(string uid, string pass, string server, string database)
+        public MariaDBConnect(string uid, string pass, string server, int port, string database)
         {
-            Initialize(uid,pass,server,database);
+            Initialize(uid,pass,server,port,database);
         }
 
         //Initialize values
-        public void Initialize(string uid, string pass, string server,string database)
+        public void Initialize(string uid, string pass, string server,int port,string database)
         {
-            this.server = server;
-            this.database = database;
-            this.uid = uid;
-            this.password = pass;
-            string connectionString;
          
-            connectionString = @"server=localhost;port=3306;userid=root;
-            password=Ard2592allan*;database=metadatadb";
-
-            connection = new MySqlConnection(connectionString);
-            
+            connection = new MySql.Data.MySqlClient.MySqlConnection("Persist Security Info=False;server="+server+ ";database=" + database + ";uid=" + uid + ";password=" + pass + "");
         }
 
         //open connection to database
