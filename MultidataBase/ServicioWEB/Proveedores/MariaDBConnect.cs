@@ -17,9 +17,9 @@ namespace ServicioWEB
         private string password;
 
         //Constructor
-        public MariaDBConnect()
+        public MariaDBConnect(string uid, string pass, string server, string database)
         {
-            //Initialize();
+            Initialize(uid,pass,server,database);
         }
 
         //Initialize values
@@ -30,19 +30,21 @@ namespace ServicioWEB
             this.uid = uid;
             this.password = pass;
             string connectionString;
-            connectionString = "SERVER=" + server + ";" + "DATABASE=" +
-            database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + "PORT="+ 3306 + ";";
+         
+            connectionString = @"server=localhost;port=3306;userid=root;
+            password=Ard2592allan*;database=metadatadb";
 
             connection = new MySqlConnection(connectionString);
+            
         }
 
         //open connection to database
-        public bool OpenConnection()
+        public string OpenConnection()
         {
             try
             {
                 connection.Open();
-                return true;
+                return "Connected";
             }
             catch (MySqlException ex)
             {
@@ -54,14 +56,17 @@ namespace ServicioWEB
                 switch (ex.Number)
                 {
                     case 0:
-                        Console.WriteLine("Cannot connect to server.  Contact administrator");
-                        break;
+                        return("Cannot connect to server.  Contact administrator");
+                     
 
                     case 1045:
-                        Console.WriteLine("Invalid username/password, please try again");
-                        break;
+                        return("Invalid username/password, please try again");
+
+                    default:
+                        return "Error";
+                       
                 }
-                return false;
+               
             }
         }
 

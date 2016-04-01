@@ -16,9 +16,9 @@ namespace ServicioWEB
     {
         InterfaceDB db = new Multidatabase();
 
-        public bool includeDB(string type, string user, string pass, int port, string alias)
+        public string includeDB(string type, string user, string pass, int port, string alias)
         {
-            bool b = db.includeDB(type, user, pass, port, alias);
+            string b = db.includeDB(type, user, pass, port, alias);
             return b;
         }
 

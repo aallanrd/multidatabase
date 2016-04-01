@@ -30,16 +30,14 @@ namespace ServicioWEB
             throw new NotImplementedException();
         }
 
-        public bool includeDB(string type, string user, string pass, int port,string alias)
+        public string includeDB(string type, string user, string pass, int port,string alias)
         {
-            MariaDBConnect mariaDB = new MariaDBConnect();
-            dbModel model = new dbModel(type, user, pass, "localhost", "tcp/ip", port, alias);
-            mariaDB.Initialize(model.getUser(), model.getPass(), model.getServer(), "metadatadb");
-            bool x = mariaDB.OpenConnection();
+            MariaDBConnect mariaDB = new MariaDBConnect(user, pass, "localhost", "metadatadb");
+            String x = mariaDB.OpenConnection();
 
            // mariaDB.Insert(db);
 
-            mariaDB.CloseConnection();
+           // mariaDB.CloseConnection();
             return x;
         }
 

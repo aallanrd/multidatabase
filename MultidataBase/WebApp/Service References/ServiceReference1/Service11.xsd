@@ -15,7 +15,7 @@
   <xs:element name="includeDBResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="includeDBResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="includeDBResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

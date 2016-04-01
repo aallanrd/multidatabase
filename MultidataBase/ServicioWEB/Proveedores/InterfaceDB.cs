@@ -12,7 +12,7 @@ namespace ServicioWEB
 {
     interface InterfaceDB
     {
-        bool includeDB(string type, string user, string pass, int port, string alias);
+        string includeDB(string type, string user, string pass, int port, string alias);
 
         void createDB();
 
