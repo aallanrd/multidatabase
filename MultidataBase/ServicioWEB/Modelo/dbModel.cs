@@ -58,5 +58,9 @@ namespace Modelo.ServicioWEB
         {
             return this.alias;
         }
+        public int getPort()
+        {
+            return this.port;
+        }
     }
 }

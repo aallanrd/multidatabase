@@ -98,6 +98,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controladores\aMariaController.cs" />
     <Compile Include="Modelo\dbModel.cs" />
     <Compile Include="Proveedores\InterfaceDB.cs" />
     <Compile Include="Proveedores\MariaDBConnect.cs" />

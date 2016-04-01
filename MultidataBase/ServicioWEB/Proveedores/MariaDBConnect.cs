@@ -20,6 +20,10 @@ namespace ServicioWEB
             Initialize(uid,pass,server,port,database);
         }
 
+        public MariaDBConnect()
+        {
+        }
+
         //Initialize values
         public void Initialize(string uid, string pass, string server,int port,string database)
         {
@@ -74,22 +78,7 @@ namespace ServicioWEB
             }
         }
 
-        //Insert statement
-        public void Insert(dbModel db)
-        {
-
-        }
-
-        //Update statement
-        public void Update()
-        {
-        }
-
-        //Delete statement
-        public void Delete()
-        {
-        }
-
+       
         //Select statement
         public string Select()
         {
@@ -98,23 +87,8 @@ namespace ServicioWEB
             string version = Convert.ToString(cmd.ExecuteScalar());
             return("MySQL version : "   + version);
 
-
         }
 
-        //Count statement
-        public int Count()
-        {
-            return 0;
-        }
-
-        //Backup
-        public void Backup()
-        {
-        }
-
-        //Restore
-        public void Restore()
-        {
-        }
+        
     }
 }

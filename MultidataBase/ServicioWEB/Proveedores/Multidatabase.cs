@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using ServicioWEB.Controladores;
 
 namespace ServicioWEB
 {
@@ -32,13 +32,11 @@ namespace ServicioWEB
 
         public string includeDB(string type, string user, string pass, string server,int port,string database)
         {
-            MariaDBConnect mariaDB = new MariaDBConnect(user, pass, server, port,database);
-            mariaDB.OpenConnection();
-            String x = mariaDB.Select();
-           // mariaDB.Insert(db);
-
-           // mariaDB.CloseConnection();
-            return x;
+            dbModel model = new dbModel(type, user, pass, server,"tcp/ip", port, database);
+            aMariaController control = new aMariaController();
+            return control.includeDB(model);
+          
+           
         }
 
         public void insertValuesTable()
