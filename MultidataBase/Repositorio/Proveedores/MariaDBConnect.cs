@@ -18,16 +18,16 @@ namespace Repositorio.Proveedores
         //Constructor
         public MariaDBConnect()
         {
-            Initialize();
+            //Initialize();
         }
 
         //Initialize values
-        private void Initialize()
+        public void Initialize(string uid, string pass, string server,string database)
         {
-            server = "localhost";
-            database = "allandb";
-            uid = "root";
-            password = "Ard2592allan";
+            this.server = server;
+            this.database = database;
+            this.uid = uid;
+            this.password = pass;
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
@@ -36,7 +36,7 @@ namespace Repositorio.Proveedores
         }
 
         //open connection to database
-        private bool OpenConnection()
+        public bool OpenConnection()
         {
             try
             {
@@ -65,7 +65,7 @@ namespace Repositorio.Proveedores
         }
 
         //Close connection
-        private bool CloseConnection()
+        public bool CloseConnection()
         {
             try
             {
@@ -80,8 +80,9 @@ namespace Repositorio.Proveedores
         }
 
         //Insert statement
-        public void Insert()
+        public void Insert(Modelo.dbModel db)
         {
+
         }
 
         //Update statement

@@ -1,14 +1,16 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Repositorio;
 
 namespace Repositorio.Proveedores
 {
     interface InterfaceDB
     {
-        void includeDB();
+        bool includeDB(Modelo.dbModel model);
 
         void createDB();
 

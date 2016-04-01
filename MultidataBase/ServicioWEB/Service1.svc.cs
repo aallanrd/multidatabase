@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
-using Repositorio;
+
 
 namespace ServicioWEB
 {
@@ -13,6 +13,15 @@ namespace ServicioWEB
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
+
+        public bool includeDB()
+        {
+            bool b = false;
+            
+            return b;
+        }
+
+
         public string GetMariaData(int value, string table, string db)
         {
             return string.Format("You entered: {0}", value);

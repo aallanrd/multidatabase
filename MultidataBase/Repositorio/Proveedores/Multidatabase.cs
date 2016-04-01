@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Repositorio.Modelo;
 
 namespace Repositorio.Proveedores
 {
     class Multidatabase : InterfaceDB
     {
-        public void createDB()
+        public bool createDB()
         {
-            throw new NotImplementedException();
+            
         }
 
         public void createTable()
@@ -28,9 +29,16 @@ namespace Repositorio.Proveedores
             throw new NotImplementedException();
         }
 
-        public void includeDB()
+        public bool includeDB(Modelo.dbModel db)
         {
-            throw new NotImplementedException();
+            MariaDBConnect mariaDB = new MariaDBConnect();
+            mariaDB.Initialize(db.getUser(), db.getPass(), "localhost", "metadataDB");
+            bool x = mariaDB.OpenConnection();
+
+           // mariaDB.Insert(db);
+
+            mariaDB.CloseConnection();
+            return x;
         }
 
         public void insertValuesTable()

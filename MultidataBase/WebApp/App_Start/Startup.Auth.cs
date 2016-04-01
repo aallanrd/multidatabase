@@ -8,10 +8,10 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using WebApplication2.Providers;
-using WebApplication2.Models;
+using WebApp.Providers;
+using WebApp.Models;
 
-namespace WebApplication2
+namespace WebApp
 {
     public partial class Startup
     {
