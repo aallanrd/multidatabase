@@ -15,7 +15,7 @@ namespace WebApp.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-            string x = client.includeDB("MariaDB", "root", "Ard2592allan","localhost", 3306, "metadatadb");
+            string x = client.includeDB("MariaDB", "root", "Ard2592allan","localhost", 3306, "jjxD2");
             var name = this.Request.Form["txtName"];
             ViewBag.hello = x;
             return View();

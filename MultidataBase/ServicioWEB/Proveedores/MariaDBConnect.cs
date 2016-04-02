@@ -11,7 +11,7 @@ namespace ServicioWEB
 {
     class MariaDBConnect 
     {
-        private MySqlConnection connection;
+        public MySqlConnection connection;
       
 
         //Constructor
@@ -63,6 +63,7 @@ namespace ServicioWEB
             }
         }
 
+        
         //Close connection
         public bool CloseConnection()
         {
@@ -79,15 +80,7 @@ namespace ServicioWEB
         }
 
        
-        //Select statement
-        public string Select()
-        {
-            string stm = "SELECT VERSION()";
-            MySqlCommand cmd = new MySqlCommand(stm, connection);
-            string version = Convert.ToString(cmd.ExecuteScalar());
-            return("MySQL version : "   + version);
-
-        }
+      
 
         
     }
