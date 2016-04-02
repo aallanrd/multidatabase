@@ -19,7 +19,8 @@ namespace WebApp.Controllers
         // GET:     
         public ActionResult VerConexiones()
         {
-            //return  client.getConnections();
+            string x = client.getConnections();
+            ViewBag.connections = x;
             return View();
         }
 

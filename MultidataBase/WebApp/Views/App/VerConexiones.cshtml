@@ -10,14 +10,16 @@
             <div class="panel-heading">
                 <a href="../App" type="button" class="btn btn-danger btn-lg pull-left"> <i class="fa fa-arrow-left"></i>Volver </a>
 
-                <h2>Ver conexiones disponibles </h2>
+                <h2>Mostrando las conexiones disponibles </h2>
                 <p>Click en "Obtener" para mostrar las conexiones disponibles.</p>
             </div>
             <div class="panel-body">
 
 
                 <div class="row">
-                    
+                    <p>
+                        @ViewBag.connections
+                    </p>
                 </div>
 
             </div>
@@ -26,7 +28,7 @@
                     <div class="col-md-12">
 
                         <button type="button" class="btn btn-warning btn-lg"> Testear Conexión </button>
-                        <button type="submit" class="btn btn-primary btn-lg"> Obtener</button>
+                        <a href="../App/VerConexiones" class="btn btn-primary btn-lg"> Actualizar </a>
                     </div>
 
                 </div>
