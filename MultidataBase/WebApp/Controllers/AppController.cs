@@ -20,14 +20,13 @@ namespace WebApp.Controllers
         public string Ver()
         {
            return  client.getConnections();
-            //return new string{ "value1", "value2" };
+          
         }
 
-        public void IncludeDB()
+        public string IncludeDB()
         {
-            string x = client.includeDB("MariaDB", "root", "Ard2592allan", "localhost", 3306, "jjxD2");
-            //var name = this.Request.Form["txtName"];
-            ViewBag.hello = x;
+            return client.includeDB("MariaDB", "root", "Ard2592allan", "localhost", 3306, "metadatadb");
+           
           
         }
 

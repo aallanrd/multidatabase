@@ -28,20 +28,13 @@ namespace ServicioWEB.Controladores
                     m.getPort() + "','" + m.getAllias() + "');";
 
                     MySqlCommand cmd = new MySqlCommand(Query, conexion.connection);
+                   
                     try
                     {
-                        MySqlDataReader Reader = cmd.ExecuteReader();
-                        int loopReading = 0;
-                        string citationstexter = "";
-                        while (Reader.Read()) // this part is wrong somehow
-                        {
-                            citationstexter += Reader.GetString(loopReading); // this works
-                            loopReading++; // this works
-                        }
-                        Reader.Close();
+                        cmd.ExecuteNonQuery();
 
                         conexion.CloseConnection();
-                        return citationstexter;
+                        return "Insertado correctamente";
                     }
                     catch (Exception e)
                     {
