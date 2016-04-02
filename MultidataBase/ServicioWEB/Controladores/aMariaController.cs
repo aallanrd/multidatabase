@@ -17,7 +17,7 @@ namespace ServicioWEB.Controladores
         {
             if (conexion.OpenConnection().Equals("Connected"))
             {
-                
+
                 MariaDBConnect mariaDB = new MariaDBConnect(m.getUser(), m.getPass(), m.getServer(), m.getPort(), m.getAllias());
                 if (mariaDB.OpenConnection().Equals("Connected"))
                 {
@@ -28,27 +28,29 @@ namespace ServicioWEB.Controladores
                     m.getPort() + "','" + m.getAllias() + "');";
 
                     MySqlCommand cmd = new MySqlCommand(Query, conexion.connection);
-                    try { 
-                    MySqlDataReader Reader = cmd.ExecuteReader();
-                    int loopReading = 0;
-                    string citationstexter = "";
-                    while (Reader.Read()) // this part is wrong somehow
+                    try
                     {
-                        citationstexter += Reader.GetString(loopReading); // this works
-                        loopReading++; // this works
-                    }
-                    Reader.Close();
+                        MySqlDataReader Reader = cmd.ExecuteReader();
+                        int loopReading = 0;
+                        string citationstexter = "";
+                        while (Reader.Read()) // this part is wrong somehow
+                        {
+                            citationstexter += Reader.GetString(loopReading); // this works
+                            loopReading++; // this works
+                        }
+                        Reader.Close();
 
-                    conexion.CloseConnection();
-                    return citationstexter;
+                        conexion.CloseConnection();
+                        return citationstexter;
                     }
-                    catch(Exception e){
+                    catch (Exception e)
+                    {
                         return "Error insertando" + e;
                     }
                 }
                 else
                 {
-                    return( "No hay conexion con la base de datos" + m.getAllias());
+                    return ("No hay conexion con la base de datos" + m.getAllias());
                 }
 
             }
@@ -57,11 +59,11 @@ namespace ServicioWEB.Controladores
 
             {
 
-                
+
                 conexion.CloseConnection();
                 return "No hay conexion con la base de datos : metadata";
             }
-           
+
         }
 
         public string consultDB()
@@ -69,57 +71,64 @@ namespace ServicioWEB.Controladores
             if (conexion.OpenConnection().Equals("Connected"))
             {
 
-               
-                    // mariaDB.Insert(db);
-                    string Query = "select * from  metadatadb.servidores";
 
-                    MySqlCommand cmd = new MySqlCommand(Query, conexion.connection);
-                    try
-                    {
-                        MySqlDataReader rdr = cmd.ExecuteReader();
-                  //  int cont = 0;
+                // mariaDB.Insert(db);
+                string Query = "select * from  metadatadb.servidores";
+
+                MySqlCommand cmd = new MySqlCommand(Query, conexion.connection);
+                try
+                {
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    //  int cont = 0;
                     string citationstexter = "{ 'servers' : ";
-                        while (rdr.Read())
-                        {
-                        citationstexter = citationstexter + " {" + ("'db_type' : '"+ rdr.GetString(0) +"', 'usr' : '"+ rdr.GetString(1)+ "' , 'pass' : '" + rdr.GetString(2) + "', 'server' : '" + rdr.GetString(3) +  "', 'protocol' : '" + rdr.GetString(4)+ "' ,'port' : '" + rdr.GetInt32(5) + "', 'allias' : '" + rdr.GetString(6)+"' }, ");
+                    while (rdr.Read())
+                    {
+                        citationstexter = citationstexter + " {" + ("'db_type' : '" + rdr.GetString(0) + "', 'usr' : '" + rdr.GetString(1) + "' , 'pass' : '" + rdr.GetString(2) + "', 'server' : '" + rdr.GetString(3) + "', 'protocol' : '" + rdr.GetString(4) + "' ,'port' : '" + rdr.GetInt32(5) + "', 'allias' : '" + rdr.GetString(6) + "' }, ");
                         //cont++;
-                        }
+                    }
                     rdr.Close();
 
-                        conexion.CloseConnection();
-                        return citationstexter;
-                    }
-                    catch (Exception e)
-                    {
-                        return "Error leyendo" + e;
-                    }
+                    conexion.CloseConnection();
+                    return citationstexter;
                 }
-
-          else
+                catch (Exception e)
                 {
-                    return ("No hay conexion con la base de datos" );
+                    return "Error leyendo" + e;
                 }
+            }
+
+            else
+            {
+                return ("No hay conexion con la base de datos");
+            }
         }
 
         public string createDB(String database_name)
         {
             if (conexion.OpenConnection().Equals("Connected"))
             {
-                try { 
-                string Query = "CREATE DATABASE '" + database_name + "'";
+                try
+                {
+                    string Query = "CREATE DATABASE " + database_name + "";
 
-                MySqlCommand cmd = new MySqlCommand(Query, conexion.connection);
+                    MySqlCommand cmd = new MySqlCommand(Query, conexion.connection);
 
+                    cmd.ExecuteNonQuery();
                     return "Insertada correctamente";
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
-                    return "Error creando base de datos";
+                    return "Error creando base de datos" + e;
                 }
 
 
             }
-            return "";
+            else
+            {
+                return "Error conectando a la BD";
+            }
+
+        }
     }
 
 

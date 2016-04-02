@@ -27,5 +27,11 @@ namespace ServicioWEB
             string connections = dbx.getConecctions();
             return connections;
         }
+
+        public string createDatabase(string db_name)
+        {
+            string create = dbx.createDB(db_name);
+            return create;
+        }
     }
 }

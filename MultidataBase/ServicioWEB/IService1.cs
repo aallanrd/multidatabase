@@ -18,7 +18,10 @@ namespace ServicioWEB
 
         [OperationContract]
         string getConnections();
-       
+
+        [OperationContract]
+        string createDatabase(string db_name);
+
     }
 
 

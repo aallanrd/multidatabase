@@ -12,9 +12,10 @@ namespace ServicioWEB
     {
 
         aMariaController control = new aMariaController();
-        public void createDB(String db_name)
+
+        public string createDB(String db_name)
         {
-            control.createDB(db_name);
+           return control.createDB(db_name);
         }
 
         public void createTable()

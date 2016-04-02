@@ -31,7 +31,11 @@ namespace WebApp.Controllers
           
         }
 
-        
+        public string CreateDB()
+        {
+            return client.createDatabase("testingapp");
+            
+        }
 
         public ActionResult Details(int id)
         {
