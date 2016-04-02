@@ -10,6 +10,7 @@ namespace WebApp.Controllers
     public class AppController : Controller
     {
         Service1Client client = new Service1Client();
+
         // GET: App
         public ActionResult Index()
         {
