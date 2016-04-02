@@ -25,9 +25,11 @@ namespace ServicioWEB
             throw new NotImplementedException();
         }
 
-        public void getConecctions()
+        public string getConecctions()
         {
-            throw new NotImplementedException();
+            aMariaController control = new aMariaController();
+            string b = control.consultDB();
+            return b;
         }
 
         public string includeDB(string type, string user, string pass, string server,int port,string database)

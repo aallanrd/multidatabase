@@ -54,12 +54,134 @@ namespace ServicioWEB.Controladores
             }
 
             else
+
             {
+
+                
                 conexion.CloseConnection();
                 return "No hay conexion con la base de datos : metadata";
             }
            
         }
 
+        public string consultDB()
+        {
+            if (conexion.OpenConnection().Equals("Connected"))
+            {
+
+               
+                    // mariaDB.Insert(db);
+                    string Query = "select * from  metadatadb.servidores";
+
+                    MySqlCommand cmd = new MySqlCommand(Query, conexion.connection);
+                    try
+                    {
+                        MySqlDataReader rdr = cmd.ExecuteReader();
+                  //  int cont = 0;
+                    string citationstexter = "{ 'servers' : ";
+                        while (rdr.Read())
+                        {
+                        citationstexter = citationstexter + " {" + ("'db_type' : '"+ rdr.GetString(0) +"', 'usr' : '"+ rdr.GetString(1)+ "' , 'pass' : '" + rdr.GetString(2) + "', 'server' : '" + rdr.GetString(3) +  "', 'protocol' : '" + rdr.GetString(4)+ "' ,'port' : '" + rdr.GetInt32(5) + "', 'allias' : '" + rdr.GetString(6)+"' }, ");
+                        //cont++;
+                        }
+                    rdr.Close();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        conexion.CloseConnection();
+                        return citationstexter;
+                    }
+                    catch (Exception e)
+                    {
+                        return "Error leyendo" + e;
+                    }
+                }
+
+          else
+                {
+                    return ("No hay conexion con la base de datos" );
+                }
+        }
+
+
     }
+
+
+
 }

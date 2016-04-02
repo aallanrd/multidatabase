@@ -24,7 +24,8 @@ namespace ServicioWEB
 
         void insertValuesTable();
         void updateValuesTable();
-        void getConecctions();
+
+        string getConecctions();
 
     }
 }

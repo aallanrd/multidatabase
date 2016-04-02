@@ -22,6 +22,10 @@ namespace ServicioWEB
             return include;
         }
 
-
+        public string getConnections()
+        {
+            string connections = dbx.getConecctions();
+            return connections;
+        }
     }
 }

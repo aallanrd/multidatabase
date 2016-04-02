@@ -20,6 +20,12 @@ namespace WebApp.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/includeDB", ReplyAction="http://tempuri.org/IService1/includeDBResponse")]
         System.Threading.Tasks.Task<string> includeDBAsync(string type, string user, string pass, string server, int port, string database);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getConnections", ReplyAction="http://tempuri.org/IService1/getConnectionsResponse")]
+        string getConnections();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getConnections", ReplyAction="http://tempuri.org/IService1/getConnectionsResponse")]
+        System.Threading.Tasks.Task<string> getConnectionsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,6 +61,14 @@ namespace WebApp.ServiceReference1 {
         
         public System.Threading.Tasks.Task<string> includeDBAsync(string type, string user, string pass, string server, int port, string database) {
             return base.Channel.includeDBAsync(type, user, pass, server, port, database);
+        }
+        
+        public string getConnections() {
+            return base.Channel.getConnections();
+        }
+        
+        public System.Threading.Tasks.Task<string> getConnectionsAsync() {
+            return base.Channel.getConnectionsAsync();
         }
     }
 }

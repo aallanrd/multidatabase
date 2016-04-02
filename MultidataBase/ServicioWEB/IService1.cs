@@ -16,6 +16,8 @@ namespace ServicioWEB
         [OperationContract]
         string includeDB(string type, string user, string pass, string server, int port, string database);
 
+        [OperationContract]
+        string getConnections();
        
     }
 

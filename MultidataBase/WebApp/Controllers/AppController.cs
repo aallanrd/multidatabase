@@ -17,18 +17,21 @@ namespace WebApp.Controllers
         }
 
         // GET:     
-        public string[] Ver()
+        public string Ver()
         {
-            return new string[] { "value1", "value2" };
+           return  client.getConnections();
+            //return new string{ "value1", "value2" };
         }
 
         public void IncludeDB()
         {
             string x = client.includeDB("MariaDB", "root", "Ard2592allan", "localhost", 3306, "jjxD2");
-            var name = this.Request.Form["txtName"];
+            //var name = this.Request.Form["txtName"];
             ViewBag.hello = x;
           
         }
+
+        
 
         public ActionResult Details(int id)
         {
