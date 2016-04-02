@@ -10,9 +10,11 @@ namespace ServicioWEB
 {
     class Multidatabase : InterfaceDB
     {
-        public void createDB()
+
+        aMariaController control = new aMariaController();
+        public void createDB(String db_name)
         {
-            
+            control.createDB(db_name);
         }
 
         public void createTable()
@@ -27,15 +29,18 @@ namespace ServicioWEB
 
         public string getConecctions()
         {
-            aMariaController control = new aMariaController();
+           
             string b = control.consultDB();
             return b;
         }
 
         public string includeDB(string type, string user, string pass, string server,int port,string database)
         {
+            //Creamos un nuevo modelo de una base de datos a incluir.
             dbModel model = new dbModel(type, user, pass, server,"tcp/ip", port, database);
-            aMariaController control = new aMariaController();
+
+            //Llamamos al metodo que esta en el controlador con el modelo respectivo.
+
             return control.includeDB(model);
           
            

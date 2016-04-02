@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 
 namespace ServicioWEB.Controladores
 {
-    public class aMariaController
+    public class aSQLController
     {
         MariaDBConnect conexion = new MariaDBConnect("root", "Ard2592allan", "localhost", 3306, "metadatadb");
 
@@ -86,6 +86,84 @@ namespace ServicioWEB.Controladores
                         }
                     rdr.Close();
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         conexion.CloseConnection();
                         return citationstexter;
                     }
@@ -101,25 +179,7 @@ namespace ServicioWEB.Controladores
                 }
         }
 
-        public string createDB(String database_name)
-        {
-            if (conexion.OpenConnection().Equals("Connected"))
-            {
-                try { 
-                string Query = "CREATE DATABASE '" + database_name + "'";
 
-                MySqlCommand cmd = new MySqlCommand(Query, conexion.connection);
-
-                    return "Insertada correctamente";
-                }
-                catch(Exception e)
-                {
-                    return "Error creando base de datos";
-                }
-
-
-            }
-            return "";
     }
 
 
