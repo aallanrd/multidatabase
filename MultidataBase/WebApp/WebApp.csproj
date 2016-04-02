@@ -328,6 +328,10 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\App\Index.cshtml" />
+    <Content Include="Views\App\CrearDB.cshtml" />
+    <Content Include="Views\App\IncluirDB.cshtml" />
+    <Content Include="Views\App\VerConexiones.cshtml" />
+    <Content Include="Views\App\InsertarTabla.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

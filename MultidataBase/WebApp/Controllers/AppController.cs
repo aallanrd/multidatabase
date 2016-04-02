@@ -17,94 +17,29 @@ namespace WebApp.Controllers
         }
 
         // GET:     
-        public string Ver()
+        public ActionResult VerConexiones()
         {
-           return  client.getConnections();
-          
-        }
-
-        public string IncludeDB()
-        {
-            return client.includeDB("MariaDB", "root", "Ard2592allan", "localhost", 3306, "metadatadb");
-           
-          
-        }
-
-        public string CreateDB()
-        {
-            return client.createDatabase("testingapp");
-            
-        }
-
-        public ActionResult Details(int id)
-        {
+            //return  client.getConnections();
             return View();
         }
 
-        // GET: App/Create
-        public ActionResult Create()
+
+        public ActionResult CrearDB()
         {
+            //return client.createDatabase("testingapp");
             return View();
         }
 
-        // POST: App/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult IncluirDB()
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            // return client.includeDB("MariaDB", "root", "Ard2592allan", "localhost", 3306, "metadatadb");
+            return View();
         }
-
-        // GET: App/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult InsertarTabla()
         {
+            // return client.includeDB("MariaDB", "root", "Ard2592allan", "localhost", 3306, "metadatadb");
             return View();
         }
 
-        // POST: App/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: App/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: App/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

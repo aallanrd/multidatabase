@@ -17,12 +17,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Multidatabase", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+                    <li> @Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, null) </li>
                     <li>@Html.ActionLink("App", "Index", "App", new { area = "" }, null)</li>
                 </ul>
             </div>
@@ -36,7 +35,18 @@
            
         </footer>
     </div>
+    <script>
+        $('input[type=text][name=secondname]').tooltip({ /*or use any other selector, class, ID*/
+            placement: "right",
+            trigger: "focus"
+        });
 
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.tooltip').tooltipster();
+        });
+    </script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
