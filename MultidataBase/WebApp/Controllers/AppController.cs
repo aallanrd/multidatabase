@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApp.ServiceReference1;
 
 namespace WebApp.Controllers
 {
     public class AppController : Controller
     {
+        Service1Client client = new Service1Client();
         // GET: App
         public ActionResult Index()
         {
@@ -18,6 +20,14 @@ namespace WebApp.Controllers
         public string[] Ver()
         {
             return new string[] { "value1", "value2" };
+        }
+
+        public void IncludeDB()
+        {
+            string x = client.includeDB("MariaDB", "root", "Ard2592allan", "localhost", 3306, "jjxD2");
+            var name = this.Request.Form["txtName"];
+            ViewBag.hello = x;
+          
         }
 
         public ActionResult Details(int id)

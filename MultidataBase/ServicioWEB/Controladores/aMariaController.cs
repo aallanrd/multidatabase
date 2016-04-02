@@ -43,7 +43,7 @@ namespace ServicioWEB.Controladores
                     return citationstexter;
                     }
                     catch(Exception e){
-                        return "Error insertando";
+                        return "Error insertando" + e;
                     }
                 }
                 else
