@@ -28,6 +28,8 @@ namespace ServicioWEB
         [OperationContract]
         string checkSQLConnection();
 
+        [OperationContract]
+        string checkConnection(int cID);
     }
 
 

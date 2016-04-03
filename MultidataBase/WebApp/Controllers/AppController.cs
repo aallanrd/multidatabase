@@ -17,6 +17,11 @@ namespace WebApp.Controllers
         {
             return View();
         }
+        public string CheckConnection(int a)
+        {
+            return client.checkConnection(a);
+            //return View();
+        }
         public ActionResult CrearTabla()
         {
             // return client.includeDB("MariaDB", "root", "Ard2592allan", "localhost", 3306, "metadatadb");

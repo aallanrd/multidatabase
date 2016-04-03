@@ -30,5 +30,7 @@ namespace ServicioWEB
         string checkMongoConnection();
 
         string checkSQLConnection();
+
+        string checkConnection(int cID);
     }
 }

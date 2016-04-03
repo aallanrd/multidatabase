@@ -36,6 +36,12 @@
   <wsdl:message name="IService1_checkSQLConnection_OutputMessage">
     <wsdl:part name="parameters" element="tns:checkSQLConnectionResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_checkConnection_InputMessage">
+    <wsdl:part name="parameters" element="tns:checkConnection" />
+  </wsdl:message>
+  <wsdl:message name="IService1_checkConnection_OutputMessage">
+    <wsdl:part name="parameters" element="tns:checkConnectionResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="includeDB">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/includeDB" message="tns:IService1_includeDB_InputMessage" />
@@ -56,6 +62,10 @@
     <wsdl:operation name="checkSQLConnection">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/checkSQLConnection" message="tns:IService1_checkSQLConnection_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/checkSQLConnectionResponse" message="tns:IService1_checkSQLConnection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="checkConnection">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/checkConnection" message="tns:IService1_checkConnection_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/checkConnectionResponse" message="tns:IService1_checkConnection_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -98,6 +108,15 @@
     </wsdl:operation>
     <wsdl:operation name="checkSQLConnection">
       <soap:operation soapAction="http://tempuri.org/IService1/checkSQLConnection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkConnection">
+      <soap:operation soapAction="http://tempuri.org/IService1/checkConnection" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

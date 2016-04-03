@@ -76,6 +76,26 @@ namespace ServicioWEB
             throw new NotImplementedException();
         }
 
+        public string checkConnection(int connectionID) 
+        {
+            dbModel model =  controlMaria.getConnection(connectionID);
+            if (model != null)
+            {
+                switch (model.getDBType())
+                {
+                    // case "MariaDB": checkMariaDBConnection();
+                    case "MongoDB": return checkMongoConnection();
+                    case "SQLDB": return checkSQLConnection();
+                    default: return "Cant Check";
+                }
+               
+            }
+            else
+            {
+                return "Not checked";
+            }
+           
+        }
         public string checkMongoConnection()
         {
              return controlMongo.consultDB();

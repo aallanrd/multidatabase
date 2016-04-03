@@ -15,7 +15,7 @@ namespace ServicioWEB.Controladores
         public aMongoController()
         {
             conexion = new MongoConnect();
-            conexion.start();
+            
         } 
         public string includeDB(dbModel m)
         {
@@ -38,31 +38,24 @@ namespace ServicioWEB.Controladores
 
         public string consultDB()
         {
-            if (conexion.OpenConnection().Equals("Connected"))
+            try {
+               return  conexion.OpenConnection();
+              //  return conexion.users.ToString();
+            }
+            catch(Exception e)
             {
-               
-                        return "Correcto";
-                   
-                }
-
-          else
-                {
-                    return ("No hay conexion con la base de datos" );
-                }
+                return e.ToString();
+            }
         }
 
-        public string createDB(String database_name)
+        public  string createDB(String database_name)
         {
             if (conexion.OpenConnection().Equals("Connected"))
             {
                 try
                 {
-                    string Query = "CREATE DATABASE " + database_name + "";
 
-                    //MySqlCommand cmd = new MySqlCommand(Query, conexion.connection);
-
-                   // cmd.ExecuteNonQuery();
-                    return "Insertada correctamente";
+                    return conexion.createDB(database_name);
                 }
                 catch (Exception e)
                 {
