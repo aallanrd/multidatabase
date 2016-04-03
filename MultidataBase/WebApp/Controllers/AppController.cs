@@ -22,6 +22,12 @@ namespace WebApp.Controllers
             return View();
         }
 
+        public ActionResult InsertarTabla()
+        {
+            // return client.includeDB("MariaDB", "root", "Ard2592allan", "localhost", 3306, "metadatadb");
+            return View();
+        }
+
         public ActionResult ActualizarTabla()
         {
             return View();
