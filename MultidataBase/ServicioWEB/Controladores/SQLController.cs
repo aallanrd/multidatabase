@@ -1,23 +1,29 @@
-﻿using System;
+﻿using Modelo.ServicioWEB;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using ServicioWEB.Controladores;
-using Modelo.ServicioWEB;
-using System.Data.SqlClient;
+using System.Web.Mvc;
 
 namespace ServicioWEB.Controladores
 {
-    public class aSQLController
+    public class SQLController 
     {
-        SQLConnect conexion = new SQLConnect("root", "Ard2592allan", "localhost", 3306, "metadatadb");
+        SQLConnect conexion;
+
+        public SQLController()
+        {
+            conexion = new SQLConnect();
+        }
+
 
         public string includeDB(dbModel m)
         {
             if (conexion.OpenConnection().Equals("Connected"))
             {
-                
-                SQLConnect mariaDB = new SQLConnect(m.getUser(), m.getPass(), m.getServer(), m.getPort(), m.getAllias());
+
+                //SQLConnect mariaDB = new SQLConnect(m.getUser(), m.getPass(), m.getServer(), m.getPort(), m.getAllias());
                 if (conexion.OpenConnection().Equals("Connected"))
                 {
 
@@ -28,27 +34,29 @@ namespace ServicioWEB.Controladores
 
                     SqlCommand cmd = new SqlCommand(Query);
                     cmd.ExecuteNonQuery();
-                    try { 
-                    SqlDataReader Reader = cmd.ExecuteReader();
-                    int loopReading = 0;
-                    string citationstexter = "";
-                    while (Reader.Read()) // this part is wrong somehow
+                    try
                     {
-                        citationstexter += Reader.GetString(loopReading); // this works
-                        loopReading++; // this works
-                    }
-                    Reader.Close();
+                        SqlDataReader Reader = cmd.ExecuteReader();
+                        int loopReading = 0;
+                        string citationstexter = "";
+                        while (Reader.Read()) // this part is wrong somehow
+                        {
+                            citationstexter += Reader.GetString(loopReading); // this works
+                            loopReading++; // this works
+                        }
+                        Reader.Close();
 
-                    conexion.CloseConnection();
-                    return citationstexter;
+                        conexion.CloseConnection();
+                        return citationstexter;
                     }
-                    catch(Exception e){
+                    catch (Exception e)
+                    {
                         return "Error insertando" + e;
                     }
                 }
                 else
                 {
-                    return( "No hay conexion con la base de datos" + m.getAllias());
+                    return ("No hay conexion con la base de datos" + m.getAllias());
                 }
 
             }
@@ -57,11 +65,11 @@ namespace ServicioWEB.Controladores
 
             {
 
-                
+
                 conexion.CloseConnection();
                 return "No hay conexion con la base de datos : metadata";
             }
-           
+
         }
 
         public string consultDB()
@@ -69,26 +77,27 @@ namespace ServicioWEB.Controladores
             if (conexion.OpenConnection().Equals("Connected"))
             {
 
-                try { 
-                    // mariaDB.Insert(db);
-                    string Query = "select * from  metadatadb.servidores";
-
-                    SqlCommand cmd = new SqlCommand(Query);
-                    cmd.ExecuteNonQuery();
-
-                        conexion.CloseConnection();
-                        return "Correcto";
-                    }
-                    catch (Exception e)
-                    {
-                        return "Error leyendo" + e;
-                    }
-                }
-
-          else
+                try
                 {
-                    return ("No hay conexion con la base de datos" );
+                    // mariaDB.Insert(db);
+                 //   string Query = "select * from  metadatadb.servidores";
+
+                   // SqlCommand cmd = new SqlCommand(Query);
+                   // cmd.ExecuteNonQuery();
+
+                    //conexion.CloseConnection();
+                    return "Correcto SQL";
                 }
+                catch (Exception e)
+                {
+                    return "Error leyendo" + e;
+                }
+            }
+
+            else
+            {
+                return ("No hay conexion con la base de datos");
+            }
         }
 
         public string createDB(String database_name)
@@ -118,7 +127,4 @@ namespace ServicioWEB.Controladores
 
         }
     }
-
-
-
 }
