@@ -25,10 +25,11 @@ namespace ServicioWEB
         }
 
         //Initialize values
-        public void Initialize(string uid, string pass, string server,int port,string database)
+        public void Initialize(string uid, string pass, string server, int port, string database)
         {
-         
-            connection = new MySql.Data.MySqlClient.MySqlConnection("Persist Security Info=False;server="+server+ ";database=" + database + ";uid=" + uid + ";password=" + pass + "");
+           
+                connection = new MySql.Data.MySqlClient.MySqlConnection("Persist Security Info=False;server=" + server + ";database=" + database + ";uid=" + uid + ";password=" + pass + "");
+            
         }
 
         //open connection to database

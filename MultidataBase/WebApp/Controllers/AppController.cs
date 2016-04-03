@@ -28,7 +28,9 @@ namespace WebApp.Controllers
 
         public ActionResult CrearDB()
         {
-            //return client.createDatabase("testingapp");
+            //Segundo Parámetro: MongoDB, MariaDB, SQLDB
+
+            //client.createDatabase("testingapp","MongoDB");
             return View();
         }
 

@@ -14,7 +14,7 @@ namespace ServicioWEB
     {
         string includeDB(string db_type, string user, string pass, string server, int port, string allias);
 
-        string createDB(string database_name);
+        string createDB(string db_type, string database_name);
 
         void createTable();
 
