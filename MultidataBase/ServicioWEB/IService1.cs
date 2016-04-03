@@ -22,8 +22,14 @@ namespace ServicioWEB
         [OperationContract]
         string createDatabase(string db_name,string db_type);
 
+        [OperationContract]
+        string checkMongoConnection();
+
+        [OperationContract]
+        string checkSQLConnection();
+
     }
 
 
-    
+
 }

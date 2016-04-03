@@ -10,29 +10,35 @@ namespace ServicioWEB
 {
     class MongoConnect
     {
-        protected static IMongoClient _client;
-        protected static IMongoDatabase _database;
+        protected static MongoClient _client;
+        
 
        // public MongoDB.Driver.ConnectionMode connection;
+        
         public MongoConnect()
         {
-
+           
         }
-        public MongoConnect(string uid, string pass, string server, int port, string database)
-        {
-
-        }
-        public void start()
+        public  void start()
         {
             _client = new MongoClient();
-            _database = _client.GetDatabase("test");
+
         }
 
         public string OpenConnection()
         {
 
+            var database = _client.GetDatabase("allandb");
+            var collection = database.GetCollection<BsonDocument>("persons");
 
-            return "Opened";
+            if (collection != null)
+            {
+                return "Connected";
+            }
+            else{
+                return "Not Retrieve Info";
+            }
+
         }
 
 

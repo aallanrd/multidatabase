@@ -24,14 +24,31 @@ namespace WebApp.Controllers
             ViewBag.connections = x;
             return View();
         }
+        public string checkMongo()
+        {
+           return  client.checkMongoConnection();
+        }
 
+        public string checkSQL()
+        {
+            return client.checkSQLConnection();
+        }
 
         public ActionResult CrearDB()
         {
-            //Segundo Parámetro: MongoDB, MariaDB, SQLDB
-
-            //client.createDatabase("testingapp","MongoDB");
             return View();
+        }
+
+        [HttpPost]
+        public string CreateDB(string db_type, string db_name)
+        {
+           // DB db = new DB(1,db_type,db_name);
+            
+            //get Data from HTML
+            return client.createDatabase(db_type, db_name);
+           // return RedirectToAction("Index");
+           
+          
         }
 
         public ActionResult IncluirDB()

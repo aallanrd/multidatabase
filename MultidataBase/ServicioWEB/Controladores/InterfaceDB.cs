@@ -27,5 +27,8 @@ namespace ServicioWEB
 
         string getConecctions();
 
+        string checkMongoConnection();
+
+        string checkSQLConnection();
     }
 }

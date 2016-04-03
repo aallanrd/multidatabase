@@ -33,5 +33,17 @@ namespace ServicioWEB
             string create = dbx.createDB(db_name,db_type);
             return create;
         }
+
+        public string checkMongoConnection()
+        {
+            string checkMongo = dbx.checkMongoConnection();
+            return checkMongo;
+        }
+
+        public string checkSQLConnection()
+        {
+            string checkSQL = dbx.checkSQLConnection();
+            return checkSQL;
+        }
     }
 }
