@@ -173,6 +173,7 @@
     <Compile Include="Controladores\SQLController.cs" />
     <Compile Include="Modelo\dbModel.cs" />
     <Compile Include="Controladores\InterfaceDB.cs" />
+    <Compile Include="Modelo\User.cs" />
     <Compile Include="Proveedores\MariaDBConnect.cs" />
     <Compile Include="Proveedores\MongoConnect.cs" />
     <Compile Include="Controladores\Multidatabase.cs" />
