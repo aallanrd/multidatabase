@@ -28,10 +28,10 @@ namespace WebApp.ServiceReference1 {
         System.Threading.Tasks.Task<string> getConnectionsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/createDatabase", ReplyAction="http://tempuri.org/IService1/createDatabaseResponse")]
-        string createDatabase(string db_name);
+        string createDatabase(string db_name, string db_type);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/createDatabase", ReplyAction="http://tempuri.org/IService1/createDatabaseResponse")]
-        System.Threading.Tasks.Task<string> createDatabaseAsync(string db_name);
+        System.Threading.Tasks.Task<string> createDatabaseAsync(string db_name, string db_type);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -77,12 +77,12 @@ namespace WebApp.ServiceReference1 {
             return base.Channel.getConnectionsAsync();
         }
         
-        public string createDatabase(string db_name) {
-            return base.Channel.createDatabase(db_name);
+        public string createDatabase(string db_name, string db_type) {
+            return base.Channel.createDatabase(db_name, db_type);
         }
         
-        public System.Threading.Tasks.Task<string> createDatabaseAsync(string db_name) {
-            return base.Channel.createDatabaseAsync(db_name);
+        public System.Threading.Tasks.Task<string> createDatabaseAsync(string db_name, string db_type) {
+            return base.Channel.createDatabaseAsync(db_name, db_type);
         }
     }
 }

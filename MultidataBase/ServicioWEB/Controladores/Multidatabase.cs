@@ -11,11 +11,22 @@ namespace ServicioWEB
     class Multidatabase : InterfaceDB
     {
 
-        aMariaController control = new aMariaController();
+        aMariaController controlMaria = new aMariaController();
+        aMongoController controlMongo = new aMongoController();
+        aSQLController controlSQL = new aSQLController();
 
-        public string createDB(String db_name)
+
+        public string createDB(String db_name,String db_type)
         {
-           return control.createDB(db_name);
+            switch (db_type)
+            {
+                case "MariaDB": return controlMaria.createDB(db_name);
+                case "MongoDB": return controlMongo.createDB(db_name);
+                case "SQLDB":   return controlSQL.createDB(db_name);
+                default: return "No existe conexion posible con este tipo de DB";
+            }
+           
+
         }
 
         public void createTable()
@@ -31,7 +42,7 @@ namespace ServicioWEB
         public string getConecctions()
         {
            
-            string b = control.consultDB();
+            string b = controlMaria.consultDB();
             return b;
         }
 
@@ -42,7 +53,7 @@ namespace ServicioWEB
 
             //Llamamos al metodo que esta en el controlador con el modelo respectivo.
 
-            return control.includeDB(model);
+            return controlMaria.includeDB(model);
           
            
         }

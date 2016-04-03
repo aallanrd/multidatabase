@@ -6,18 +6,19 @@ using ServicioWEB.Controladores;
 using Modelo.ServicioWEB;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 
 namespace ServicioWEB.Controladores
 {
-    public class aMariaController
+    public class aMongoController
     {
-        MariaDBConnect conexion = new MariaDBConnect("root", "Ard2592allan", "localhost", 3306, "metadatadb");
+        MongoConnect conexion = new MongoConnect("root", "Ard2592allan", "localhost", 17008, "local");
 
         public string includeDB(dbModel m)
         {
             if (conexion.OpenConnection().Equals("Connected"))
             {
-
+                
                 MariaDBConnect mariaDB = new MariaDBConnect(m.getUser(), m.getPass(), m.getServer(), m.getPort(), m.getAllias());
                 if (mariaDB.OpenConnection().Equals("Connected"))
                 {
@@ -27,23 +28,29 @@ namespace ServicioWEB.Controladores
                     + m.getDBType() + "','" + m.getUser() + "','" + m.getPass() + "','" + m.getServer() + "','" + m.getProtocol() + "','" +
                     m.getPort() + "','" + m.getAllias() + "');";
 
-                    MySqlCommand cmd = new MySqlCommand(Query, conexion.connection);
-                   
-                    try
+                    SqlCommand cmd = new SqlCommand(Query);
+                    cmd.ExecuteNonQuery();
+                    try { 
+                    SqlDataReader Reader = cmd.ExecuteReader();
+                    int loopReading = 0;
+                    string citationstexter = "";
+                    while (Reader.Read()) // this part is wrong somehow
                     {
-                        cmd.ExecuteNonQuery();
-
-                        conexion.CloseConnection();
-                        return "Insertado correctamente";
+                        citationstexter += Reader.GetString(loopReading); // this works
+                        loopReading++; // this works
                     }
-                    catch (Exception e)
-                    {
+                    Reader.Close();
+
+                    conexion.CloseConnection();
+                    return citationstexter;
+                    }
+                    catch(Exception e){
                         return "Error insertando" + e;
                     }
                 }
                 else
                 {
-                    return ("No hay conexion con la base de datos" + m.getAllias());
+                    return( "No hay conexion con la base de datos" + m.getAllias());
                 }
 
             }
@@ -52,11 +59,11 @@ namespace ServicioWEB.Controladores
 
             {
 
-
+                
                 conexion.CloseConnection();
                 return "No hay conexion con la base de datos : metadata";
             }
-
+           
         }
 
         public string consultDB()
@@ -64,37 +71,114 @@ namespace ServicioWEB.Controladores
             if (conexion.OpenConnection().Equals("Connected"))
             {
 
+               
+                    // mariaDB.Insert(db);
+                    string Query = "select * from  metadatadb.servidores";
 
-                // mariaDB.Insert(db);
-                string Query = "select * from  metadatadb.servidores";
-
-                MySqlCommand cmd = new MySqlCommand(Query,conexion.connection);
-                //cmd.ExecuteNonQuery();
-                try
-                {
-                    MySqlDataReader rdr = cmd.ExecuteReader();
-                    //  int cont = 0;
-                    string citationstexter = "{ 'servers' : ";
-                    while (rdr.Read())
+                    MySqlCommand cmd = new MySqlCommand(Query, conexion.connection);
+                    try
                     {
-                        citationstexter = citationstexter + " {" + ("'db_type' : '" + rdr.GetString(0) + "', 'usr' : '" + rdr.GetString(1) + "' , 'pass' : '" + rdr.GetString(2) + "', 'server' : '" + rdr.GetString(3) + "', 'protocol' : '" + rdr.GetString(4) + "' ,'port' : '" + rdr.GetInt32(5) + "', 'allias' : '" + rdr.GetString(6) + "' }, ");
+                        MySqlDataReader rdr = cmd.ExecuteReader();
+                  //  int cont = 0;
+                    string citationstexter = "{ 'servers' : ";
+                        while (rdr.Read())
+                        {
+                        citationstexter = citationstexter + " {" + ("'db_type' : '"+ rdr.GetString(0) +"', 'usr' : '"+ rdr.GetString(1)+ "' , 'pass' : '" + rdr.GetString(2) + "', 'server' : '" + rdr.GetString(3) +  "', 'protocol' : '" + rdr.GetString(4)+ "' ,'port' : '" + rdr.GetInt32(5) + "', 'allias' : '" + rdr.GetString(6)+"' }, ");
                         //cont++;
-                    }
+                        }
                     rdr.Close();
 
-                    conexion.CloseConnection();
-                    return citationstexter;
-                }
-                catch (Exception e)
-                {
-                    return "Error leyendo" + e;
-                }
-            }
 
-            else
-            {
-                return ("No hay conexion con la base de datos");
-            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        conexion.CloseConnection();
+                        return citationstexter;
+                    }
+                    catch (Exception e)
+                    {
+                        return "Error leyendo" + e;
+                    }
+                }
+
+          else
+                {
+                    return ("No hay conexion con la base de datos" );
+                }
         }
 
         public string createDB(String database_name)
