@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
+//Aqui me toca bretear...
+
 namespace ServicioWEB
 {
     class MongoConnect
@@ -17,7 +19,17 @@ namespace ServicioWEB
         
         public MongoConnect()
         {
-           
+            //MongoUrl url = new MongoUrl("mongodb://localhost");
+            MongoClient mc = new MongoClient("mongodb://localhost");
+            MongoServer mongo = mc.GetServer();
+            MongoDatabase db = mongo.GetDatabase("test"); //Aqui se ingresa el nombre de la base de datos
+            var cols = db.GetCollectionNames(); //Variable para guardar los nombres de las colecciones
+
+            foreach(string col in cols)
+            {
+                Console.WriteLine(col); //Ver colecciones de la base de datos
+            }
+            Console.ReadLine();
         }
         public  void start()
         {
