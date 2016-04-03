@@ -7,7 +7,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Collections;
 
-//Aqui me toca bretear...
+
 
 namespace ServicioWEB
 {
