@@ -45,5 +45,11 @@ namespace ServicioWEB
             string checkSQL = dbx.checkSQLConnection();
             return checkSQL;
         }
+
+        public string checkConnection(int id)
+        {
+            string check = dbx.checkConnection(id);
+            return check;
+        }
     }
 }

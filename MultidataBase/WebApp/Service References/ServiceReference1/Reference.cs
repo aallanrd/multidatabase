@@ -44,6 +44,12 @@ namespace WebApp.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/checkSQLConnection", ReplyAction="http://tempuri.org/IService1/checkSQLConnectionResponse")]
         System.Threading.Tasks.Task<string> checkSQLConnectionAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/checkConnection", ReplyAction="http://tempuri.org/IService1/checkConnectionResponse")]
+        string checkConnection(int cID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/checkConnection", ReplyAction="http://tempuri.org/IService1/checkConnectionResponse")]
+        System.Threading.Tasks.Task<string> checkConnectionAsync(int cID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -111,6 +117,14 @@ namespace WebApp.ServiceReference1 {
         
         public System.Threading.Tasks.Task<string> checkSQLConnectionAsync() {
             return base.Channel.checkSQLConnectionAsync();
+        }
+        
+        public string checkConnection(int cID) {
+            return base.Channel.checkConnection(cID);
+        }
+        
+        public System.Threading.Tasks.Task<string> checkConnectionAsync(int cID) {
+            return base.Channel.checkConnectionAsync(cID);
         }
     }
 }

@@ -89,8 +89,9 @@ namespace ServicioWEB.Controladores
                             server = rdr.GetString(3),
                             protocol = rdr.GetString(4),
                             port = rdr.GetString(5),
-                            allias = rdr.GetString(6)
-                           
+                            allias = rdr.GetString(6),
+                            id = rdr.GetString(7)
+
                         });
                         //      citationstexter = citationstexter  + ("{ 'db_type' : '" + rdr.GetString(0) + "',   'usr' : '" + rdr.GetString(1) + "' , 'pass' : '" + rdr.GetString(2) + "',  'server' : '" + rdr.GetString(3) + "', 'protocol' : '" + rdr.GetString(4) + "'        ,'port' : '" + rdr.GetInt32(5) + "', 'allias' : '" + rdr.GetString(6) + "' }, ");
                         //cont++;
@@ -140,6 +141,68 @@ namespace ServicioWEB.Controladores
             }
 
         }
+
+        
+
+        public dbModel getConnection(int cID)
+        {
+            if (conexion.OpenConnection().Equals("Connected"))
+            {
+
+
+                // mariaDB.Insert(db);
+                string Query = "select * from  metadatadb.servidores";
+
+                MySqlCommand cmd = new MySqlCommand(Query, conexion.connection);
+
+                ArrayList objs = new ArrayList();
+                //cmd.ExecuteNonQuery();
+                try
+                {
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    dbModel model = null;
+                    while (rdr.Read())
+                    {
+                        int z = rdr.GetInt32(7);
+                        if (z == cID)
+                        {
+                            string db_type = rdr.GetString(0);
+                            string usr = rdr.GetString(1);
+                            string pass = rdr.GetString(2);
+                            string server = rdr.GetString(3);
+                            string protocol = rdr.GetString(4);
+                            int port = rdr.GetInt32(5);
+                            string allias = rdr.GetString(6);
+                            string id = rdr.GetString(7);
+                            model = new dbModel(
+                                db_type, usr, pass, server, protocol, port, allias);
+                            return model;
+                        }
+                        
+                    
+                    }
+                    rdr.Close();
+                    conexion.CloseConnection();
+                    return model;
+                    //  citationstexter = citationstexter + "]";
+                  
+                    
+               
+                    // return citationstexter;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+
+            else
+            {
+                return null;
+            }
+        }
+
+
     }
 
 
