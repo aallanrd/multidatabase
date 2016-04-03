@@ -331,6 +331,11 @@
     <Content Include="Views\App\IncluirDB.cshtml" />
     <Content Include="Views\App\VerConexiones.cshtml" />
     <Content Include="Views\App\InsertarTabla.cshtml" />
+    <Content Include="Views\App\CrearTabla.cshtml" />
+    <Content Include="Views\App\BorrarTabla.cshtml" />
+    <Content Include="Views\App\MultipleQuery.cshtml" />
+    <Content Include="Views\App\ActualizarTabla.cshtml" />
+    <Content Include="Views\App\BorrarDeTabla.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

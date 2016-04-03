@@ -16,7 +16,30 @@ namespace WebApp.Controllers
         {
             return View();
         }
+        public ActionResult CrearTabla()
+        {
+            // return client.includeDB("MariaDB", "root", "Ard2592allan", "localhost", 3306, "metadatadb");
+            return View();
+        }
 
+        public ActionResult ActualizarTabla()
+        {
+            return View();
+        }
+
+        public ActionResult BorrarTabla()
+        {
+            return View();
+        }
+
+        public ActionResult MultipleQuery()
+        {
+            return View();
+        }
+        public ActionResult BorrarDeTabla()
+        {
+            return View();
+        }
         // GET:     
         public ActionResult VerConexiones()
         {
@@ -55,11 +78,6 @@ namespace WebApp.Controllers
             // return client.includeDB("MariaDB", "root", "Ard2592allan", "localhost", 3306, "metadatadb");
             return View();
         }
-        public ActionResult InsertarTabla()
-        {
-            // return client.includeDB("MariaDB", "root", "Ard2592allan", "localhost", 3306, "metadatadb");
-            return View();
-        }
-
+        
     }
 }
