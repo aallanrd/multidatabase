@@ -7,6 +7,8 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Collections;
 
+
+
 namespace ServicioWEB
 {
     class MongoConnect
@@ -19,6 +21,19 @@ namespace ServicioWEB
 
         public MongoConnect()
         {
+<<<<<<< HEAD
+            //MongoUrl url = new MongoUrl("mongodb://localhost");
+            MongoClient mc = new MongoClient("mongodb://localhost");
+            MongoServer mongo = mc.GetServer();
+            MongoDatabase db = mongo.GetDatabase("test"); //Aqui se ingresa el nombre de la base de datos
+            var cols = db.GetCollectionNames(); //Variable para guardar los nombres de las colecciones
+
+            foreach(string col in cols)
+            {
+                Console.WriteLine(col); //Ver colecciones de la base de datos
+            }
+            Console.ReadLine();
+=======
            // var credential = MongoCredential.CreateMongoCRCredential("allandb", "aallanrd", "abc1234");
 
           //  var settings = new MongoClientSettings
@@ -28,6 +43,7 @@ namespace ServicioWEB
 
             // _client = new MongoClient(settings);
             _client = new MongoClient();
+>>>>>>> origin/master
         }
 
         public ArrayList users = new ArrayList();
