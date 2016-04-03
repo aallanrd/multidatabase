@@ -38,18 +38,14 @@ namespace ServicioWEB.Controladores
 
         public string consultDB()
         {
-            var c = conexion.OpenConnection();
-            if (c.Equals("Connected"))
+            try {
+                conexion.start();
+                return conexion.users.ToString();
+            }
+            catch(Exception e)
             {
-               
-                        return "Correcto";
-                   
-                }
-
-          else
-                {
-                    return (c);
-                }
+                return e.ToString();
+            }
         }
 
         public string createDB(String database_name)
