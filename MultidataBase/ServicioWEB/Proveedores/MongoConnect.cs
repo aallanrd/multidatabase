@@ -32,63 +32,63 @@ namespace ServicioWEB
 
         public ArrayList users = new ArrayList();
 
-        public async void start()
+        public  void start()
         {
             //string conn = "mongodb://[aallanrd:abc1234@]localhost[:27017 ][/[local][?]]";
             // _client = new MongoClient(conn);
-            await OpenConnection();
+             OpenConnection();
         }
 
-        public async Task<string> OpenConnection()
+        //ABre una conexion y crea una base de datos :D
+        public  string  OpenConnection()
         {
 
-            var database = _client.GetDatabase("createDBX");
+            var database = _client.GetDatabase("allandb");
 
             //MongoServer server = _client.GetServer();
             //MongoDatabase db = server.GetDatabase("MyDatabase");
 
             if (database != null)
             {
-                var collection = database.GetCollection<BsonDocument>("restaurants");
+               
+               return "Connected";
+             
+            }
+            else
+            {
+                return "Cant Get Database";
+            }
+
+
+        }
+
+       
+
+        public string createDB(string x)
+        {
+
+            var database = _client.GetDatabase(x);
+
+            //MongoServer server = _client.GetServer();
+            //MongoDatabase db = server.GetDatabase("MyDatabase");
+
+            if (database != null)
+            {
+                var collection = database.GetCollection<BsonDocument>("test");
 
                 var document = new BsonDocument
                         {
-                            { "address" , new BsonDocument
-                                {
-                                    { "street", "2 Avenue" },
-                                    { "zipcode", "10075" },
-                                    { "building", "1480" },
-                                    { "coord", new BsonArray { 73.9557413, 40.7720266 } }
-                                }
-                            },
-                            { "borough", "Manhattan" },
-                            { "cuisine", "Italian" },
-                            { "grades", new BsonArray
-                                {
-                                    new BsonDocument
-                                    {
-                                        { "date", new DateTime(2014, 10, 1, 0, 0, 0, DateTimeKind.Utc) },
-                                        { "grade", "A" },
-                                        { "score", 11 }
-                                    },
-                                    new BsonDocument
-                                    {
-                                        { "date", new DateTime(2014, 1, 6, 0, 0, 0, DateTimeKind.Utc) },
-                                        { "grade", "B" },
-                                        { "score", 17 }
-                                    }
-                                }
-                            },
-                            { "name", "Vella" },
-                            { "restaurant_id", "41704620" }
+                            
+                            { "DBLOg", "Created" },
+                         
                         };
 
 
-                await collection.InsertOneAsync(document);
+                 collection.InsertOneAsync(document);
 
                 if (collection != null)
                 {
-                    return "Connected";
+                    return "Creada Correctamente";
                 }
                 else {
                     return "Not Retrieve Info of persons";
@@ -101,6 +101,9 @@ namespace ServicioWEB
 
 
         }
+
+
+
 
 
         //Close connection

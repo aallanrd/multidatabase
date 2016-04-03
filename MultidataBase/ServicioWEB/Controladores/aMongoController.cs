@@ -39,8 +39,8 @@ namespace ServicioWEB.Controladores
         public string consultDB()
         {
             try {
-                conexion.start();
-                return conexion.users.ToString();
+               return  conexion.OpenConnection();
+              //  return conexion.users.ToString();
             }
             catch(Exception e)
             {
@@ -48,18 +48,14 @@ namespace ServicioWEB.Controladores
             }
         }
 
-        public string createDB(String database_name)
+        public  string createDB(String database_name)
         {
             if (conexion.OpenConnection().Equals("Connected"))
             {
                 try
                 {
-                    string Query = "CREATE DATABASE " + database_name + "";
 
-                    //MySqlCommand cmd = new MySqlCommand(Query, conexion.connection);
-
-                   // cmd.ExecuteNonQuery();
-                    return "Insertada correctamente";
+                    return conexion.createDB(database_name);
                 }
                 catch (Exception e)
                 {
