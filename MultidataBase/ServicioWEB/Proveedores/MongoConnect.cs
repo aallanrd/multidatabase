@@ -11,33 +11,49 @@ namespace ServicioWEB
     class MongoConnect
     {
         protected static MongoClient _client;
-        
+    
 
-       // public MongoDB.Driver.ConnectionMode connection;
-        
+
+        // public MongoDB.Driver.ConnectionMode connection;
+
         public MongoConnect()
         {
-           
+            var credential = MongoCredential.CreateMongoCRCredential("allandb", "aallanrd", "abc1234");
+
+            var settings = new MongoClientSettings
+            {
+                Credentials = new[] { credential }
+            };
+
+             _client = new MongoClient(settings);
         }
         public  void start()
         {
-            _client = new MongoClient();
+            //string conn = "mongodb://[aallanrd:abc1234@]localhost[:27017 ][/[local][?]]";
+           // _client = new MongoClient(conn);
 
         }
 
         public string OpenConnection()
         {
-
             var database = _client.GetDatabase("allandb");
-            var collection = database.GetCollection<BsonDocument>("persons");
-
-            if (collection != null)
+            if (database!=null)
             {
-                return "Connected";
+                var collection = database.GetCollection<BsonDocument>("persons");
+
+                if (collection != null)
+                {
+                    return "Connected";
+                }
+                else {
+                    return "Not Retrieve Info of persons";
+                }
             }
-            else{
-                return "Not Retrieve Info";
+            else
+            {
+                return "Cant Get Database";
             }
+            
 
         }
 

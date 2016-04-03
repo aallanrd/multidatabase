@@ -15,7 +15,7 @@ namespace ServicioWEB.Controladores
         public aMongoController()
         {
             conexion = new MongoConnect();
-            conexion.start();
+            
         } 
         public string includeDB(dbModel m)
         {
@@ -38,7 +38,8 @@ namespace ServicioWEB.Controladores
 
         public string consultDB()
         {
-            if (conexion.OpenConnection().Equals("Connected"))
+            var c = conexion.OpenConnection();
+            if (c.Equals("Connected"))
             {
                
                         return "Correcto";
@@ -47,7 +48,7 @@ namespace ServicioWEB.Controladores
 
           else
                 {
-                    return ("No hay conexion con la base de datos" );
+                    return (c);
                 }
         }
 
