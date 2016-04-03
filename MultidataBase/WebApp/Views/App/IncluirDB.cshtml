@@ -6,7 +6,7 @@
     
     <div class="col-md-12 text-center panel">
        
-            <form>
+            <form action="../App/IncludeDB" method="post">
             <div class="panel-heading">
                 <a href="../App" type="button" class="btn btn-danger btn-lg pull-left"> <i class="fa fa-arrow-left"></i>Volver </a>
                 <h2>Insertar nueva base de datos</h2>
@@ -25,22 +25,22 @@
                             <option>SQLDB</option>
 
                         </select> <br /><br />
-                        <input placeholder="dbProtocol" class="input-lg" /> <br /><br />
-                        <input placeholder="dbAllias" class="input-lg" type="text" /><br /><br />
+                        <input placeholder="dbProtocol" class="input-lg" name="protocol" /> <br /><br />
+                        <input placeholder="dbAllias" class="input-lg" type="text" name="allias" /><br /><br />
                         
                     </div>
                     <div class="col-md-1"></div>
                     <div class="col-md-3">
                         <p><i class="fa fa-cog"></i> Configuración Usuario </p>
-                        <input placeholder="dbUser" class="input-lg" /><br /><br />
-                        <input placeholder="dbPass" class="input-lg" /><br /><br />
+                        <input placeholder="dbUser" class="input-lg" name="user" /><br /><br />
+                        <input placeholder="dbPass" class="input-lg" name="pass" /><br /><br />
 
                     </div>
                     <div class="col-md-1"></div>
                     <div class="col-md-3">
                         <p> <i class="fa fa-cubes"> </i>Configuración Servidor</p>
-                        <input placeholder="dbServer" class="input-lg" /><br /><br />
-                        <input placeholder="dbPort" class="input-lg" /><br /><br />
+                        <input placeholder="dbServer" class="input-lg" name="server" /><br /><br />
+                        <input placeholder="dbPort" class="input-lg" name="port"/><br /><br />
 
                     </div>
                 </div>

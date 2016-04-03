@@ -55,8 +55,8 @@ namespace ServicioWEB
 
             //Llamamos al metodo que esta en el controlador con el modelo respectivo.
 
-            // return controlMaria.includeDB(model);
-            return "Connected";
+             return controlMaria.includeDB(model);
+           // return "Connected";
           
            
         }

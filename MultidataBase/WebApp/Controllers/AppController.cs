@@ -68,16 +68,29 @@ namespace WebApp.Controllers
         {
            
             string x = client.createDatabase(db_type, db_name);
-            return RedirectToAction("CrearDB", new { x = "Creada" });
+            return RedirectToAction("CrearDB", new { x = x });
            
           
         }
 
-        public ActionResult IncluirDB()
+
+        public ActionResult IncluirDB(String x)
         {
-            // return client.includeDB("MariaDB", "root", "Ard2592allan", "localhost", 3306, "metadatadb");
+            ViewBag.created = x;
             return View();
         }
+
+        [HttpPost]
+        public ActionResult IncludeDB(string db_type, string user, string pass, string server, int port, string allias)
+        {
+
+            string x = client.includeDB(db_type, user, pass, server, port, allias);
+
+            return RedirectToAction("IncluirDB", new { x = x });
+
+
+        }
+
         
     }
 }
