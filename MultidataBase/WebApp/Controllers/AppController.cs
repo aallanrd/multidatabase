@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -50,6 +51,8 @@ namespace WebApp.Controllers
         public ActionResult VerConexiones()
         {
             string x = client.getConnections();
+            
+            //JObject json = JObject.Parse(x);
             ViewBag.connections = x;
             return View();
         }
