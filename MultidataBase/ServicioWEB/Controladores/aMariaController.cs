@@ -6,6 +6,8 @@ using ServicioWEB.Controladores;
 using Modelo.ServicioWEB;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using System.Collections;
+using Newtonsoft.Json;
 
 namespace ServicioWEB.Controladores
 {
@@ -69,21 +71,36 @@ namespace ServicioWEB.Controladores
                 string Query = "select * from  metadatadb.servidores";
 
                 MySqlCommand cmd = new MySqlCommand(Query,conexion.connection);
+
+                ArrayList objs = new ArrayList();
                 //cmd.ExecuteNonQuery();
                 try
                 {
                     MySqlDataReader rdr = cmd.ExecuteReader();
                     //  int cont = 0;
-                    string citationstexter = "{ 'servers' : ";
+                  //  string citationstexter = "[";
                     while (rdr.Read())
                     {
-                        citationstexter = citationstexter + " {" + ("'db_type' : '" + rdr.GetString(0) + "', 'usr' : '" + rdr.GetString(1) + "' , 'pass' : '" + rdr.GetString(2) + "', 'server' : '" + rdr.GetString(3) + "', 'protocol' : '" + rdr.GetString(4) + "' ,'port' : '" + rdr.GetInt32(5) + "', 'allias' : '" + rdr.GetString(6) + "' }, ");
+                        objs.Add(new
+                        {
+                            db_type = rdr.GetString(0),
+                            usr = rdr.GetString(1),
+                            pass = rdr.GetString(2),
+                            server = rdr.GetString(3),
+                            protocol = rdr.GetString(4),
+                            port = rdr.GetString(5),
+                            allias = rdr.GetString(6)
+                           
+                        });
+                        //      citationstexter = citationstexter  + ("{ 'db_type' : '" + rdr.GetString(0) + "',   'usr' : '" + rdr.GetString(1) + "' , 'pass' : '" + rdr.GetString(2) + "',  'server' : '" + rdr.GetString(3) + "', 'protocol' : '" + rdr.GetString(4) + "'        ,'port' : '" + rdr.GetInt32(5) + "', 'allias' : '" + rdr.GetString(6) + "' }, ");
                         //cont++;
                     }
+                  //  citationstexter = citationstexter + "]";
                     rdr.Close();
-
                     conexion.CloseConnection();
-                    return citationstexter;
+                    return  JsonConvert.SerializeObject(objs);
+                   
+                   // return citationstexter;
                 }
                 catch (Exception e)
                 {

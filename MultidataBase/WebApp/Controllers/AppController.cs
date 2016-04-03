@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,6 +18,12 @@ namespace WebApp.Controllers
             return View();
         }
         public ActionResult CrearTabla()
+        {
+            // return client.includeDB("MariaDB", "root", "Ard2592allan", "localhost", 3306, "metadatadb");
+            return View();
+        }
+
+        public ActionResult InsertarTabla()
         {
             // return client.includeDB("MariaDB", "root", "Ard2592allan", "localhost", 3306, "metadatadb");
             return View();
@@ -44,6 +51,8 @@ namespace WebApp.Controllers
         public ActionResult VerConexiones()
         {
             string x = client.getConnections();
+            
+            //JObject json = JObject.Parse(x);
             ViewBag.connections = x;
             return View();
         }
@@ -68,16 +77,29 @@ namespace WebApp.Controllers
         {
            
             string x = client.createDatabase(db_type, db_name);
-            return RedirectToAction("CrearDB", new { x = "Creada" });
+            return RedirectToAction("CrearDB", new { x = x });
            
           
         }
 
-        public ActionResult IncluirDB()
+
+        public ActionResult IncluirDB(String x)
         {
-            // return client.includeDB("MariaDB", "root", "Ard2592allan", "localhost", 3306, "metadatadb");
+            ViewBag.created = x;
             return View();
         }
+
+        [HttpPost]
+        public ActionResult IncludeDB(string db_type, string user, string pass, string server, int port, string allias)
+        {
+
+            string x = client.includeDB(db_type, user, pass, server, port, allias);
+
+            return RedirectToAction("IncluirDB", new { x = x });
+
+
+        }
+
         
     }
 }
