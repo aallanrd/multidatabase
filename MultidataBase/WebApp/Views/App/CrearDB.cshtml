@@ -6,10 +6,10 @@
     
     <div class="col-md-12 text-center panel">
        
-            <form action="/App/CreateDB" method="post">
-            <div class="panel-heading">
+            <form action="../App/CreateDB" method="post">
+            <div class="panel-heading text-center">
                 <a href="../App" type="button" class="btn btn-danger btn-lg pull-left"> <i class="fa fa-arrow-left"></i>Volver </a>
-
+                
                 <h2>Crear Nueva Base de Datos</h2>
                 <h5>Digite los datos necesarios para crear una nueva base de datos.</h5>
             </div>
@@ -42,6 +42,7 @@
 
                         <button type="button" class="btn btn-warning btn-lg"> Testear Conexión </button>
                         <button type="submit" class="btn btn-primary btn-lg"> Crear Base de Datos</button>
+                        <h2 class="text-danger"> @ViewBag.created </h2>
                     </div>
 
                 </div>
