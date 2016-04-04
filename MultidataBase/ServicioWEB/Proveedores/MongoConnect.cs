@@ -21,7 +21,7 @@ namespace ServicioWEB
 
         public MongoConnect()
         {
-<<<<<<< HEAD
+
             //MongoUrl url = new MongoUrl("mongodb://localhost");
             MongoClient mc = new MongoClient("mongodb://localhost");
             MongoServer mongo = mc.GetServer();
@@ -33,7 +33,7 @@ namespace ServicioWEB
                 Console.WriteLine(col); //Ver colecciones de la base de datos
             }
             Console.ReadLine();
-=======
+
            // var credential = MongoCredential.CreateMongoCRCredential("allandb", "aallanrd", "abc1234");
 
           //  var settings = new MongoClientSettings
@@ -43,7 +43,7 @@ namespace ServicioWEB
 
             // _client = new MongoClient(settings);
             _client = new MongoClient();
->>>>>>> origin/master
+
         }
 
         public ArrayList users = new ArrayList();
