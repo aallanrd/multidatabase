@@ -19,18 +19,14 @@ namespace ServicioWEB.Controladores
         {
             if (conexion.OpenConnection().Equals("Connected"))
             {
-
-                MariaDBConnect mariaDB = new MariaDBConnect(m.getUser(), m.getPass(), m.getServer(), m.getPort(), m.getAllias());
-                if (mariaDB.OpenConnection().Equals("Connected"))
-                {
-
-                    // mariaDB.Insert(db);
+                
+                
                     string Query = "insert into metadatadb.servidores(database_type,user,pass,server,protocol,port,alias) values('"
                     + m.getDBType() + "','" + m.getUser() + "','" + m.getPass() + "','" + m.getServer() + "','" + m.getProtocol() + "','" +
                     m.getPort() + "','" + m.getAllias() + "');";
 
                     MySqlCommand cmd = new MySqlCommand(Query, conexion.connection);
-                   
+
                     try
                     {
                         cmd.ExecuteNonQuery();
@@ -42,11 +38,8 @@ namespace ServicioWEB.Controladores
                     {
                         return "Error insertando" + e;
                     }
-                }
-                else
-                {
-                    return ("No hay conexion con la base de datos" + m.getAllias());
-                }
+                
+              
 
             }
 
@@ -70,7 +63,7 @@ namespace ServicioWEB.Controladores
                 // mariaDB.Insert(db);
                 string Query = "select * from  metadatadb.servidores";
 
-                MySqlCommand cmd = new MySqlCommand(Query,conexion.connection);
+                MySqlCommand cmd = new MySqlCommand(Query, conexion.connection);
 
                 ArrayList objs = new ArrayList();
                 //cmd.ExecuteNonQuery();
@@ -78,7 +71,7 @@ namespace ServicioWEB.Controladores
                 {
                     MySqlDataReader rdr = cmd.ExecuteReader();
                     //  int cont = 0;
-                  //  string citationstexter = "[";
+                    //  string citationstexter = "[";
                     while (rdr.Read())
                     {
                         objs.Add(new
@@ -96,12 +89,12 @@ namespace ServicioWEB.Controladores
                         //      citationstexter = citationstexter  + ("{ 'db_type' : '" + rdr.GetString(0) + "',   'usr' : '" + rdr.GetString(1) + "' , 'pass' : '" + rdr.GetString(2) + "',  'server' : '" + rdr.GetString(3) + "', 'protocol' : '" + rdr.GetString(4) + "'        ,'port' : '" + rdr.GetInt32(5) + "', 'allias' : '" + rdr.GetString(6) + "' }, ");
                         //cont++;
                     }
-                  //  citationstexter = citationstexter + "]";
+                    //  citationstexter = citationstexter + "]";
                     rdr.Close();
                     conexion.CloseConnection();
-                    return  JsonConvert.SerializeObject(objs);
-                   
-                   // return citationstexter;
+                    var json = JsonConvert.SerializeObject(objs, Formatting.Indented);
+                    return json;
+                    // return citationstexter;
                 }
                 catch (Exception e)
                 {
@@ -142,8 +135,6 @@ namespace ServicioWEB.Controladores
 
         }
 
-        
-
         public dbModel getConnection(int cID)
         {
             if (conexion.OpenConnection().Equals("Connected"))
@@ -178,16 +169,16 @@ namespace ServicioWEB.Controladores
                                 db_type, usr, pass, server, protocol, port, allias);
                             return model;
                         }
-                        
-                    
+
+
                     }
                     rdr.Close();
                     conexion.CloseConnection();
                     return model;
                     //  citationstexter = citationstexter + "]";
-                  
-                    
-               
+
+
+
                     // return citationstexter;
                 }
                 catch (Exception e)
@@ -202,9 +193,23 @@ namespace ServicioWEB.Controladores
             }
         }
 
+        //Chequear que existe una conexion posible de mariaDB con el modelo del parámetro.
+        public string check(dbModel model)
+        {
+
+            MariaDBConnect cc = new MariaDBConnect(model.getUser(), model.getPass(), model.getServer(), model.getPort(), model.getAllias());
+            if (cc.OpenConnection().Equals("Connected"))
+            {
+                return "Connected";
+            }
+            else
+            {
+                return "Cant connect";
+            }
+
+
+        }
 
     }
-
-
 
 }

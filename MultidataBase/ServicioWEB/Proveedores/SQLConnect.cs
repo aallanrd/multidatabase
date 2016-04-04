@@ -21,7 +21,7 @@ namespace ServicioWEB
         public void Initialize(string uid, string pass, string server, int port, string database)
         {
 
-            connection = new SqlConnection("Server=DESKTOP-6Q1Q92A\\SQLEXPRESS;Database=master;Integrated Security=True ");
+            connection = new SqlConnection("Server="+server+"\\SQLEXPRESS;Database="+database+";Integrated Security=True ");
 
 
         }

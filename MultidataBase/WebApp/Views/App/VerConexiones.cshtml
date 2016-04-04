@@ -4,37 +4,33 @@
 </div>
 <div class="row">
     
-    <div class="col-md-12 text-center panel">
+    <div class="panel">
        
             <form>
-            <div class="panel-heading">
+            <div class="panel-heading text-center" >
                 <a href="../App" type="button" class="btn btn-danger btn-lg pull-left"> <i class="fa fa-arrow-left"></i>Volver </a>
 
                 <h2>Mostrando las conexiones disponibles </h2>
                 <p>Click en "Actualizar" para mostrar las conexiones disponibles.</p>
+
+                
+                <a href="../App/VerConexiones" class="btn btn-primary btn-lg"> Actualizar </a>
             </div>
             <div class="panel-body">
 
 
                 <div class="row">
-                    <pre>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4 ">
+                        <pre>
                         @ViewBag.connections
+                 
                     </pre>
-                </div>
-
-            </div>
-            <div class="panel-footer">
-                <div class="row text-center">
-                    <div class="col-md-12">
-
-                        <button type="button" class="btn btn-warning btn-lg"> Testear Conexión </button>
-                        <a href="../App/VerConexiones" class="btn btn-primary btn-lg"> Actualizar </a>
                     </div>
-
                 </div>
 
-
             </div>
+           
         </form>
         
     </div>

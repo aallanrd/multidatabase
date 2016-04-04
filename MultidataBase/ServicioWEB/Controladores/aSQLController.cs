@@ -8,15 +8,15 @@ using System.Web.Mvc;
 
 namespace ServicioWEB.Controladores
 {
-    public class SQLController 
+    public class aSQLController 
     {
 
         SQLConnect conexion;
-        public SQLController()
+        public aSQLController()
         {
             conexion = new SQLConnect("root", "Ard2592allan", "DESKTOP-6Q1Q92A", 1433, "aallanrd");
         }
-        public SQLController(string uid, string pass, string server, int port, string database)
+        public aSQLController(string uid, string pass, string server, int port, string database)
         {
             conexion = new SQLConnect( uid,  pass,  server,  port,  database);
         }
@@ -77,6 +77,26 @@ namespace ServicioWEB.Controladores
                 return "Error conectando a la BD";
             }
 
+        }
+
+        internal string check(dbModel model)
+        {
+            SQLConnect conexion = new SQLConnect(model.getUser(), model.getPass(), model.getServer(), model.getPort(), model.getAllias());
+            try
+            {
+                if (conexion.OpenConnection().Equals("Connected"))
+                {
+                    return "Connected";
+                }
+                else
+                {
+                    return "Cant- connect";
+                }
+            }
+            catch(Exception e)
+            {
+                return "Cant- connect";
+            }
         }
     }
 }

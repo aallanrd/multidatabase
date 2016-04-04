@@ -1,10 +1,11 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Web.Script.Serialization;
 using System.Web.Mvc;
 using WebApp.ServiceReference1;
+using WebApp.Models;
 
 namespace WebApp.Controllers
 {
@@ -39,7 +40,7 @@ namespace WebApp.Controllers
             return View();
         }
 
-        public ActionResult BorrarTabla()
+        public ActionResult BorrarTabla(int cID, string dbname, string table)
         {
             return View();
         }
@@ -48,7 +49,7 @@ namespace WebApp.Controllers
         {
             return View();
         }
-        public ActionResult BorrarDeTabla()
+        public ActionResult BorrarDeTabla(int cID, string dbname, string table)
         {
             return View();
         }
@@ -56,20 +57,13 @@ namespace WebApp.Controllers
         public ActionResult VerConexiones()
         {
             string x = client.getConnections();
-            
-            //JObject json = JObject.Parse(x);
+
             ViewBag.connections = x;
+
+         
             return View();
         }
-        public string checkMongo()
-        {
-           return  client.checkMongoConnection();
-        }
-
-        public string checkSQL()
-        {
-            return client.checkSQLConnection();
-        }
+    
 
         public ActionResult CrearDB(String x)
         {

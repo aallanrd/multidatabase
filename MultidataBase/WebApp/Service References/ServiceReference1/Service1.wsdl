@@ -24,18 +24,6 @@
   <wsdl:message name="IService1_createDatabase_OutputMessage">
     <wsdl:part name="parameters" element="tns:createDatabaseResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_checkMongoConnection_InputMessage">
-    <wsdl:part name="parameters" element="tns:checkMongoConnection" />
-  </wsdl:message>
-  <wsdl:message name="IService1_checkMongoConnection_OutputMessage">
-    <wsdl:part name="parameters" element="tns:checkMongoConnectionResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_checkSQLConnection_InputMessage">
-    <wsdl:part name="parameters" element="tns:checkSQLConnection" />
-  </wsdl:message>
-  <wsdl:message name="IService1_checkSQLConnection_OutputMessage">
-    <wsdl:part name="parameters" element="tns:checkSQLConnectionResponse" />
-  </wsdl:message>
   <wsdl:message name="IService1_checkConnection_InputMessage">
     <wsdl:part name="parameters" element="tns:checkConnection" />
   </wsdl:message>
@@ -54,14 +42,6 @@
     <wsdl:operation name="createDatabase">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/createDatabase" message="tns:IService1_createDatabase_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/createDatabaseResponse" message="tns:IService1_createDatabase_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="checkMongoConnection">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/checkMongoConnection" message="tns:IService1_checkMongoConnection_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/checkMongoConnectionResponse" message="tns:IService1_checkMongoConnection_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="checkSQLConnection">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/checkSQLConnection" message="tns:IService1_checkSQLConnection_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/checkSQLConnectionResponse" message="tns:IService1_checkSQLConnection_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="checkConnection">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/checkConnection" message="tns:IService1_checkConnection_InputMessage" />
@@ -90,24 +70,6 @@
     </wsdl:operation>
     <wsdl:operation name="createDatabase">
       <soap:operation soapAction="http://tempuri.org/IService1/createDatabase" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="checkMongoConnection">
-      <soap:operation soapAction="http://tempuri.org/IService1/checkMongoConnection" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="checkSQLConnection">
-      <soap:operation soapAction="http://tempuri.org/IService1/checkSQLConnection" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
