@@ -10,68 +10,19 @@ namespace ServicioWEB.Controladores
 {
     public class SQLController 
     {
-        SQLConnect conexion;
 
+        SQLConnect conexion;
         public SQLController()
         {
-            conexion = new SQLConnect();
+            conexion = new SQLConnect("root", "Ard2592allan", "DESKTOP-6Q1Q92A", 1433, "aallanrd");
         }
-
-
-        public string includeDB(dbModel m)
+        public SQLController(string uid, string pass, string server, int port, string database)
         {
-            if (conexion.OpenConnection().Equals("Connected"))
-            {
-
-                //SQLConnect mariaDB = new SQLConnect(m.getUser(), m.getPass(), m.getServer(), m.getPort(), m.getAllias());
-                if (conexion.OpenConnection().Equals("Connected"))
-                {
-
-                    // mariaDB.Insert(db);
-                    string Query = "insert into metadatadb.servidores(database_type,user,pass,server,protocol,port,alias) values('"
-                    + m.getDBType() + "','" + m.getUser() + "','" + m.getPass() + "','" + m.getServer() + "','" + m.getProtocol() + "','" +
-                    m.getPort() + "','" + m.getAllias() + "');";
-
-                    SqlCommand cmd = new SqlCommand(Query);
-                    cmd.ExecuteNonQuery();
-                    try
-                    {
-                        SqlDataReader Reader = cmd.ExecuteReader();
-                        int loopReading = 0;
-                        string citationstexter = "";
-                        while (Reader.Read()) // this part is wrong somehow
-                        {
-                            citationstexter += Reader.GetString(loopReading); // this works
-                            loopReading++; // this works
-                        }
-                        Reader.Close();
-
-                        conexion.CloseConnection();
-                        return citationstexter;
-                    }
-                    catch (Exception e)
-                    {
-                        return "Error insertando" + e;
-                    }
-                }
-                else
-                {
-                    return ("No hay conexion con la base de datos" + m.getAllias());
-                }
-
-            }
-
-            else
-
-            {
-
-
-                conexion.CloseConnection();
-                return "No hay conexion con la base de datos : metadata";
-            }
-
+            conexion = new SQLConnect( uid,  pass,  server,  port,  database);
         }
 
+
+       
         public string consultDB()
         {
             if (conexion.OpenConnection().Equals("Connected"))
@@ -108,9 +59,10 @@ namespace ServicioWEB.Controladores
                 {
                     string Query = "CREATE DATABASE " + database_name + "";
 
-                    SqlCommand cmd = new SqlCommand(Query);
+                    SqlCommand cmd = new SqlCommand(Query,conexion.connection);
 
                     cmd.ExecuteNonQuery();
+                    //conexion.CloseConnection();
                     return "Insertada correctamente";
                 }
                 catch (Exception e)
