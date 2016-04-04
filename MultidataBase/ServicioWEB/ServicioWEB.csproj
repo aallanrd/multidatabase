@@ -78,24 +78,11 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MongoDB.Bson, Version=2.2.3.3, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="MongoDB.Bson">
       <HintPath>..\..\..\..\..\Desktop\charpdriver\MongoDB.Bson.dll</HintPath>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="MongoDB.Driver, Version=2.2.3.3, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="MongoDB.Driver">
       <HintPath>..\..\..\..\..\Desktop\charpdriver\MongoDB.Driver.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MongoDB.Driver.Core, Version=2.2.3.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Desktop\charpdriver\MongoDB.Driver.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MongoDB.Driver.GridFS">
-      <HintPath>..\..\..\..\..\Desktop\charpdriver\MongoDB.Driver.GridFS.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver.Legacy, Version=2.2.3.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Desktop\charpdriver\MongoDB.Driver.Legacy.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data.Entity.EF5, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
@@ -174,7 +161,7 @@
   <ItemGroup>
     <Compile Include="Controladores\aMongoController.cs" />
     <Compile Include="Controladores\aMariaController.cs" />
-    <Compile Include="Controladores\SQLController.cs" />
+    <Compile Include="Controladores\aSQLController.cs" />
     <Compile Include="Modelo\dbModel.cs" />
     <Compile Include="Controladores\InterfaceDB.cs" />
     <Compile Include="Proveedores\MariaDBConnect.cs" />

@@ -34,17 +34,7 @@ namespace ServicioWEB
             return create;
         }
 
-        public string checkMongoConnection()
-        {
-            string checkMongo = dbx.checkMongoConnection();
-            return checkMongo;
-        }
-
-        public string checkSQLConnection()
-        {
-            string checkSQL = dbx.checkSQLConnection();
-            return checkSQL;
-        }
+      
 
         public string checkConnection(int id)
         {

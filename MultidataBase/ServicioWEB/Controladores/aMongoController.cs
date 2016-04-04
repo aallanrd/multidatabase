@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using ServicioWEB.Controladores;
 using Modelo.ServicioWEB;
-
+using MongoDB.Driver;
 
 namespace ServicioWEB.Controladores
 {
@@ -69,6 +69,21 @@ namespace ServicioWEB.Controladores
                 return "Error conectando a la BD";
             }
 
+        }
+
+        internal string check(dbModel model)
+        {
+            try
+            {
+                var connectionString = "mongodb://"+model.getUser()+":"+model.getPass()+"@"+model.getServer()+"/"+model.getAllias();
+
+                MongoClient mongoClient = new MongoClient(connectionString);
+   
+                return "Connected";
+            }
+            catch(Exception e){
+                return "Cant Connect";
+            }
         }
     }
 

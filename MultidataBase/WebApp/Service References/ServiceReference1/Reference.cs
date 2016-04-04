@@ -33,18 +33,6 @@ namespace WebApp.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/createDatabase", ReplyAction="http://tempuri.org/IService1/createDatabaseResponse")]
         System.Threading.Tasks.Task<string> createDatabaseAsync(string db_name, string db_type);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/checkMongoConnection", ReplyAction="http://tempuri.org/IService1/checkMongoConnectionResponse")]
-        string checkMongoConnection();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/checkMongoConnection", ReplyAction="http://tempuri.org/IService1/checkMongoConnectionResponse")]
-        System.Threading.Tasks.Task<string> checkMongoConnectionAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/checkSQLConnection", ReplyAction="http://tempuri.org/IService1/checkSQLConnectionResponse")]
-        string checkSQLConnection();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/checkSQLConnection", ReplyAction="http://tempuri.org/IService1/checkSQLConnectionResponse")]
-        System.Threading.Tasks.Task<string> checkSQLConnectionAsync();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/checkConnection", ReplyAction="http://tempuri.org/IService1/checkConnectionResponse")]
         string checkConnection(int cID);
         
@@ -101,22 +89,6 @@ namespace WebApp.ServiceReference1 {
         
         public System.Threading.Tasks.Task<string> createDatabaseAsync(string db_name, string db_type) {
             return base.Channel.createDatabaseAsync(db_name, db_type);
-        }
-        
-        public string checkMongoConnection() {
-            return base.Channel.checkMongoConnection();
-        }
-        
-        public System.Threading.Tasks.Task<string> checkMongoConnectionAsync() {
-            return base.Channel.checkMongoConnectionAsync();
-        }
-        
-        public string checkSQLConnection() {
-            return base.Channel.checkSQLConnection();
-        }
-        
-        public System.Threading.Tasks.Task<string> checkSQLConnectionAsync() {
-            return base.Channel.checkSQLConnectionAsync();
         }
         
         public string checkConnection(int cID) {

@@ -11,7 +11,7 @@ namespace ServicioWEB
     class Multidatabase : InterfaceDB
     {
 
-        SQLController controlSQL = new SQLController();
+        aSQLController controlSQL = new aSQLController();
         aMariaController controlMaria = new aMariaController();
         aMongoController controlMongo = new aMongoController();
         
@@ -52,12 +52,46 @@ namespace ServicioWEB
         {
             //Creamos un nuevo modelo de una base de datos a incluir.
             dbModel model = new dbModel(type, user, pass, server,"tcp/ip", port, database);
+           
+                switch (model.getDBType())
+                {
+                    case "MariaDB":
+                        string cMa = controlMaria.check(model);
+                        if (cMa.Equals("Connected"))
+                        {
+                            return controlMaria.includeDB(model);
+                        }
+                    else
+                    {
+                        return "No hay conexion con esta instancia de MariaDB ";
+                    }
+                    
+                    case "MongoDB":
+                        string cMo = controlMongo.check(model);
+                        if (cMo.Equals("Connected"))
+                        {
+                            return controlMaria.includeDB(model);
+                        }
+                    else
+                    {
+                        return "No hay conexion con esta instancia de MongoDB ";
+                    }
 
-            //Llamamos al metodo que esta en el controlador con el modelo respectivo.
 
-             return controlMaria.includeDB(model);
-           // return "Connected";
-          
+                case "SQLDB":
+                        string cS  = controlSQL.check(model);
+                        if (cS.Equals("Connected"))
+                        {
+                            return controlMaria.includeDB(model);
+                        }
+                    else
+                    {
+                        return "No hay conexion con esta instancia de SQLDB ";
+                    }
+
+
+                default: return "Cant Check";
+                }
            
         }
 
@@ -83,9 +117,9 @@ namespace ServicioWEB
             {
                 switch (model.getDBType())
                 {
-                    // case "MariaDB": checkMariaDBConnection();
-                    case "MongoDB": return checkMongoConnection();
-                    case "SQLDB": return checkSQLConnection();
+                    case "MariaDB": return controlMaria.check(model);
+                    case "MongoDB": return controlMongo.check(model);
+                    case "SQLDB": return controlSQL.check(model);
                     default: return "Cant Check";
                 }
                
@@ -96,16 +130,9 @@ namespace ServicioWEB
             }
            
         }
-        public string checkMongoConnection()
-        {
-             return controlMongo.consultDB();
-           // return "Connected";
-        }
+       
+      
 
-        public string checkSQLConnection()
-        {
-            return controlSQL.consultDB();
-            // return "Connected";
-        }
+     
     }
 }
