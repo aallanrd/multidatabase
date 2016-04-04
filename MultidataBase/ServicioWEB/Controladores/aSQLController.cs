@@ -14,7 +14,7 @@ namespace ServicioWEB.Controladores
         SQLConnect conexion;
         public aSQLController()
         {
-            conexion = new SQLConnect("root", "Ard2592allan", "DESKTOP-6Q1Q92A", 1433, "aallanrd");
+            conexion = new SQLConnect("root", "Ard2592allan", "DESKTOP-6Q1Q92A", 1433, "master");
         }
         public aSQLController(string uid, string pass, string server, int port, string database)
         {
