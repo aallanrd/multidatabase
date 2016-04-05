@@ -81,7 +81,7 @@ namespace ServicioWEB.Controladores
 
         internal string check(dbModel model)
         {
-            SQLConnect conexion = new SQLConnect(model.getUser(), model.getPass(), model.getServer(), model.getPort(), model.getAllias());
+            SQLConnect conexion = new SQLConnect(model.username, model.pass, model.server, model.port, model.alias);
             try
             {
                 if (conexion.OpenConnection().Equals("Connected"))

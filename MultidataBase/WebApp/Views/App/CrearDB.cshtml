@@ -6,7 +6,7 @@
     
     <div class="col-md-12 text-center panel">
        
-            <form action="../App/CreateDB" method="post">
+            <form action="../App/HttpCreateDB" method="post">
             <div class="panel-heading text-center">
                 <a href="../App" type="button" class="btn btn-danger btn-lg pull-left"> <i class="fa fa-arrow-left"></i>Volver </a>
                 
@@ -21,14 +21,15 @@
                     <div class="col-md-1"></div>
                     <div class="col-md-10">
                         <p><i class="fa fa-database"></i> Configuración DB</p>
-                        <select class="text-center input-lg"  id="sel1" name="db_type">
+                        <select id="db_type" class="text-center input-lg"  >
                             <option>MongoDB</option>
                             <option>MariaDB</option>
                             <option>SQLDB</option>
                             
                         </select>
-                        <input placeholder="dbName" class="input-lg" name="db_name" /><br /><br />
+                        <input id="db_name" placeholder="dbName" class="input-lg" /><br /><br />
                        
+                        <input type="text" placeholder="jsonCDB" class="input-lg" name="jsonCDB"  />
 
                     </div>
                     <div class="col-md-1"></div>

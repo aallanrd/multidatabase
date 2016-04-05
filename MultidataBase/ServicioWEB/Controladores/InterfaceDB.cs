@@ -1,6 +1,7 @@
 ﻿
 using Modelo.ServicioWEB;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,21 +13,24 @@ namespace ServicioWEB
 {
     interface InterfaceDB
     {
-        string includeDB(string db_type, string user, string pass, string server, int port, string allias);
+        string includeDB            (string jsonIDB );
 
-        string createDB(string db_type, string database_name);
+        string createDB             (string jsonCDB );
 
-        void createTable();
+        string createTable          (string jsonCT  );
 
-        void deleteTable();
+        string deleteTable          (string jsonDT  );
 
-        void multipleQuery();
+        string multipleQuery        (string jsonMQ  );
 
-        void insertValuesTable();
-        void updateValuesTable();
+        string insertValuesTable    (string jsonIVT );
 
-        string getConecctions();
+        string updateValuesTable    (string jsonUVT );
 
-        string checkConnection(int cID);
+        string deleteValuesTable    (string jsonDVT );
+
+        string getConecctions       (               );
+
+        string checkConnection      (int cID        );
     }
 }

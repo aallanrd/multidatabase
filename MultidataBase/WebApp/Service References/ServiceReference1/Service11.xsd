@@ -3,12 +3,7 @@
   <xs:element name="includeDB">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="pass" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="server" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="port" type="xs:int" />
-        <xs:element minOccurs="0" name="database" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="jsonIDB" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -34,8 +29,7 @@
   <xs:element name="createDatabase">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="db_name" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="db_type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="jsonCD" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -57,6 +51,90 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="checkConnectionResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createTable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="jsonCD" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createTableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="createTableResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="deleteTable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="jsonDT" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="deleteTableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="deleteTableResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="multipleQuery">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="jsonCD" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="multipleQueryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="multipleQueryResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="insertValuesTable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="jsonIVT" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="insertValuesTableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="insertValuesTableResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateValuesTable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="jsonCD" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateValuesTableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="updateValuesTableResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="deleteValuesTable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="jsonCD" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="deleteValuesTableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="deleteValuesTableResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

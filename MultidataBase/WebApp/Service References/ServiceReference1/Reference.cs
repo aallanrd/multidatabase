@@ -16,10 +16,10 @@ namespace WebApp.ServiceReference1 {
     public interface IService1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/includeDB", ReplyAction="http://tempuri.org/IService1/includeDBResponse")]
-        string includeDB(string type, string user, string pass, string server, int port, string database);
+        string includeDB(string jsonIDB);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/includeDB", ReplyAction="http://tempuri.org/IService1/includeDBResponse")]
-        System.Threading.Tasks.Task<string> includeDBAsync(string type, string user, string pass, string server, int port, string database);
+        System.Threading.Tasks.Task<string> includeDBAsync(string jsonIDB);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getConnections", ReplyAction="http://tempuri.org/IService1/getConnectionsResponse")]
         string getConnections();
@@ -28,16 +28,52 @@ namespace WebApp.ServiceReference1 {
         System.Threading.Tasks.Task<string> getConnectionsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/createDatabase", ReplyAction="http://tempuri.org/IService1/createDatabaseResponse")]
-        string createDatabase(string db_name, string db_type);
+        string createDatabase(string jsonCD);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/createDatabase", ReplyAction="http://tempuri.org/IService1/createDatabaseResponse")]
-        System.Threading.Tasks.Task<string> createDatabaseAsync(string db_name, string db_type);
+        System.Threading.Tasks.Task<string> createDatabaseAsync(string jsonCD);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/checkConnection", ReplyAction="http://tempuri.org/IService1/checkConnectionResponse")]
         string checkConnection(int cID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/checkConnection", ReplyAction="http://tempuri.org/IService1/checkConnectionResponse")]
         System.Threading.Tasks.Task<string> checkConnectionAsync(int cID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/createTable", ReplyAction="http://tempuri.org/IService1/createTableResponse")]
+        string createTable(string jsonCD);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/createTable", ReplyAction="http://tempuri.org/IService1/createTableResponse")]
+        System.Threading.Tasks.Task<string> createTableAsync(string jsonCD);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/deleteTable", ReplyAction="http://tempuri.org/IService1/deleteTableResponse")]
+        string deleteTable(string jsonDT);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/deleteTable", ReplyAction="http://tempuri.org/IService1/deleteTableResponse")]
+        System.Threading.Tasks.Task<string> deleteTableAsync(string jsonDT);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/multipleQuery", ReplyAction="http://tempuri.org/IService1/multipleQueryResponse")]
+        string multipleQuery(string jsonCD);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/multipleQuery", ReplyAction="http://tempuri.org/IService1/multipleQueryResponse")]
+        System.Threading.Tasks.Task<string> multipleQueryAsync(string jsonCD);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/insertValuesTable", ReplyAction="http://tempuri.org/IService1/insertValuesTableResponse")]
+        string insertValuesTable(string jsonIVT);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/insertValuesTable", ReplyAction="http://tempuri.org/IService1/insertValuesTableResponse")]
+        System.Threading.Tasks.Task<string> insertValuesTableAsync(string jsonIVT);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/updateValuesTable", ReplyAction="http://tempuri.org/IService1/updateValuesTableResponse")]
+        string updateValuesTable(string jsonCD);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/updateValuesTable", ReplyAction="http://tempuri.org/IService1/updateValuesTableResponse")]
+        System.Threading.Tasks.Task<string> updateValuesTableAsync(string jsonCD);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/deleteValuesTable", ReplyAction="http://tempuri.org/IService1/deleteValuesTableResponse")]
+        string deleteValuesTable(string jsonCD);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/deleteValuesTable", ReplyAction="http://tempuri.org/IService1/deleteValuesTableResponse")]
+        System.Threading.Tasks.Task<string> deleteValuesTableAsync(string jsonCD);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -67,12 +103,12 @@ namespace WebApp.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public string includeDB(string type, string user, string pass, string server, int port, string database) {
-            return base.Channel.includeDB(type, user, pass, server, port, database);
+        public string includeDB(string jsonIDB) {
+            return base.Channel.includeDB(jsonIDB);
         }
         
-        public System.Threading.Tasks.Task<string> includeDBAsync(string type, string user, string pass, string server, int port, string database) {
-            return base.Channel.includeDBAsync(type, user, pass, server, port, database);
+        public System.Threading.Tasks.Task<string> includeDBAsync(string jsonIDB) {
+            return base.Channel.includeDBAsync(jsonIDB);
         }
         
         public string getConnections() {
@@ -83,12 +119,12 @@ namespace WebApp.ServiceReference1 {
             return base.Channel.getConnectionsAsync();
         }
         
-        public string createDatabase(string db_name, string db_type) {
-            return base.Channel.createDatabase(db_name, db_type);
+        public string createDatabase(string jsonCD) {
+            return base.Channel.createDatabase(jsonCD);
         }
         
-        public System.Threading.Tasks.Task<string> createDatabaseAsync(string db_name, string db_type) {
-            return base.Channel.createDatabaseAsync(db_name, db_type);
+        public System.Threading.Tasks.Task<string> createDatabaseAsync(string jsonCD) {
+            return base.Channel.createDatabaseAsync(jsonCD);
         }
         
         public string checkConnection(int cID) {
@@ -97,6 +133,54 @@ namespace WebApp.ServiceReference1 {
         
         public System.Threading.Tasks.Task<string> checkConnectionAsync(int cID) {
             return base.Channel.checkConnectionAsync(cID);
+        }
+        
+        public string createTable(string jsonCD) {
+            return base.Channel.createTable(jsonCD);
+        }
+        
+        public System.Threading.Tasks.Task<string> createTableAsync(string jsonCD) {
+            return base.Channel.createTableAsync(jsonCD);
+        }
+        
+        public string deleteTable(string jsonDT) {
+            return base.Channel.deleteTable(jsonDT);
+        }
+        
+        public System.Threading.Tasks.Task<string> deleteTableAsync(string jsonDT) {
+            return base.Channel.deleteTableAsync(jsonDT);
+        }
+        
+        public string multipleQuery(string jsonCD) {
+            return base.Channel.multipleQuery(jsonCD);
+        }
+        
+        public System.Threading.Tasks.Task<string> multipleQueryAsync(string jsonCD) {
+            return base.Channel.multipleQueryAsync(jsonCD);
+        }
+        
+        public string insertValuesTable(string jsonIVT) {
+            return base.Channel.insertValuesTable(jsonIVT);
+        }
+        
+        public System.Threading.Tasks.Task<string> insertValuesTableAsync(string jsonIVT) {
+            return base.Channel.insertValuesTableAsync(jsonIVT);
+        }
+        
+        public string updateValuesTable(string jsonCD) {
+            return base.Channel.updateValuesTable(jsonCD);
+        }
+        
+        public System.Threading.Tasks.Task<string> updateValuesTableAsync(string jsonCD) {
+            return base.Channel.updateValuesTableAsync(jsonCD);
+        }
+        
+        public string deleteValuesTable(string jsonCD) {
+            return base.Channel.deleteValuesTable(jsonCD);
+        }
+        
+        public System.Threading.Tasks.Task<string> deleteValuesTableAsync(string jsonCD) {
+            return base.Channel.deleteValuesTableAsync(jsonCD);
         }
     }
 }
