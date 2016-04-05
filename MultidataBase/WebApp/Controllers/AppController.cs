@@ -143,9 +143,11 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult HttpIncludeDB(string jsonIDB)
+        public ActionResult HttpIncludeDB(string db_type, string user, string pass, string server, int port, string allias)
         {
 
+            DBViewModel model = new DBViewModel(db_type, user, pass, server, "tcp/ip", port, allias);
+            var jsonIDB = JsonConvert.SerializeObject(model);
             string x = client.includeDB(jsonIDB);
 
             return RedirectToAction("IncluirDB", new { x = x });

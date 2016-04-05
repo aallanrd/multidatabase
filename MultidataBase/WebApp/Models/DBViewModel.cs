@@ -7,13 +7,14 @@ namespace WebApp.Models
 {
     public class DBViewModel
     {
-        string dbType;
-        string username;
-        string pass;
-        string server;
-        string protocol;
-        int port;
-        string alias;
+        public string dbType {  get; set; }
+        public string username {  get; set; }
+        public string pass { get; set; }
+        public string server {  get; set; }
+        public string protocol {  get; set; }
+        public int port {  get; set; }
+
+        public string alias { get; set; }
 
         public DBViewModel()
         {
@@ -31,34 +32,6 @@ namespace WebApp.Models
 
         }
 
-        public string getDBType()
-        {
-            return this.dbType;
-        }
-        public string getUser()
-        {
-            return this.username;
-        }
-        public string getPass()
-        {
-            return this.pass;
-        }
-        public string getServer()
-        {
-            return this.server;
-        }
-        public string getProtocol()
-        {
-            return this.protocol;
-        }
-        public string getAllias()
-        {
-            return this.alias;
-        }
-        public int getPort()
-        {
-            return this.port;
-        }
-
+        
     }
 }
