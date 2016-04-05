@@ -11,48 +11,148 @@ namespace WebApp.Controllers
 {
     public class AppController : Controller
     {
+
+        // CLiente del Servicio Web 
         Service1Client client = new Service1Client();
 
-        // GET: App
+        // Index : Retorna vista de seleccion de funciónes.
         public ActionResult Index()
         {
             return View();
         }
-        public string CheckConnection(int a)
+
+
+        //  App/CrearTabla
+
+        public ActionResult CrearTabla(string x)
         {
-            return client.checkConnection(a);
+            ViewBag.created = x;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult HttpCreateTable(string jsonCT)
+        {
+          
+            string x = client.createTable(jsonCT);
+            return RedirectToAction("CrearTabla", new { x = x });
+
+        }
+
+        public ActionResult InsertarTabla(string x)
+        {
+            ViewBag.inserted = x;
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult HttpInsertValueTable(string jsonIVT)
+        {
+            //db_type, db_name
+            string x = client.insertValuesTable(jsonIVT);
+            return RedirectToAction("InsertarTabla", new { x = x });
+
+        }
+
+        public ActionResult ActualizarTabla(string x)
+        {
+            ViewBag.updated = x;
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult HttpUpdateTable(string jsonDT)
+        {
+            //db_type, db_name
+            string x = client.deleteTable(jsonDT);
+            return RedirectToAction("ActualizarTabla", new { x = x });
+
+        }
+
+        public ActionResult BorrarTabla(string x)
+        {
+            ViewBag.deleted = x;
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult HttpDeleteTable(string jsonDT)
+        {
+            //db_type, db_name
+            string x = client.deleteTable(jsonDT);
+            return RedirectToAction("BorrarTabla", new { x = x });
+
+        }
+
+        public ActionResult MultipleQuery(string x)
+        {
+            ViewBag.multiple = x;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult HttpMultipleQuery(string jsonMQ)
+        {
+            //db_type, db_name
+            string x = client.multipleQuery(jsonMQ);
+            return RedirectToAction("MultipleQuery", new { x = x });
+
+        }
+
+
+        public ActionResult BorrarDeTabla(string x)
+        {
+            ViewBag.deleted = x;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult HttpDeleteValueTable(string jsonDVT)
+        {
+            //db_type, db_name
+            string x = client.deleteValuesTable(jsonDVT);
+            return RedirectToAction("BorrarDeTabla", new { x = x });
+
+        }
+
+    
+        public ActionResult CrearDB(string x)
+        {
+            ViewBag.created = x;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult HttpCreateDB(string jsonCDB)
+        {
+            //db_type, db_name
+            string x = client.createDatabase(jsonCDB);
+            return RedirectToAction("CrearDB", new { x = x });
+           
           
         }
-        public ActionResult CrearTabla()
+
+
+        public ActionResult IncluirDB(string x )
         {
-           
+            ViewBag.created = x;
             return View();
         }
 
-        public ActionResult InsertarTabla()
+        [HttpPost]
+        public ActionResult HttpIncludeDB(string jsonIDB)
         {
-           
-            return View();
+
+            string x = client.includeDB(jsonIDB);
+
+            return RedirectToAction("IncluirDB", new { x = x });
+
+
         }
 
-        public ActionResult ActualizarTabla()
-        {
-            return View();
-        }
-
-        public ActionResult BorrarTabla(int cID, string dbname, string table)
-        {
-            return View();
-        }
-
-        public ActionResult MultipleQuery()
-        {
-            return View();
-        }
-        public ActionResult BorrarDeTabla(int cID, string dbname, string table)
-        {
-            return View();
-        }
         // GET:     
         public ActionResult VerConexiones()
         {
@@ -60,45 +160,19 @@ namespace WebApp.Controllers
 
             ViewBag.connections = x;
 
-         
-            return View();
-        }
-    
 
-        public ActionResult CrearDB(String x)
-        {
-            ViewBag.created = x;
             return View();
         }
 
-        [HttpPost]
-        public ActionResult CreateDB(string db_type, string db_name)
+
+        // App/CheckConnection?a=1
+        // Chequea una conexion especifica por ID 
+        public string CheckConnection(int a)
         {
-           
-            string x = client.createDatabase(db_type, db_name);
-            return RedirectToAction("CrearDB", new { x = x });
-           
-          
+            return client.checkConnection(a);
+
         }
 
 
-        public ActionResult IncluirDB(String x)
-        {
-            ViewBag.created = x;
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult IncludeDB(string db_type, string user, string pass, string server, int port, string allias)
-        {
-
-            string x = client.includeDB(db_type, user, pass, server, port, allias);
-
-            return RedirectToAction("IncluirDB", new { x = x });
-
-
-        }
-
-        
     }
 }

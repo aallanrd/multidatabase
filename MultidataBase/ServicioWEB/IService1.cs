@@ -14,16 +14,38 @@ namespace ServicioWEB
     public interface IService1
     {
         [OperationContract]
-        string includeDB(string type, string user, string pass, string server, int port, string database);
+        string includeDB(string jsonIDB);
 
         [OperationContract]
         string getConnections();
 
         [OperationContract]
-        string createDatabase(string db_name,string db_type);
+        string createDatabase(string jsonCD);
 
         [OperationContract]
         string checkConnection(int cID);
+
+        [OperationContract]
+        string createTable(string jsonCD);
+
+        [OperationContract]
+        string deleteTable(string jsonDT);
+
+
+        [OperationContract]
+        string multipleQuery(string jsonCD);
+
+        [OperationContract]
+        string insertValuesTable(string jsonIVT);
+
+
+        [OperationContract]
+        string updateValuesTable(string jsonCD);
+
+        [OperationContract]
+        string deleteValuesTable(string jsonCD);
+
+
     }
 
 

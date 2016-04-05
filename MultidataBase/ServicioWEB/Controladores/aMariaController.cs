@@ -22,8 +22,8 @@ namespace ServicioWEB.Controladores
                 
                 
                     string Query = "insert into metadatadb.servidores(database_type,user,pass,server,protocol,port,alias) values('"
-                    + m.getDBType() + "','" + m.getUser() + "','" + m.getPass() + "','" + m.getServer() + "','" + m.getProtocol() + "','" +
-                    m.getPort() + "','" + m.getAllias() + "');";
+                    + m.dbType + "','" + m.username + "','" + m.pass + "','" + m.server + "','" + m.protocol + "','" +
+                    m.port+ "','" + m.alias + "');";
 
                     MySqlCommand cmd = new MySqlCommand(Query, conexion.connection);
 
@@ -197,7 +197,7 @@ namespace ServicioWEB.Controladores
         public string check(dbModel model)
         {
 
-            MariaDBConnect cc = new MariaDBConnect(model.getUser(), model.getPass(), model.getServer(), model.getPort(), model.getAllias());
+            MariaDBConnect cc = new MariaDBConnect(model.username, model.pass, model.server, model.port, model.alias);
             if (cc.OpenConnection().Equals("Connected"))
             {
                 return "Connected";

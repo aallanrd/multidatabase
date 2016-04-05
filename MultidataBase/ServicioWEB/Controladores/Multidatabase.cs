@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ServicioWEB.Controladores;
+using System.Collections;
+using Newtonsoft.Json;
 
 namespace ServicioWEB
 {
@@ -17,8 +19,14 @@ namespace ServicioWEB
         
 
 
-        public string createDB(String db_type,String db_name)
+        public string createDB(string jsonCDB)
         {
+           // string json = "{ 'db_name': 'database', 'db_type':'type' }";
+
+            Modelo.database db = JsonConvert.DeserializeObject<Modelo.database>(jsonCDB);
+            string db_name = db.db_name;
+            string db_type = db.db_type;
+            //String db_type,String db_name
             switch (db_type)
             {
                 case "MariaDB": return controlMaria.createDB(db_name);
@@ -30,9 +38,16 @@ namespace ServicioWEB
 
         }
 
-        public void createTable()
+        public string createTable(string jsonCT)
         {
-            throw new NotImplementedException();
+            //int iC, string name, ArrayList columnas
+             string json = "{ 'cID': 'idConexion', 'table_name':'TableName', columnas:	[{ alias:	“alias”, nombre:“nombre”,tipo:  “tipo”, null:	true / false },...]}";
+             Modelo.table table = JsonConvert.DeserializeObject<Modelo.table>(json);
+            IList<string> idC = table.columnas;
+            string tName = table.table_name;
+             
+            return "Table Created";
+
         }
 
         public void deleteTable()
@@ -48,12 +63,15 @@ namespace ServicioWEB
             //return "Connected";
         }
 
-        public string includeDB(string type, string user, string pass, string server,int port,string database)
+        public string includeDB(string jsonIDB)
         {
+            //string type, string user, string pass, string server,int port,string database
+            //string db_type, string user, string pass, string server, int port, string allias
             //Creamos un nuevo modelo de una base de datos a incluir.
-            dbModel model = new dbModel(type, user, pass, server,"tcp/ip", port, database);
-           
-                switch (model.getDBType())
+            // dbModel model = new dbModel(type, user, pass, server,"tcp/ip", port, database);
+            dbModel model = JsonConvert.DeserializeObject<dbModel>(jsonIDB);
+
+            switch (model.dbType)
                 {
                     case "MariaDB":
                         string cMa = controlMaria.check(model);
@@ -95,27 +113,14 @@ namespace ServicioWEB
            
         }
 
-        public void insertValuesTable()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void multipleQuery()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void updateValuesTable()
-        {
-            throw new NotImplementedException();
-        }
+     
 
         public string checkConnection(int connectionID) 
         {
             dbModel model =  controlMaria.getConnection(connectionID);
             if (model != null)
             {
-                switch (model.getDBType())
+                switch (model.dbType)
                 {
                     case "MariaDB": return controlMaria.check(model);
                     case "MongoDB": return controlMongo.check(model);
@@ -130,9 +135,32 @@ namespace ServicioWEB
             }
            
         }
-       
+
       
 
-     
+        public string deleteTable(string jsonDT)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string multipleQuery(string jsonMQ)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string insertValuesTable(string jsonIVT)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string updateValuesTable(string jsonUVT)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string deleteValuesTable(string jsonUVT)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

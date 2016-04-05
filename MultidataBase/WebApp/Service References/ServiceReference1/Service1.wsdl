@@ -30,6 +30,42 @@
   <wsdl:message name="IService1_checkConnection_OutputMessage">
     <wsdl:part name="parameters" element="tns:checkConnectionResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_createTable_InputMessage">
+    <wsdl:part name="parameters" element="tns:createTable" />
+  </wsdl:message>
+  <wsdl:message name="IService1_createTable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_deleteTable_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteTable" />
+  </wsdl:message>
+  <wsdl:message name="IService1_deleteTable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_multipleQuery_InputMessage">
+    <wsdl:part name="parameters" element="tns:multipleQuery" />
+  </wsdl:message>
+  <wsdl:message name="IService1_multipleQuery_OutputMessage">
+    <wsdl:part name="parameters" element="tns:multipleQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_insertValuesTable_InputMessage">
+    <wsdl:part name="parameters" element="tns:insertValuesTable" />
+  </wsdl:message>
+  <wsdl:message name="IService1_insertValuesTable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:insertValuesTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_updateValuesTable_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateValuesTable" />
+  </wsdl:message>
+  <wsdl:message name="IService1_updateValuesTable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateValuesTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_deleteValuesTable_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteValuesTable" />
+  </wsdl:message>
+  <wsdl:message name="IService1_deleteValuesTable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteValuesTableResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="includeDB">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/includeDB" message="tns:IService1_includeDB_InputMessage" />
@@ -46,6 +82,30 @@
     <wsdl:operation name="checkConnection">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/checkConnection" message="tns:IService1_checkConnection_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/checkConnectionResponse" message="tns:IService1_checkConnection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createTable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/createTable" message="tns:IService1_createTable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/createTableResponse" message="tns:IService1_createTable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteTable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/deleteTable" message="tns:IService1_deleteTable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/deleteTableResponse" message="tns:IService1_deleteTable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="multipleQuery">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/multipleQuery" message="tns:IService1_multipleQuery_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/multipleQueryResponse" message="tns:IService1_multipleQuery_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="insertValuesTable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/insertValuesTable" message="tns:IService1_insertValuesTable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/insertValuesTableResponse" message="tns:IService1_insertValuesTable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateValuesTable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/updateValuesTable" message="tns:IService1_updateValuesTable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/updateValuesTableResponse" message="tns:IService1_updateValuesTable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteValuesTable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/deleteValuesTable" message="tns:IService1_deleteValuesTable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/deleteValuesTableResponse" message="tns:IService1_deleteValuesTable_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -79,6 +139,60 @@
     </wsdl:operation>
     <wsdl:operation name="checkConnection">
       <soap:operation soapAction="http://tempuri.org/IService1/checkConnection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createTable">
+      <soap:operation soapAction="http://tempuri.org/IService1/createTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTable">
+      <soap:operation soapAction="http://tempuri.org/IService1/deleteTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="multipleQuery">
+      <soap:operation soapAction="http://tempuri.org/IService1/multipleQuery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertValuesTable">
+      <soap:operation soapAction="http://tempuri.org/IService1/insertValuesTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateValuesTable">
+      <soap:operation soapAction="http://tempuri.org/IService1/updateValuesTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteValuesTable">
+      <soap:operation soapAction="http://tempuri.org/IService1/deleteValuesTable" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

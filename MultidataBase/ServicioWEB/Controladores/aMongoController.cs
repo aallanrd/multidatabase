@@ -75,7 +75,7 @@ namespace ServicioWEB.Controladores
         {
             try
             {
-                var connectionString = "mongodb://"+model.getUser()+":"+model.getPass()+"@"+model.getServer()+"/"+model.getAllias();
+                var connectionString = "mongodb://"+model.username+":"+model.pass+"@"+model.server+"/"+model.alias;
 
                 MongoClient mongoClient = new MongoClient(connectionString);
    
