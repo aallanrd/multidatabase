@@ -159,9 +159,12 @@ namespace WebApp.Controllers
         public ActionResult VerConexiones()
         {
             string x = client.getConnections();
-
+            //DBViewModel deserializedProduct = JsonConvert.DeserializeObject<DBViewModel>(x);
+            var serializer = new JavaScriptSerializer();
+            dynamic jsonObject = serializer.Deserialize<dynamic>(x);
             ViewBag.connections = x;
 
+           var json =  jsonObject[0];
 
             return View();
         }
