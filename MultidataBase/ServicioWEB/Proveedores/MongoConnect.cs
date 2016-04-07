@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MongoDB.Bson;
-using MongoDB.Driver;
+//using MongoDB.Bson;
+//using MongoDB.Driver;
 using System.Collections;
 
 //Prueba
@@ -13,9 +13,9 @@ namespace ServicioWEB
 {
     class MongoConnect
     {
-        protected static MongoClient _client;
+    //    protected static MongoClient _client;
     
-
+        /*
 
         // public MongoDB.Driver.ConnectionMode connection;
 
@@ -136,5 +136,6 @@ namespace ServicioWEB
                 return false;
             }
         }
+        */
     }
 }

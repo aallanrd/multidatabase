@@ -17,7 +17,7 @@ namespace ServicioWEB.Controladores
             conexion = new MongoConnect();
             
         } 
-        public string includeDB(dbModel m)
+        /*public string includeDB(dbModel m)
         {
             if (conexion.OpenConnection().Equals("Connected"))
             {
@@ -35,8 +35,8 @@ namespace ServicioWEB.Controladores
             }
            
         }
-
-        public string consultDB()
+        */
+        /*public string consultDB()
         {
             try {
                return  conexion.OpenConnection();
@@ -46,9 +46,9 @@ namespace ServicioWEB.Controladores
             {
                 return e.ToString();
             }
-        }
+        }*/
 
-        public  string createDB(String database_name)
+      /*  public  string createDB(String database_name)
         {
             if (conexion.OpenConnection().Equals("Connected"))
             {
@@ -69,7 +69,7 @@ namespace ServicioWEB.Controladores
                 return "Error conectando a la BD";
             }
 
-        }
+        }*/
     }
 
 

@@ -34,10 +34,11 @@ namespace ServicioWEB
             return create;
         }
 
-        public string checkMongoConnection()
+       public string checkMongoConnection()
         {
-            string checkMongo = dbx.checkMongoConnection();
-            return checkMongo;
+            // string checkMongo = dbx.checkMongoConnection();
+            // return checkMongo;
+            return "";
         }
 
         public string checkSQLConnection()

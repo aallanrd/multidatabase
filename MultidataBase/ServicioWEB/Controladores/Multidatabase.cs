@@ -13,7 +13,7 @@ namespace ServicioWEB
 
         SQLController controlSQL = new SQLController();
         aMariaController controlMaria = new aMariaController();
-        aMongoController controlMongo = new aMongoController();
+      //  aMongoController controlMongo = new aMongoController();
         
 
 
@@ -22,7 +22,7 @@ namespace ServicioWEB
             switch (db_type)
             {
                 case "MariaDB": return controlMaria.createDB(db_name);
-                case "MongoDB": return controlMongo.createDB(db_name);
+              //  case "MongoDB": return controlMongo.createDB(db_name);
                 case "SQLDB":   return controlSQL.createDB(db_name);
                 default: return "No existe conexion posible con este tipo de DB";
             }
@@ -84,7 +84,7 @@ namespace ServicioWEB
                 switch (model.getDBType())
                 {
                     // case "MariaDB": checkMariaDBConnection();
-                    case "MongoDB": return checkMongoConnection();
+                  //  case "MongoDB": return checkMongoConnection();
                     case "SQLDB": return checkSQLConnection();
                     default: return "Cant Check";
                 }
@@ -96,11 +96,11 @@ namespace ServicioWEB
             }
            
         }
-        public string checkMongoConnection()
+       /* public string checkMongoConnection()
         {
-             return controlMongo.consultDB();
+         //    return controlMongo.consultDB();
            // return "Connected";
-        }
+        }*/
 
         public string checkSQLConnection()
         {
