@@ -164,7 +164,7 @@ namespace WebApp.Controllers
             dynamic jsonObject = serializer.Deserialize<dynamic>(x);
             ViewBag.connections = x;
 
-           var json =  jsonObject[0];
+            var json =  jsonObject[0];
 
             return View();
         }
