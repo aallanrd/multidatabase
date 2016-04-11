@@ -121,7 +121,7 @@ namespace ServicioWEB
 
         }
 
-        public void mostrarTabla(string x,string y) 
+        public async Task mostrarTabla(string x,string y) 
 
         {
             var database = _client.GetDatabase(x);
@@ -129,9 +129,9 @@ namespace ServicioWEB
             var collection = database.GetCollection<BsonDocument>("allandb");
             var filter = new BsonDocument();
             var count = 0;
-            using (var cursor = collection.FindAsync(filter))
+            using (var cursor = await collection.FindAsync(filter))
             {
-                while (cursor.MoveNextAsync())
+                while (await cursor.MoveNextAsync())
                 {
                     var batch = cursor.Current;
                     foreach (var document in batch)
@@ -142,6 +142,8 @@ namespace ServicioWEB
                 }
             }
         }
+
+
 
 
 
