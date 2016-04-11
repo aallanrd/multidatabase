@@ -7,6 +7,9 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Collections;
 
+using FluentAssertions;
+
+
 //Prueba
 
 namespace ServicioWEB
@@ -116,6 +119,28 @@ namespace ServicioWEB
             }
 
 
+        }
+
+        public void mostrarTabla(string x,string y) 
+
+        {
+            var database = _client.GetDatabase(x);
+          
+            var collection = database.GetCollection<BsonDocument>("allandb");
+            var filter = new BsonDocument();
+            var count = 0;
+            using (var cursor = collection.FindAsync(filter))
+            {
+                while (cursor.MoveNextAsync())
+                {
+                    var batch = cursor.Current;
+                    foreach (var document in batch)
+                    {
+                        // process document
+                        count++;
+                    }
+                }
+            }
         }
 
 
