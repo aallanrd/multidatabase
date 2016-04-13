@@ -12,19 +12,32 @@ namespace ServicioWEB
 
         public SqlConnection connection;
 
-
+        //Para caso de ese SQL autetificacion
         public SQLConnect(string uid, string pass, string server, int port, string database)
         {
             Initialize(uid, pass, server, port, database);
         }
+        
 
+
+        
+
+       //public void InitializeBD()
+    //    {
+
+  //          connection = new SqlConnection("Server=DESKTOP-FV57AJ9\\SQLEXPRESS;Database=master;Integrated Security=True ");
+//        }
+        //Para caso si de accesar con sql autentificacion
         public void Initialize(string uid, string pass, string server, int port, string database)
         {
 
-            connection = new SqlConnection("Server=DESKTOP-6Q1Q92A\\SQLEXPRESS;Database=master;Integrated Security=True ");
+            connection = new SqlConnection("Server=DESKTOP-FV57AJ9\\SQLEXPRESS;Database=master;Integrated Security=True ");
 
 
         }
+
+
+
 
         public string OpenConnection()
         {
@@ -44,5 +57,8 @@ namespace ServicioWEB
             connection.Close();
             throw new NotImplementedException();
         }
+
+
+
     }
 }
