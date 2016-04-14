@@ -37,6 +37,7 @@ namespace WebApp.Controllers
             string x = client.createTable(jsonCT);
             return RedirectToAction("CrearTabla", new { x = x });
 
+
         }
 
         public ActionResult InsertarTabla(string x)
@@ -74,6 +75,7 @@ namespace WebApp.Controllers
         public ActionResult BorrarTabla(string x)
         {
             ViewBag.deleted = x;
+            
             return View();
         }
 
@@ -126,7 +128,7 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult HttpCreateDB(string jsonCDB)
+        public ActionResult HttpCreateDB(string jsonCDB, string db_type)
         {
             //db_type, db_name
             string x = client.createDatabase(jsonCDB);

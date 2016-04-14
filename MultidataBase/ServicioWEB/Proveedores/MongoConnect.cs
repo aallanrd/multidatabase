@@ -100,6 +100,44 @@ namespace ServicioWEB
         }
 
 
+        public string createTabla(string x)
+        {
+
+            var database = _client.GetDatabase("Gerardo");
+
+            //MongoServer server = _client.GetServer();
+            //MongoDatabase db = server.GetDatabase("MyDatabase");
+
+            if (database != null)
+            {
+                var collection = database.GetCollection<BsonDocument>(x);
+
+                var document = new BsonDocument
+                        {
+
+                            { "DBLOg", "Created" },
+
+                        };
+
+
+                collection.InsertOneAsync(document);
+
+                if (collection != null)
+                {
+                    return "Creada Correctamente";
+                }
+                else {
+                    return "Not Retrieve Info of persons";
+                }
+            }
+            else
+            {
+                return "Cant Get Database";
+            }
+
+
+        }
+
 
 
 
