@@ -14,7 +14,7 @@ namespace ServicioWEB.Controladores
         SQLConnect conexion;
         public aSQLController()
         {
-            conexion = new SQLConnect("root", "Ard2592allan", "DESKTOP-6Q1Q92A", 1433, "master");
+            conexion = new SQLConnect("root", "CAAC89", "DESKTOP-FV57AJ9", 1433, "CAAC89");
         }
         public aSQLController(string uid, string pass, string server, int port, string database)
         {
@@ -98,5 +98,71 @@ namespace ServicioWEB.Controladores
                 return "Cant- connect";
             }
         }
+
+        public string createTable(String database_name, String table_name, List<Modelo.columna> array)
+        {
+
+
+            string sCnn = "Server=" + "DESKTOP-FV57AJ9" + "; database=" + database_name + "; integrated security=yes";
+
+            //"(" + "[ID] [int]  NOT NULL "+")"
+            string columnas = "(";
+            int cont = 0;
+            while (cont != array.Count)
+            {
+                columnas = columnas + "[" + array + array + array + "]" + ")";
+            }
+
+
+            string sCmd = "CREATE TABLE [dbo]." + table_name + columnas;
+
+            SqlConnection cnn = null;
+
+
+            try
+            {
+                cnn = new SqlConnection(sCnn);
+                cnn.Open();
+                SqlCommand cmd = new SqlCommand(sCmd, cnn);
+
+                cmd.ExecuteNonQuery();
+
+
+            }
+            catch (Exception ex)
+            {
+                return "Error creando la tabla" + ex;
+
+            }
+            return "la tabla ha sido creado---";
+        }
+
+
+        public string deleteTable(String database_name, String table_name)
+        {
+
+
+            string sCnn = "Server=" + "DESKTOP-FV57AJ9" + "; database=" + database_name + "; integrated security=yes";
+            string sCmd = "DROP TABLE [dbo]." + table_name;
+            SqlConnection cnn = null;
+            try
+            {
+                cnn = new SqlConnection(sCnn);
+                cnn.Open();
+                SqlCommand cmd = new SqlCommand(sCmd, cnn);
+
+                cmd.ExecuteNonQuery();
+
+
+            }
+            catch (Exception ex)
+            {
+                return "Error borrando la tabla" + ex;
+
+            }
+            return "la base de datos ha sido borrada---";
+        }
+
+
     }
 }

@@ -6,7 +6,7 @@
     
     <div class="col-md-12 text-center panel">
        
-            <form>
+            <form action="../App/HttpCreateTable" method="post">
             <div class="panel-heading">
                 <a href="../App" type="button" class="btn btn-danger btn-lg pull-left"> <i class="fa fa-arrow-left"></i>Volver </a>
 
@@ -23,9 +23,9 @@
                     </div>
                     <div class="col-md-1"></div>
                     <div class="col-md-3">
-                        <p>Configuración </p>
-                        <input placeholder="dbUser" class="input-lg" /><br /><br />
-                        <input placeholder="dbPass" class="input-lg" /><br /><br />
+                        <p>Crear Tabla </p>
+                        <input type="text" placeholder="Base Datos" class="input-lg" name="database" /><br /><br />
+                        <input type="text" placeholder="Nombre Tabla" class="input-lg" name="table_name" /><br /><br />
 
                     </div>
                     <div class="col-md-1"></div>

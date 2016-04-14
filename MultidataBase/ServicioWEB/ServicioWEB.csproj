@@ -168,6 +168,7 @@
     <Compile Include="Controladores\aMongoController.cs" />
     <Compile Include="Controladores\aMariaController.cs" />
     <Compile Include="Controladores\aSQLController.cs" />
+    <Compile Include="Modelo\columna.cs" />
     <Compile Include="Modelo\database.cs" />
     <Compile Include="Modelo\dbModel.cs" />
     <Compile Include="Controladores\InterfaceDB.cs" />

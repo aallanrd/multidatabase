@@ -40,19 +40,30 @@ namespace ServicioWEB
 
         public string createTable(string jsonCT)
         {
-            //int iC, string name, ArrayList columnas
-             string json = "{ 'cID': 'idConexion', 'table_name':'TableName', columnas:	[{ alias:	“alias”, nombre:“nombre”,tipo:  “tipo”, null:	true / false },...]}";
-             Modelo.table table = JsonConvert.DeserializeObject<Modelo.table>(json);
-            IList<string> idC = table.columnas;
-            string tName = table.table_name;
-             
-            return "Table Created";
+            Modelo.table table = JsonConvert.DeserializeObject<Modelo.table>(jsonCT);
+            //IList<string> idC = table.columnas;
+            string tBD = table.database;
+            string tTA = table.table_name;
+
+             List<Modelo.columna> array = new List<Modelo.columna>();
+
+            return controlSQL.createTable(tBD, tTA, array);
 
         }
 
-        public void deleteTable()
+        public string deleteTable(string jsonDT)
         {
-            throw new NotImplementedException();
+            Modelo.table table = JsonConvert.DeserializeObject<Modelo.table>(jsonDT);
+            //IList<string> idC = table.columnas;
+            string tBD = table.database;
+            string tTA = table.table_name;
+
+            //  switch (true)
+            // {
+            //case "MariaDB": return controlMaria.createDB(db_name);
+            //case "MongoDB": return controlMongo.createDB(db_name);
+            //case "SQLDB": 
+            return controlSQL.deleteTable(tBD, tTA);
         }
 
         public string getConecctions()
@@ -136,12 +147,7 @@ namespace ServicioWEB
            
         }
 
-      
-
-        public string deleteTable(string jsonDT)
-        {
-            throw new NotImplementedException();
-        }
+     
 
         public string multipleQuery(string jsonMQ)
         {
