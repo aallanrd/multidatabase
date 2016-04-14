@@ -13,7 +13,7 @@ namespace ServicioWEB.Controladores
 {
     public class aMariaController
     {
-        MariaDBConnect conexion = new MariaDBConnect("root", "Ard2592allan", "localhost", 3306, "metadatadb");
+        MariaDBConnect conexion = new MariaDBConnect("root", "201143253", "localhost", 3306, "metadatadb");
 
         public string includeDB(dbModel m)
         {
