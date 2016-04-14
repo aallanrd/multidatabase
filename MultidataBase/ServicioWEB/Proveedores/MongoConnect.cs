@@ -40,7 +40,7 @@ namespace ServicioWEB
         public  string  OpenConnection()
         {
 
-            var database = _client.GetDatabase("allandb");
+            var database = _client.GetDatabase("test");
 
             //MongoServer server = _client.GetServer();
             //MongoDatabase db = server.GetDatabase("MyDatabase");
