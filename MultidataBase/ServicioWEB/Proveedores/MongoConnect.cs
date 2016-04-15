@@ -138,8 +138,19 @@ namespace ServicioWEB
 
         }
 
+        public string dropCollection(String database_name, String collection_name)
+        {
+            var database = _client.GetDatabase(database_name);
 
+            if (database != null)
+            {
+                database.DropCollection(collection_name);
+                return "Coleccion borrada...";
+            }
+            else
+                return "Error";
 
+        }
 
         //Close connection
         public bool CloseConnection()
