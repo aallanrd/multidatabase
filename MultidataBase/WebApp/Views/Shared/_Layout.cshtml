@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="todoApp">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -31,6 +31,8 @@
         @RenderBody()
         <hr />
         <footer>
+
+         
             <p>&copy; @DateTime.Now.Year - MultiDatabase Application</p>
            
         </footer>
@@ -49,6 +51,8 @@
     </script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")
     @RenderSection("scripts", required: false)
+    
 </body>
 </html>

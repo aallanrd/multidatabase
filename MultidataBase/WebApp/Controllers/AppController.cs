@@ -37,6 +37,7 @@ namespace WebApp.Controllers
             string x = client.createTable(jsonCT);
             return RedirectToAction("CrearTabla", new { x = x });
 
+
         }
 
         public ActionResult InsertarTabla(string x)
@@ -74,6 +75,7 @@ namespace WebApp.Controllers
         public ActionResult BorrarTabla(string x)
         {
             ViewBag.deleted = x;
+            
             return View();
         }
 
@@ -126,7 +128,7 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult HttpCreateDB(string jsonCDB)
+        public ActionResult HttpCreateDB(string jsonCDB, string db_type)
         {
             //db_type, db_name
             string x = client.createDatabase(jsonCDB);
@@ -143,9 +145,11 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult HttpIncludeDB(string jsonIDB)
+        public ActionResult HttpIncludeDB(string db_type, string user, string pass, string server, int port, string allias)
         {
 
+            DBViewModel model = new DBViewModel(db_type, user, pass, server, "tcp/ip", port, allias);
+            var jsonIDB = JsonConvert.SerializeObject(model);
             string x = client.includeDB(jsonIDB);
 
             return RedirectToAction("IncluirDB", new { x = x });
@@ -157,9 +161,12 @@ namespace WebApp.Controllers
         public ActionResult VerConexiones()
         {
             string x = client.getConnections();
-
+            //DBViewModel deserializedProduct = JsonConvert.DeserializeObject<DBViewModel>(x);
+            var serializer = new JavaScriptSerializer();
+            dynamic jsonObject = serializer.Deserialize<dynamic>(x);
             ViewBag.connections = x;
 
+            var json =  jsonObject[0];
 
             return View();
         }
