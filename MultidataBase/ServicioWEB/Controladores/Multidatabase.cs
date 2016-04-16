@@ -23,31 +23,32 @@ namespace ServicioWEB
         {
            // string json = "{ 'db_name': 'database', 'db_type':'type' }";
 
-            Modelo.database db = JsonConvert.DeserializeObject<Modelo.database>(jsonCDB);
+            Modelo.BDCreate db = JsonConvert.DeserializeObject<Modelo.BDCreate>(jsonCDB);
             string db_name = db.db_name;
-            string db_type = db.db_type;
             //String db_type,String db_name
-            switch (db_type)
-            {
-                case "MariaDB": return controlMaria.createDB(db_name);
-                case "MongoDB": return controlMongo.createDB(db_name);
-                case "SQLDB":   return controlSQL.createDB(db_name);
-                default: return "No existe conexion posible con este tipo de DB";
-            }
-           
+            //switch (db_name)
+            //{
+            // case "MariaDB": return controlMaria.createDB(db_name);
+            //  case "MongoDB": return controlMongo.createDB(db_name);
+            //  case "SQLDB":   return controlSQL.createDB(db_name);
+            // default: return "No existe conexion posible con este tipo de DB";
+            //}
+            return controlSQL.createDB(db_name);
 
         }
 
         public string createTable(string jsonCT)
         {
-            Modelo.table table = JsonConvert.DeserializeObject<Modelo.table>(jsonCT);
+            Modelo.tableA table = JsonConvert.DeserializeObject<Modelo.tableA>(jsonCT);
             //IList<string> idC = table.columnas;
             string tBD = table.database;
             string tTA = table.table_name;
+            string tTAT = table.atributos;
 
-             List<Modelo.columna> array = new List<Modelo.columna>();
 
-            return controlSQL.createTable(tBD, tTA, array);
+             //List<Modelo.columna> array = new List<Modelo.columna>();
+
+            return controlSQL.createTable(tBD, tTA, tTAT);
 
         }
 

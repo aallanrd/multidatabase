@@ -31,10 +31,10 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult HttpCreateTable(string database, string table_name)
+        public ActionResult HttpCreateTable(string database, string table_name,string atributos)
         {
 
-            Tabla table = new Tabla(database, table_name);
+            TablaA table = new TablaA(database, table_name,atributos);
             var jsonCT = JsonConvert.SerializeObject(table);
 
             string x = client.createTable(jsonCT);
@@ -82,9 +82,12 @@ namespace WebApp.Controllers
 
 
         [HttpPost]
-        public ActionResult HttpDeleteTable(string jsonDT)
+        public ActionResult HttpDeleteTable(string database,string table_name)
         {
             //db_type, db_name
+            Tabla table = new Tabla(database, table_name);
+            var jsonDT = JsonConvert.SerializeObject(table);
+
             string x = client.deleteTable(jsonDT);
             return RedirectToAction("BorrarTabla", new { x = x });
 
@@ -129,10 +132,14 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult HttpCreateDB(string jsonCDB)
+        public ActionResult HttpCreateDB(string dataBase)
         {
             //db_type, db_name
-            string x = client.createDatabase(jsonCDB);
+            BDCreate dataBases = new BDCreate(dataBase);
+            var jsonDT = JsonConvert.SerializeObject(dataBases);
+
+
+            string x = client.createDatabase(jsonDT);
             return RedirectToAction("CrearDB", new { x = x });
            
           

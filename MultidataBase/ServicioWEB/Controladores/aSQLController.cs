@@ -51,13 +51,13 @@ namespace ServicioWEB.Controladores
             }
         }
 
-        public string createDB(String database_name)
+        public string createDB(string database_name)
         {
             if (conexion.OpenConnection().Equals("Connected"))
             {
                 try
                 {
-                    string Query = "CREATE DATABASE " + database_name + "";
+                    string Query = "CREATE DATABASE [dbo.] " + database_name;
 
                     SqlCommand cmd = new SqlCommand(Query,conexion.connection);
 
@@ -99,22 +99,15 @@ namespace ServicioWEB.Controladores
             }
         }
 
-        public string createTable(String database_name, String table_name, List<Modelo.columna> array)
+        public string createTable(string database_name, string table_name, string atributos)
         {
 
 
             string sCnn = "Server=" + "DESKTOP-FV57AJ9" + "; database=" + database_name + "; integrated security=yes";
 
-            //"(" + "[ID] [int]  NOT NULL "+")"
-            string columnas = "(";
-            int cont = 0;
-            while (cont != array.Count)
-            {
-                columnas = columnas + "[" + array + array + array + "]" + ")";
-            }
+           
 
-
-            string sCmd = "CREATE TABLE [dbo]." + table_name + columnas;
+            string sCmd = "CREATE TABLE [dbo]." + table_name +"(" +atributos+")";
 
             SqlConnection cnn = null;
 
