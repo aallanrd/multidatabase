@@ -20,7 +20,7 @@ multiDBApp.controller('multiController', function ($scope,$http) {
         $scope.retData = {};
     
         var json = JSON.stringify($scope.todas);
-        $http.post('../App/HttpCreateTable?jsonCT='+ json, { data: {  } })
+        $http.post('../App/HttpCreateTable?cID='+ $scope.cID +'&name='+ $scope.name +'&columns='+ json, { data: {  } })
         .success(function (data, status, headers, config) {
             $scope.retData.result = data.d;
             alert(data);  

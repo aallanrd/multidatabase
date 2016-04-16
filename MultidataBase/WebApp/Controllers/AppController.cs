@@ -31,9 +31,11 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult HttpCreateTable(string cID, string name,string colums)
+        public ActionResult HttpCreateTable(int cID, string name,string columns)
         {
-          
+
+            Table t = new Table(cID, name, columns);
+            var jsonCT = JsonConvert.SerializeObject(t); 
             string x = client.createTable(jsonCT);
             return RedirectToAction("CrearTabla", new { x = x });
 

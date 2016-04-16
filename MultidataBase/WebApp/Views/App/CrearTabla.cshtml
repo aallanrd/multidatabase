@@ -15,8 +15,8 @@
        
         <div class="col-md-12">
             <h1>Configuración </h1>
-            <input placeholder="Id Conección" class="input-lg" type="number" name="cID" />
-            <input placeholder="Table Name" class="input-lg" />
+            <input placeholder="Id Conección" class="input-lg" type="number" name="cID" ng-model="cID"  />
+            <input placeholder="Table Name" class="input-lg" ng-model="name" />
         </div>
             
         <button type="submit" class="btn btn-primary btn-lg"> Crear Tabla</button>
@@ -40,9 +40,9 @@
 
         </ul>
        
-        <input placeholder="Nombre" class="input-sm" ng-model="name" />
-        <input placeholder="Tipo" class="input-sm" ng-model="type" />
-        <input placeholder="Longitud" class="input-sm" ng-model="length" />
+        <input placeholder="Nombre" class="input-sm" ng-model="Cname" />
+        <input placeholder="Tipo" class="input-sm" ng-model="Ctype" />
+        <input placeholder="Longitud" class="input-sm" ng-model="Clength" />
 
         <input class="btn btn-primary" type="submit" value="add">
 
