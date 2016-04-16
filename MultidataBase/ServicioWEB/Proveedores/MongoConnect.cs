@@ -152,6 +152,31 @@ namespace ServicioWEB
 
         }
 
+        //Algoritmo en desarrollo........ Le falta bastante
+        public string insertinCollection(String database_name, String collection_name, String elemento)
+        {
+            var database = _client.GetDatabase(database_name);
+
+            if (database != null)
+            {
+                var collection = database.GetCollection<String>(collection_name);
+
+               // Symbol symbol = new Symbol();
+               // symbol.Name = "Star";
+                collection.InsertOneAsync(elemento);
+
+                return "Inserción exitosa.....";
+            }
+            else
+                return "Error";
+
+
+
+
+
+        }
+
+
         //Close connection
         public bool CloseConnection()
         {
