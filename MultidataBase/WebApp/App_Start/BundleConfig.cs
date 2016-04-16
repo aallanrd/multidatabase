@@ -21,7 +21,11 @@ namespace WebApp
                       "~/Scripts/respond.js",
                       "~/Scripts/jquery.tooltipster.min.js"));
 
-           
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                   "~/bower_components/angular/angular.min.js",
+                   "~/Scripts/app.js"));
+
+
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

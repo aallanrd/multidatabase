@@ -1,55 +1,51 @@
 ﻿<div class="">
     <h3>MultiDataBase / Insertar nueva tabla</h3>
     <h4>Uso de función del API (/insertTable)</h4>
+    <a href="../App" type="button" class="btn btn-danger btn-lg pull-left">
+        <i class="fa fa-arrow-left"></i>Volver
+    </a>
 </div>
-<div class="row">
-    
-    <div class="col-md-12 text-center panel">
+
+
+<div class="row" ng-controller="multiController">
+    <br /><br />
+    <hr />
+
+    <form  action="">
        
-            <form>
-            <div class="panel-heading">
-                <a href="../App" type="button" class="btn btn-danger btn-lg pull-left"> <i class="fa fa-arrow-left"></i>Volver </a>
+        <div class="col-md-12">
+            <h1>Configuración </h1>
+            <input placeholder="Id Conección" class="input-lg" type="number" name="cID" />
+            <input placeholder="Table Name" class="input-lg" />
+        </div>
+            <div class="col-md-6">
 
-                <h2>Insertar nueva tabla en base de datos</h2>
-                <p>Digite los datos necesarios para ingresar una nueva tabla en la base de datos.</p>
+
+                <h1>Columnas </h1>
+                <input placeholder="Nombre" class="input-sm" />
+                <input placeholder="Tipo" class="input-sm" />
+                <input placeholder="Longitud" class="input-sm" />
+
+                <button class="btn btn-info" onClick="dameClick()">Añadir</button>
+
+                <ul>
+                    <li ng-repeat="db in list">
+                        <span>{{db.name}}</span>
+                        <p>{{db.port}}</p>
+                    </li>
+                </ul>
+                
             </div>
-            <div class="panel-body">
 
+            
 
-                <div class="row">
-                    <div class="col-md-3 ">
-                       
-
-                    </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-3">
-                        <p>Configuración </p>
-                        <input placeholder="dbUser" class="input-lg" /><br /><br />
-                        <input placeholder="dbPass" class="input-lg" /><br /><br />
-
-                    </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-3">
-                        
-
-                    </div>
-                </div>
-
-            </div>
-            <div class="panel-footer">
-                <div class="row text-center">
-                    <div class="col-md-12">
-
-                        <button type="button" class="btn btn-warning btn-lg"> Testear Conexión </button>
-                        <button type="submit" class="btn btn-primary btn-lg"> Incluir Conexión</button>
-                    </div>
-
-                </div>
-
-
-            </div>
-        </form>
+       
+        <button type="submit" class="btn btn-primary btn-lg"> Crear Tabla</button>
         
-    </div>
-    
+
+
+    </form>
+
 </div>
+
+

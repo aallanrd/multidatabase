@@ -1,0 +1,16 @@
+{
+  "name": "MultidataBase",
+  "homepage": "https://github.com/aallanrd/multidatabase",
+  "authors": [
+    "Allan Rojas <allanjose91@gmail.com>"
+  ],
+  "description": "My Multidatabase Proyect",
+  "main": "scripts/app.js",
+  "keywords": [
+    "Multidatabase",
+    "MariaDB",
+    "MongoDB",
+    "SQLServer"
+  ],
+  "license": "MIT"
+}

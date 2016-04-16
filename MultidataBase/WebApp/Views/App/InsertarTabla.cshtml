@@ -2,53 +2,42 @@
     <h3>MultiDataBase / Insertar nueva tabla</h3>
     <h4>Uso de función del API (/insertTable)</h4>
 </div>
-<div class="row">
-    
-    <div class="col-md-12 text-center panel">
-       
-            <form>
-            <div class="panel-heading">
-                <a href="../App" type="button" class="btn btn-danger btn-lg pull-left"> <i class="fa fa-arrow-left"></i>Volver </a>
+<div class="container" ng-controller="multiController">
+    <a href="../App" type="button" class="btn btn-danger btn-lg pull-left">
+        <i class="fa fa-arrow-left"></i>Volver
+    </a>
+      <hr />
+    <form>
+        <div>
+            <ul>
+                <li ng-repeat="db in list">
+                    <span>{{list.name}}</span>
+                    <p>{{list.port}}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h1>Configuración </h1>
+            <input placeholder="Id Conección" class="input-lg" type="number" name="cID" /><br /><br />
+            <input placeholder="Table Name" class="input-lg" /><br /><br />
 
-                <h2>Insertar valores en tabla</h2>
-            </div>
-            <div class="panel-body">
-
-
-                <div class="row">
-                    <div class="col-md-3 ">
-                       
-
-                    </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-3">
-                        <p>Configuración </p>
-                        <input placeholder="dbUser" class="input-lg" /><br /><br />
-                        <input placeholder="dbPass" class="input-lg" /><br /><br />
-
-                    </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-3">
-                        
-
-                    </div>
-                </div>
-
-            </div>
-            <div class="panel-footer">
-                <div class="row text-center">
-                    <div class="col-md-12">
-
-                        <button type="button" class="btn btn-warning btn-lg"> Testear Conexión </button>
-                        <button type="submit" class="btn btn-primary btn-lg"> Incluir Conexión</button>
-                    </div>
-
-                </div>
+        </div>
+        <div class="col-md-6 row">
 
 
-            </div>
-        </form>
+            <h1>Columnas </h1>
+            <div class="col-md-2"><input placeholder="colName" class="input-sm" /></div>
+            <div class="col-md-2"><input placeholder="colType" class="input-sm" /></div>
+            <div class="col-md-2"><input placeholder="colLength" class="input-sm" /></div>
+            <button type="submit" class="btn btn-primary btn-lg"> Crear Tabla</button>
+        </div>
+
         
-    </div>
-    
+
+
+
+    </form>
+        
 </div>
+    
+
