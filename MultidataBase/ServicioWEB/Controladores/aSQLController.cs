@@ -51,6 +51,7 @@ namespace ServicioWEB.Controladores
             }
         }
 
+        //el crear no funciona todavia
         public string createDB(string database_name)
         {
             if (conexion.OpenConnection().Equals("Connected"))
@@ -154,6 +155,34 @@ namespace ServicioWEB.Controladores
 
             }
             return "la base de datos ha sido borrada---";
+        }
+
+
+        {
+
+
+
+
+            SqlConnection cnn = null;
+
+
+            try
+            {
+                cnn = new SqlConnection(sCnn);
+                cnn.Open();
+                SqlCommand cmd = new SqlCommand(sCmd, cnn);
+
+                cmd.ExecuteNonQuery();
+
+
+            }
+            catch (Exception ex)
+            {
+                return "Error creando la tabla" + ex;
+
+            }
+            return "la tabla ha sido creado---";
+
         }
 
 

@@ -50,9 +50,13 @@ namespace WebApp.Controllers
 
 
         [HttpPost]
-        public ActionResult HttpInsertValueTable(string jsonIVT)
+        public ActionResult HttpInsertValuesTable(string database, string table, string data)
         {
             //db_type, db_name
+
+            TableInsert dataBases = new TableInsert(database,table,data);
+            var jsonIVT = JsonConvert.SerializeObject(dataBases);
+
             string x = client.insertValuesTable(jsonIVT);
             return RedirectToAction("InsertarTabla", new { x = x });
 

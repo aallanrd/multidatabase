@@ -166,7 +166,16 @@ namespace ServicioWEB
 
         public string insertValuesTable(string jsonIVT)
         {
-            throw new NotImplementedException();
+            Modelo.tableInsert table = JsonConvert.DeserializeObject<Modelo.tableInsert>(jsonIVT);
+            //IList<string> idC = table.columnas;
+            string BD = table.database;
+            string TA = table.table;
+            string DA = table.data;
+
+
+            //List<Modelo.columna> array = new List<Modelo.columna>();
+
+            return controlSQL.insertValuesTable(BD, TA, DA);
         }
 
         public string updateValuesTable(string jsonUVT)
