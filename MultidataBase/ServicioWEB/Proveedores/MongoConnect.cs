@@ -169,12 +169,27 @@ namespace ServicioWEB
             }
             else
                 return "Error";
+}
 
+        //Faltan detalles
+        public string UpdateData(string database_name, string collection_name, string elenuevo, string eleactual)
+        {
+            var database = _client.GetDatabase(database_name);
 
+            if (database != null)
+            {
+                var collection = database.GetCollection<BsonDocument>(collection_name);
+                var filter = Builders<BsonDocument>.Filter.Eq("name", eleactual);
+                var update = Builders<BsonDocument>.Update
+                    .Set("name", elenuevo)
+                    .CurrentDate("lastModified");
+                var result = collection.UpdateOneAsync(filter, update);
 
-
-
+            }
+            return "Error....";
         }
+
+
 
 
         //Close connection
