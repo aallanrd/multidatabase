@@ -138,7 +138,7 @@ namespace ServicioWEB.Controladores
         }
 
 
-        public string deleteTable(String database_name, String table_name)
+        public string deleteTable(string database_name, string table_name)
         {
 
 

@@ -15,7 +15,7 @@ namespace ServicioWEB.Modelo
 
         public table() { }
 
-        public table(String database, String table_name)
+        public table(string database, string table_name)
         {
             this.database = database;
             this.table_name = table_name;

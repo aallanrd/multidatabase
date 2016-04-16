@@ -53,17 +53,26 @@ namespace ServicioWEB
 
         public string deleteTable(string jsonDT)
         {
-            Modelo.table table = JsonConvert.DeserializeObject<Modelo.table>(jsonDT);
-            //IList<string> idC = table.columnas;
-            string tBD = table.database;
-            string tTA = table.table_name;
+            
+            
+                Modelo.table table = JsonConvert.DeserializeObject<Modelo.table>(jsonDT);
+                //IList<string> idC = table.columnas;
+                string tBD = table.database;
+                string tTA = table.table_name;
 
-            //  switch (true)
+            //switch (tBD)
             // {
-            //case "MariaDB": return controlMaria.createDB(db_name);
-            //case "MongoDB": return controlMongo.createDB(db_name);
+            // case "MariaDB": return controlMaria.createDB(db_name);
+            // case "MongoDB": return controlMongo.createDB(db_name);
             //case "SQLDB": 
-            return controlSQL.deleteTable(tBD, tTA);
+                   return controlSQL.deleteTable(tBD, tTA);
+                  //  default: return "No se pudo borrar";
+
+
+                //}
+            
+          
+           
         }
 
         public string getConecctions()
