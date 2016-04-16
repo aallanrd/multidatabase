@@ -1,19 +1,40 @@
 ﻿var multiDBApp = angular.module('multiDBApp', []);
 
-multiDBApp.controller('multiController', function ($scope) {
+multiDBApp.controller('multiController', function ($scope,$http) {
 
-    $scope.list = [
-      {
-          'name': 'Nexus S',
-          'port': 1
-      },
-      {
-          'name': 'Motorola XOOM™ with Wi-Fi',
-          'port': 2
-      },
-      {
-          'name': 'MOTOROLA XOOM™',
-          'port': 3
-      }
-    ];
+    
+
+    $scope.todas = [
+    { name: 'Col1', type: 'varchar', length: 11 },
+    { name: 'Col2', type: 'varchar', length: 11 }];
+    
+    $scope.addColumn = function () {
+        $scope.todas.push({ name: $scope.name, type: $scope.type, length: $scope.length });
+  
+    };
+
+
+    $scope.createTable = function () {
+
+        
+        $scope.retData = {};
+    
+        var json = JSON.stringify($scope.todas);
+        $http.post('../App/HttpCreateTable?jsonCT='+ json, { data: {  } })
+        .success(function (data, status, headers, config) {
+            $scope.retData.result = data.d;
+            alert(data);  
+        })
+        .error(function (data, status, headers, config) {
+            $scope.status = status;
+            
+        });
+       
+    }
+    
+        
+}).config(function ($httpProvider) {
+    $httpProvider.defaults.headers.post = {};
+    $httpProvider.defaults.headers.post["Content-Type"] = "application/json; charset=utf-8";
 });
+

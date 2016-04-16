@@ -11,38 +11,40 @@
     <br /><br />
     <hr />
 
-    <form  action="">
+    <form  ng-submit="createTable()">
        
         <div class="col-md-12">
             <h1>Configuración </h1>
             <input placeholder="Id Conección" class="input-lg" type="number" name="cID" />
             <input placeholder="Table Name" class="input-lg" />
         </div>
-            <div class="col-md-6">
-
-
-                <h1>Columnas </h1>
-                <input placeholder="Nombre" class="input-sm" />
-                <input placeholder="Tipo" class="input-sm" />
-                <input placeholder="Longitud" class="input-sm" />
-
-                <button class="btn btn-info" onClick="dameClick()">Añadir</button>
-
-                <ul>
-                    <li ng-repeat="db in list">
-                        <span>{{db.name}}</span>
-                        <p>{{db.port}}</p>
-                    </li>
-                </ul>
-                
-            </div>
-
             
+        <button type="submit" class="btn btn-primary btn-lg"> Crear Tabla</button>
+
+    </form>
+
+    <form ng-submit="addColumn()">
 
        
-        <button type="submit" class="btn btn-primary btn-lg"> Crear Tabla</button>
         
+        <ul class="unstyled">
 
+            <li ng-repeat="col in todas">
+                <label class="checkbox">
+                   
+                    <span class="name-{{col.name}}"> {{col.name}} // {{col.type}} // {{col.length}}</span>
+
+                </label>
+
+            </li>
+
+        </ul>
+       
+        <input placeholder="Nombre" class="input-sm" ng-model="name" />
+        <input placeholder="Tipo" class="input-sm" ng-model="type" />
+        <input placeholder="Longitud" class="input-sm" ng-model="length" />
+
+        <input class="btn btn-primary" type="submit" value="add">
 
     </form>
 

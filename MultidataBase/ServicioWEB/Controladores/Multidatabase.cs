@@ -15,7 +15,7 @@ namespace ServicioWEB
 
         aSQLController controlSQL = new aSQLController();
         aMariaController controlMaria = new aMariaController();
-        aMongoController controlMongo = new aMongoController();
+        //aMongoController controlMongo = new aMongoController();
         
 
 
@@ -30,7 +30,7 @@ namespace ServicioWEB
             switch (db_type)
             {
                 case "MariaDB": return controlMaria.createDB(db_name);
-                case "MongoDB": return controlMongo.createDB(db_name);
+               // case "MongoDB": return controlMongo.createDB(db_name);
                 case "SQLDB":   return controlSQL.createDB(db_name);
                 default: return "No existe conexion posible con este tipo de DB";
             }
@@ -41,8 +41,8 @@ namespace ServicioWEB
         public string createTable(string jsonCT)
         {
             //int iC, string name, ArrayList columnas
-             string json = "{ 'cID': 'idConexion', 'table_name':'TableName', columnas:	[{ alias:	“alias”, nombre:“nombre”,tipo:  “tipo”, null:	true / false },...]}";
-             Modelo.table table = JsonConvert.DeserializeObject<Modelo.table>(json);
+            // string json = "{ 'cID': 'idConexion', 'table_name':'TableName', columnas:	[{ alias:	“alias”, nombre:“nombre”,tipo:  “tipo”, null:	true / false },...]}";
+             Modelo.table table = JsonConvert.DeserializeObject<Modelo.table>(jsonCT);
             IList<string> idC = table.columnas;
             string tName = table.table_name;
              
@@ -82,7 +82,7 @@ namespace ServicioWEB
                     else
                     {
                         return "No hay conexion con esta instancia de MariaDB ";
-                    }
+                    }/*
                     
                     case "MongoDB":
                         string cMo = controlMongo.check(model);
@@ -93,7 +93,7 @@ namespace ServicioWEB
                     else
                     {
                         return "No hay conexion con esta instancia de MongoDB ";
-                    }
+                    }*/
 
 
                 case "SQLDB":
@@ -123,7 +123,7 @@ namespace ServicioWEB
                 switch (model.dbType)
                 {
                     case "MariaDB": return controlMaria.check(model);
-                    case "MongoDB": return controlMongo.check(model);
+                    //case "MongoDB": return controlMongo.check(model);
                     case "SQLDB": return controlSQL.check(model);
                     default: return "Cant Check";
                 }

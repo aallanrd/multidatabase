@@ -31,7 +31,7 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult HttpCreateTable(string jsonCT)
+        public ActionResult HttpCreateTable(string cID, string name,string colums)
         {
           
             string x = client.createTable(jsonCT);
@@ -87,20 +87,7 @@ namespace WebApp.Controllers
 
         }
 
-        public ActionResult MultipleQuery(string x)
-        {
-            ViewBag.multiple = x;
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult HttpMultipleQuery(string jsonMQ)
-        {
-            //db_type, db_name
-            string x = client.multipleQuery(jsonMQ);
-            return RedirectToAction("MultipleQuery", new { x = x });
-
-        }
+       
 
 
         public ActionResult BorrarDeTabla(string x)
