@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WebApp.Models
 {
-    public class DBViewModel
+    public class IncludeDbVm
     {
         public string dbType { get; set; }
         public string username { get; set; }
@@ -15,11 +15,11 @@ namespace WebApp.Models
         public int port { get; set; }
         public string alias { get; set; }
 
-        public DBViewModel()
+        public IncludeDbVm()
         {
 
         }
-        public DBViewModel(string dbType, string username, string pass, string server, string protocol, int port, string alias)
+        public IncludeDbVm(string dbType, string username, string pass, string server, string protocol, int port, string alias)
         {
             this.dbType = dbType;
             this.username = username;

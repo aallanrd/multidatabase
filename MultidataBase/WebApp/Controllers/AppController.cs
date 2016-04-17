@@ -23,69 +23,76 @@ namespace WebApp.Controllers
 
 
         //  App/CrearTabla
-
-        public ActionResult CrearTabla(string x)
+        public ActionResult CrearTabla()
         {
-            ViewBag.created = x;
             return View();
         }
 
         [HttpPost]
-        public ActionResult HttpCreateTable(int cID, string name,string columns)
+        public JsonResult HttpCreateTable(int cID, string name,string columns)
         {
 
-            Table t = new Table(cID, name, columns);
+            CreateTableVM t = new CreateTableVM(cID, name, columns);
             var jsonCT = JsonConvert.SerializeObject(t); 
             string x = client.createTable(jsonCT);
-            return RedirectToAction("CrearTabla", new { x = x });
+            client.Close();
+            return new JsonResult { Data = x};
 
         }
 
-        public ActionResult InsertarTabla(string x)
+        // App Insertar Valores en Tabla
+        public ActionResult InsertarTabla( )
         {
-            ViewBag.inserted = x;
             return View();
         }
 
 
         [HttpPost]
-        public ActionResult HttpInsertValueTable(string jsonIVT)
+        public JsonResult HttpInsertValueTable(int cID, string table_name, string values)
         {
+            ITable t = new ITable(cID, table_name, values);
+            var jsonIVT = JsonConvert.SerializeObject(t);
             //db_type, db_name
             string x = client.insertValuesTable(jsonIVT);
-            return RedirectToAction("InsertarTabla", new { x = x });
+            return new JsonResult { Data = x };
 
         }
 
-        public ActionResult ActualizarTabla(string x)
+        //Actualizar valores de tabla
+        public ActionResult ActualizarTabla()
         {
-            ViewBag.updated = x;
+          
             return View();
         }
 
 
         [HttpPost]
-        public ActionResult HttpUpdateTable(string jsonDT)
+        public JsonResult HttpUpdateTable(int cID, string table_name, string values)
         {
+            UpdateTableVM t = new UpdateTableVM(cID, table_name, values);
+            var jsonAVT = JsonConvert.SerializeObject(t);
             //db_type, db_name
-            string x = client.deleteTable(jsonDT);
-            return RedirectToAction("ActualizarTabla", new { x = x });
+            string x = client.deleteTable(jsonAVT);
+            return new JsonResult { Data = x };
 
         }
 
-        public ActionResult BorrarTabla(string x)
+        //Borrar Datos de Tabla
+        public ActionResult BorrarTabla()
         {
-            ViewBag.deleted = x;
             return View();
         }
 
 
         [HttpPost]
-        public ActionResult HttpDeleteTable(string jsonDT)
+        public JsonResult HttpDeleteTable(int cID, string table_name)
         {
+
+            DTable t = new DTable(cID, table_name);
+            var jsonDT = JsonConvert.SerializeObject(t);
             //db_type, db_name
             string x = client.deleteTable(jsonDT);
-            return RedirectToAction("BorrarTabla", new { x = x });
+            return new JsonResult { Data = x };
 
         }
 
@@ -138,7 +145,7 @@ namespace WebApp.Controllers
         public ActionResult HttpIncludeDB(string db_type,string username,string pass,string server,string protocol,int port,string alias)
         {
 
-            DBViewModel dbV = new DBViewModel(db_type, username, pass, server, protocol, port, alias);
+            IncludeDbVm dbV = new IncludeDbVm(db_type, username, pass, server, protocol, port, alias);
             var jsonIDB = JsonConvert.SerializeObject(dbV);
             string x = client.includeDB(jsonIDB);
 

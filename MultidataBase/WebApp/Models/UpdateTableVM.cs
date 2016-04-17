@@ -5,24 +5,21 @@ using System.Web;
 
 namespace WebApp.Models
 {
-    public class Table
-
+    public class UpdateTableVM
     {
-        
         public int cID { get; set; }
 
         public string table_name { get; set; }
 
-        public string columnas { get; set; }
+        public string values { get; set; }
 
-        public Table() { }
+        public UpdateTableVM() { }
 
-        public Table(int cID, string nombre, string columnas)
+        public UpdateTableVM(int cID, string nombre, string values)
         {
             this.cID = cID;
             this.table_name = nombre;
-            this.columnas = columnas;
+            this.values = values;
         }
-
     }
 }
