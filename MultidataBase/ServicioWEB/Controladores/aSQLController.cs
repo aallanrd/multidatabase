@@ -158,10 +158,13 @@ namespace ServicioWEB.Controladores
         }
 
 
+        public string insertValuesTable(string database, string table, string data)
         {
+            string sCnn = "Server=" + "DESKTOP-FV57AJ9" + "; database=" + database + "; integrated security=yes";
 
 
 
+            string sCmd = "INSERT [dbo]." + table + "VALUES" +"(" + data + ")";
 
             SqlConnection cnn = null;
 
