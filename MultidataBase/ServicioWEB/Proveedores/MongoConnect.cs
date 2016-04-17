@@ -189,6 +189,21 @@ namespace ServicioWEB
             return "Error....";
         }
 
+        public string borrarDatos(string database_name, string collection_name)
+        {
+            var database = _client.GetDatabase(database_name);
+
+            if (database != null)
+            {
+                var collection = database.GetCollection<BsonDocument>(collection_name);
+                var filter = new BsonDocument();
+                var result = collection.DeleteManyAsync(filter);
+                return "Datos borrados...";
+            }
+            else
+                return "Error!";
+        }
+
 
 
 
