@@ -138,6 +138,16 @@ namespace ServicioWEB
 
         }
 
+        public string getCollections(string database_name)
+        {
+            var database = _client.GetDatabase(database_name);
+            var collections = database.ListCollections();
+            return "Lista creada....";
+
+
+
+        }
+
         public string dropCollection(String database_name, String collection_name)
         {
             var database = _client.GetDatabase(database_name);
