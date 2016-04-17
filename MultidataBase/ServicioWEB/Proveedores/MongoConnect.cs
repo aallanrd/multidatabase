@@ -138,6 +138,72 @@ namespace ServicioWEB
 
         }
 
+        public string dropCollection(String database_name, String collection_name)
+        {
+            var database = _client.GetDatabase(database_name);
+
+            if (database != null)
+            {
+                database.DropCollection(collection_name);
+                return "Coleccion borrada...";
+            }
+            else
+                return "Error";
+
+        }
+
+        //Algoritmo en desarrollo........ Le falta bastante
+        public string insertinCollection(String database_name, String collection_name, String elemento)
+        {
+            var database = _client.GetDatabase(database_name);
+
+            if (database != null)
+            {
+                var collection = database.GetCollection<String>(collection_name);
+
+               // Symbol symbol = new Symbol();
+               // symbol.Name = "Star";
+                collection.InsertOneAsync(elemento);
+
+                return "Inserción exitosa.....";
+            }
+            else
+                return "Error";
+}
+
+        //Faltan detalles
+        public string UpdateData(string database_name, string collection_name, string elenuevo, string eleactual)
+        {
+            var database = _client.GetDatabase(database_name);
+
+            if (database != null)
+            {
+                var collection = database.GetCollection<BsonDocument>(collection_name);
+                var filter = Builders<BsonDocument>.Filter.Eq("name", eleactual);
+                var update = Builders<BsonDocument>.Update
+                    .Set("name", elenuevo)
+                    .CurrentDate("lastModified");
+                var result = collection.UpdateOneAsync(filter, update);
+
+            }
+            return "Error....";
+        }
+
+        public string borrarDatos(string database_name, string collection_name)
+        {
+            var database = _client.GetDatabase(database_name);
+
+            if (database != null)
+            {
+                var collection = database.GetCollection<BsonDocument>(collection_name);
+                var filter = new BsonDocument();
+                var result = collection.DeleteManyAsync(filter);
+                return "Datos borrados...";
+            }
+            else
+                return "Error!";
+        }
+
 
 
 
