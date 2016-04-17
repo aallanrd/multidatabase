@@ -5,6 +5,8 @@ using System.Web;
 
 namespace ServicioWEB.Modelo
 {
+   
+
     public class column
     {
         public string name { get; set; }

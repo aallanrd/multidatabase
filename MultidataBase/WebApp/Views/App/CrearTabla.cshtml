@@ -7,46 +7,48 @@
 </div>
 
 
-<div class="row" ng-controller="multiController">
+<div class="row " ng-controller="multiController">
     <br /><br />
     <hr />
 
-    <form  ng-submit="createTable()">
+    
+    <form ng-submit="createTable()">
        
-        <div class="col-md-12">
-            <h1>Configuración </h1>
-            <input placeholder="Id Conección" class="input-lg" type="number" name="cID" ng-model="cID"  />
-            <input placeholder="Table Name" class="input-lg" ng-model="name" />
-        </div>
-            
-        <button type="submit" class="btn btn-primary btn-lg"> Crear Tabla</button>
-
+            <h2>Configuración </h2>
+            <input placeholder="Id Conección" class="input-sm" type="number" name="cID" ng-model="cID" />
+            <input placeholder="Table Name" class="input-sm" ng-model="name" />
+            <button type="submit" class="btn btn-primary btn-lg"> Crear Tabla</button>
+       
     </form>
 
     <form ng-submit="addColumn()">
-
        
-        
-        <ul class="unstyled">
+            <h2>Columnas</h2>
+           
+            <div class="col-md-4">
+                <input placeholder="Nombre" class="input-lg" ng-model="Cname" /> <br /><br />
+                <input placeholder="Tipo" class="input-lg" ng-model="Ctype" /><br /><br />
+                <input placeholder="Longitud" class="input-lg" ng-model="Clength" /><br /><br />
 
-            <li ng-repeat="col in todas">
-                <label class="checkbox">
-                   
-                    <span class="name-{{col.name}}"> {{col.name}} // {{col.type}} // {{col.length}}</span>
+                <button class="btn btn-primary" type="submit">Add</button>
+               
+            </div>
+            <div class="col-md-4">
+               
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="col in todas">
+                        {{col.name}}
+                        <span class="badge pull-right">{{col.type}}</span>
+                        <span class="badge pull-right">{{col.length}}</span>
+                    </li>
 
-                </label>
-
-            </li>
-
-        </ul>
+                </ul>
+            </div>
+  
        
-        <input placeholder="Nombre" class="input-sm" ng-model="Cname" />
-        <input placeholder="Tipo" class="input-sm" ng-model="Ctype" />
-        <input placeholder="Longitud" class="input-sm" ng-model="Clength" />
-
-        <input class="btn btn-primary" type="submit" value="add">
-
     </form>
+
+    
 
 </div>
 

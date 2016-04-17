@@ -15,41 +15,19 @@ namespace ServicioWEB
     {
         protected static MongoClient _client;
     
-
-
         // public MongoDB.Driver.ConnectionMode connection;
 
-        public MongoConnect()
-        {
-
-           
-            _client = new MongoClient();
-
+        public MongoConnect(int port, string server)
+        { 
+            _client = new MongoClient("mongodb://" + server +":" + port);
         }
 
-        public ArrayList users = new ArrayList();
-
-        public  void start()
-        {
-            //string conn = "mongodb://[aallanrd:abc1234@]localhost[:27017 ][/[local][?]]";
-            // _client = new MongoClient(conn);
-             OpenConnection();
-        }
-
-        //ABre una conexion y crea una base de datos :D
+        //Chequea que el cliente se haya abierto correctamente
         public  string  OpenConnection()
         {
-
-            var database = _client.GetDatabase("allandb");
-
-            //MongoServer server = _client.GetServer();
-            //MongoDatabase db = server.GetDatabase("MyDatabase");
-
-            if (database != null)
-            {
-               
-               return "Connected";
-             
+            if ( _client != null)
+            {             
+               return "Connected"; 
             }
             else
             {
@@ -58,16 +36,11 @@ namespace ServicioWEB
 
 
         }
-
-       
-
+        //Crea una base de datos en el cliente actual
         public string createDB(string x)
         {
 
             var database = _client.GetDatabase(x);
-
-            //MongoServer server = _client.GetServer();
-            //MongoDatabase db = server.GetDatabase("MyDatabase");
 
             if (database != null)
             {
@@ -88,12 +61,12 @@ namespace ServicioWEB
                     return "Creada Correctamente";
                 }
                 else {
-                    return "Not Retrieve Info of persons";
+                    return "No creada";
                 }
             }
             else
             {
-                return "Cant Get Database";
+                return "No puedo obtener conexión";
             }
 
 

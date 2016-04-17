@@ -1,5 +1,5 @@
 ﻿
-using Modelo.ServicioWEB;
+using ServicioWEB.Modelo;
 using System;
 using System.Collections;
 using System.Collections.Generic;

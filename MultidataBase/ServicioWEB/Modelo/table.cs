@@ -13,11 +13,11 @@ namespace ServicioWEB.Modelo
 
         public string table_name { get; set; }
       
-        public string[] columnas { get; set; }
+        public string columnas { get; set; }
 
         public table() { }
 
-        public table(int cID,string nombre, string[] columnas)
+        public table(int cID,string nombre, string columnas)
         {
             this.table_name = nombre;
             this.columnas = columnas;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ServicioWEB.Controladores;
-using Modelo.ServicioWEB;
+using ServicioWEB.Modelo;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Collections;
@@ -13,13 +13,16 @@ namespace ServicioWEB.Controladores
 {
     public class aMariaController
     {
+
+        // Instancia Fija para Metadata
         MariaDBConnect conexion = new MariaDBConnect("root", "Ard2592allan", "localhost", 3306, "metadatadb");
 
+
+        //Inserta en la base de datos de metadata una nueva conexión. 
         public string includeDB(dbModel m)
         {
             if (conexion.OpenConnection().Equals("Connected"))
             {
-                
                 
                     string Query = "insert into metadatadb.servidores(database_type,user,pass,server,protocol,port,alias) values('"
                     + m.dbType + "','" + m.username + "','" + m.pass + "','" + m.server + "','" + m.protocol + "','" +
@@ -32,12 +35,13 @@ namespace ServicioWEB.Controladores
                         cmd.ExecuteNonQuery();
 
                         conexion.CloseConnection();
-                        return "Insertado correctamente";
+
+                       return "{ 'msg':  'Insertada correctamente'}";
                     }
                     catch (Exception e)
                     {
-                        return "Error insertando" + e;
-                    }
+                    return "{ 'msg':  'Error Insertando'}";
+                }
                 
               
 
@@ -54,51 +58,42 @@ namespace ServicioWEB.Controladores
 
         }
 
+        //Retorna en un string-JSON las conexiones existentes en metadatadb de MariaDB.
         public string consultDB()
         {
             if (conexion.OpenConnection().Equals("Connected"))
             {
-
-
-                // mariaDB.Insert(db);
+                
                 string Query = "select * from  metadatadb.servidores";
-
                 MySqlCommand cmd = new MySqlCommand(Query, conexion.connection);
-
-                ArrayList objs = new ArrayList();
-                //cmd.ExecuteNonQuery();
+                
                 try
                 {
+                    ArrayList objs = new ArrayList();
                     MySqlDataReader rdr = cmd.ExecuteReader();
-                    //  int cont = 0;
-                    //  string citationstexter = "[";
                     while (rdr.Read())
                     {
                         objs.Add(new
                         {
-                            db_type = rdr.GetString(0),
-                            usr = rdr.GetString(1),
-                            pass = rdr.GetString(2),
-                            server = rdr.GetString(3),
-                            protocol = rdr.GetString(4),
-                            port = rdr.GetString(5),
-                            allias = rdr.GetString(6),
-                            id = rdr.GetString(7)
+                            db_type = rdr.GetString (0),  usr = rdr.GetString   (1),
+                            pass = rdr.GetString    (2),  server = rdr.GetString(3),
+                            protocol = rdr.GetString(4),  port = rdr.GetString  (5),
+                            allias = rdr.GetString  (6),  id = rdr.GetString    (7)
 
                         });
-                        //      citationstexter = citationstexter  + ("{ 'db_type' : '" + rdr.GetString(0) + "',   'usr' : '" + rdr.GetString(1) + "' , 'pass' : '" + rdr.GetString(2) + "',  'server' : '" + rdr.GetString(3) + "', 'protocol' : '" + rdr.GetString(4) + "'        ,'port' : '" + rdr.GetInt32(5) + "', 'allias' : '" + rdr.GetString(6) + "' }, ");
-                        //cont++;
+                     
                     }
-                    //  citationstexter = citationstexter + "]";
+         
                     rdr.Close();
                     conexion.CloseConnection();
+                    // -- Serializa todos los objetos obtenidos de la base a JSON.
                     var json = JsonConvert.SerializeObject(objs, Formatting.Indented);
                     return json;
-                    // return citationstexter;
+                  
                 }
                 catch (Exception e)
                 {
-                    return "Error leyendo" + e;
+                    return "{ 'error': '" + e + "'}";
                 }
             }
 
@@ -108,22 +103,69 @@ namespace ServicioWEB.Controladores
             }
         }
 
-        public string createDB(String database_name)
+        //Crear una nueva Base de Datos en una instancia seleccionada 
+        public string createDB(dbModel m, string database_name)
         {
-            if (conexion.OpenConnection().Equals("Connected"))
+            MariaDBConnect newConnection = new MariaDBConnect(m.username, m.pass, m.server, m.port, m.alias);
+            if (newConnection.OpenConnection().Equals("Connected"))
             {
                 try
                 {
                     string Query = "CREATE DATABASE " + database_name + "";
 
-                    MySqlCommand cmd = new MySqlCommand(Query, conexion.connection);
+                    MySqlCommand cmd = new MySqlCommand(Query, newConnection.connection);
 
                     cmd.ExecuteNonQuery();
-                    return "Insertada correctamente";
+                    return "{ 'msg':  'Insertada correctamente'}";
                 }
                 catch (Exception e)
                 {
-                    return "Error creando base de datos" + e;
+                    return "'msg': 'Error creando base de datos', 'error': '" + e + "'}" ;
+                }
+            }
+            else
+            {
+                return "{ 'msg':  'Error al abrir instancia de BD'}";
+            }
+
+        }
+
+        //Crear una nueva tabla en una instancia de MariaDB
+        public string createTable(dbModel db, string table_name, List<Modelo.column> array)
+        {
+
+            MariaDBConnect newConnection = new MariaDBConnect(db.username,db.pass,db.server,db.port,db.alias);
+            if (newConnection.OpenConnection().Equals("Connected"))
+            {
+                try
+                {
+                    string colums = "( ";
+                    int c = 0;
+                    while (c != array.Count)
+                    {
+                        var x = array[c];
+                        colums = colums + x.name + " " + x.type + " (" + x.length + ")";
+                        if(c+1 == array.Count)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            colums = colums + ",";
+                        }
+                        c++;
+                    }
+                    colums = colums + ")";
+                    string Query = "create table " + table_name + colums;
+
+                    MySqlCommand cmd = new MySqlCommand(Query, newConnection.connection);
+
+                    cmd.ExecuteNonQuery();
+                    return "{ 'msg':  'Insertada correctamente'}";
+                }
+                catch (Exception e)
+                {
+                    return "{ 'msg':  'Error insertando'}";
                 }
 
 
@@ -135,13 +177,12 @@ namespace ServicioWEB.Controladores
 
         }
 
+        //Obtener una conexión específica por Identificador de Conexión.
         public dbModel getConnection(int cID)
         {
             if (conexion.OpenConnection().Equals("Connected"))
             {
 
-
-                // mariaDB.Insert(db);
                 string Query = "select * from  metadatadb.servidores";
 
                 MySqlCommand cmd = new MySqlCommand(Query, conexion.connection);
@@ -175,11 +216,6 @@ namespace ServicioWEB.Controladores
                     rdr.Close();
                     conexion.CloseConnection();
                     return model;
-                    //  citationstexter = citationstexter + "]";
-
-
-
-                    // return citationstexter;
                 }
                 catch (Exception e)
                 {

@@ -35,7 +35,7 @@ namespace ServicioWEB
             }
             catch (Exception e)
             {
-                return "Can-t Connected";
+                return "Can't Connect";
             } 
         }
 

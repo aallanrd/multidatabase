@@ -7,15 +7,17 @@ namespace ServicioWEB.Modelo
 {
     public class database
     {
-        public string db_name { get; set; }
-        public string db_type { get; set; }
 
+        public int idC { get; set; }
+
+        public string db_name { get; set; }
+       
         public database() { }
 
-        public database(String nombre, string tipo)
+        public database(int idC , string db_name)
         {
-            this.db_name = nombre;
-            this.db_type = tipo;
+            this.db_name = db_name;
+            this.idC = idC;
         }
 
     }

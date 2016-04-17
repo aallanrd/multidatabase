@@ -1,4 +1,4 @@
-﻿using Modelo.ServicioWEB;
+﻿using ServicioWEB.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -11,18 +11,14 @@ namespace ServicioWEB.Controladores
     public class aSQLController 
     {
 
+        
         SQLConnect conexion;
+
         public aSQLController()
         {
-            conexion = new SQLConnect("root", "Ard2592allan", "DESKTOP-6Q1Q92A", 1433, "master");
-        }
-        public aSQLController(string uid, string pass, string server, int port, string database)
-        {
-            conexion = new SQLConnect( uid,  pass,  server,  port,  database);
+            
         }
 
-
-       
         public string consultDB()
         {
             if (conexion.OpenConnection().Equals("Connected"))
@@ -51,8 +47,9 @@ namespace ServicioWEB.Controladores
             }
         }
 
-        public string createDB(String database_name)
+        public string createDB(dbModel db,string database_name)
         {
+            conexion = new SQLConnect(db.username, db.pass, db.server, db.port, db.alias);
             if (conexion.OpenConnection().Equals("Connected"))
             {
                 try

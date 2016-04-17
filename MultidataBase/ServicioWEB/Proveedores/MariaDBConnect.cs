@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using MySql;
-using Modelo.ServicioWEB;
+using ServicioWEB.Modelo;
 
 namespace ServicioWEB
 {

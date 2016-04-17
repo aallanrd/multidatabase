@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 
 
-namespace Modelo.ServicioWEB
+namespace ServicioWEB.Modelo
 {
     public class dbModel
     {
