@@ -115,8 +115,11 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult HttpCreateDB(string jsonCDB)
+        public ActionResult HttpCreateDB(int cID, string db_name)
         {
+
+            DatabaseViewModel dbV = new DatabaseViewModel(cID, db_name);
+            var jsonCDB = JsonConvert.SerializeObject(dbV);
             //db_type, db_name
             string x = client.createDatabase(jsonCDB);
             return RedirectToAction("CrearDB", new { x = x });

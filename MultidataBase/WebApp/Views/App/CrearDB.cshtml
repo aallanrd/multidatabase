@@ -4,9 +4,9 @@
 </div>
 <div class="row">
     
-    <div class="col-md-12 text-center panel">
+    <div class="col-md-12 text-center panel" ng-controller="multiController">
        
-            <form action="../App/HttpCreateDB" method="post">
+            <form ng-submit="createDB()" >
             <div class="panel-heading text-center">
                 <a href="../App" type="button" class="btn btn-danger btn-lg pull-left"> <i class="fa fa-arrow-left"></i>Volver </a>
                 
@@ -21,8 +21,8 @@
                     <div class="col-md-1"></div>
                     <div class="col-md-10">
                         <p><i class="fa fa-database"></i> Configuración DB</p>
-                        <input placeholder="ID Conexión" name="cID"/>
-                        <input id="db_name" placeholder="dbName" class="input-lg" name="db_name"/><br /><br />
+                        <input placeholder="ID Conexión" name="cID" ng-model="cID"/>
+                        <input id="db_name" placeholder="dbName" class="input-lg" name="db_name" ng-model="db_name"/><br /><br />
                        
                     </div>
                     <div class="col-md-1"></div>
@@ -34,9 +34,8 @@
                 <div class="row text-center">
                     <div class="col-md-12">
 
-                        <button type="button" class="btn btn-warning btn-lg"> Testear Conexión </button>
                         <button type="submit" class="btn btn-primary btn-lg"> Crear Base de Datos</button>
-                        <h2 class="text-danger"> @ViewBag.created </h2>
+                        
                     </div>
 
                 </div>

@@ -47,6 +47,21 @@ multiDBApp.controller('multiController', function ($scope,$http) {
 
         });
     }
+
+    $scope.createDB = function () {
+
+        $http.post('../App/HttpCreateDB?cID=' + $scope.cID + '&db_name=' + $scope.db_name,
+            { data: {} })
+        .success(function (data, status, headers, config) {
+
+            alert("Listo! Parece que todo salió bien");
+        })
+        .error(function (data, status, headers, config) {
+            alert("Ups! Hubo un error en la solicitud REST");
+
+        });
+    }
+
       
 }).config(function ($httpProvider) {
     $httpProvider.defaults.headers.post = {};
